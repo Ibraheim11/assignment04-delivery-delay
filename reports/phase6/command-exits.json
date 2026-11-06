@@ -1,0 +1,934 @@
+{
+  "airflow-init": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "up",
+      "--no-deps",
+      "--exit-code-from",
+      "airflow-init",
+      "airflow-init"
+    ],
+    "exit_code": 0
+  },
+  "airflow-version": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "version"
+    ],
+    "exit_code": 0
+  },
+  "compose-config": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "config",
+      "--quiet"
+    ],
+    "exit_code": 0
+  },
+  "compose-service-logs": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "logs",
+      "--no-color"
+    ],
+    "exit_code": 0
+  },
+  "compose-status": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "--all",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  "container-tests": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "-f",
+      "work/compose.tests.yml",
+      "run",
+      "--rm",
+      "--no-deps",
+      "airflow-cli",
+      "bash",
+      "-c",
+      "airflow db migrate && airflow dags reserialize && RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q -o cache_dir=/tmp/pytest-cache"
+    ],
+    "exit_code": 0
+  },
+  "dag-discovery": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "list",
+      "--local"
+    ],
+    "exit_code": 0
+  },
+  "dag-discovery-probe": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.airflow_runtime_probe",
+      "discovery"
+    ],
+    "exit_code": 0
+  },
+  "dag-import-errors": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "list-import-errors",
+      "--local"
+    ],
+    "exit_code": 0
+  },
+  "disk-after-resource-check": {
+    "command": [
+      "df",
+      "-h"
+    ],
+    "exit_code": 0
+  },
+  "disk-before": {
+    "command": [
+      "df",
+      "-h"
+    ],
+    "exit_code": 0
+  },
+  "docker-build": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "build"
+    ],
+    "exit_code": 0
+  },
+  "docker-disk-before": {
+    "command": [
+      "docker",
+      "system",
+      "df"
+    ],
+    "exit_code": 0
+  },
+  "docker-disk-final": {
+    "command": [
+      "docker",
+      "system",
+      "df"
+    ],
+    "exit_code": 0
+  },
+  "docker-info": {
+    "command": [
+      "docker",
+      "info",
+      "--format",
+      "driver={{.Driver}} cpus={{.NCPU}} memory={{.MemTotal}}"
+    ],
+    "exit_code": 0
+  },
+  "docker-version": {
+    "command": [
+      "docker",
+      "version"
+    ],
+    "exit_code": 0
+  },
+  "final-artifact-verification": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.airflow_runtime_probe",
+      "final"
+    ],
+    "exit_code": 0
+  },
+  "final-compose-status": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "--all",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0
+  },
+  "final-health-airflow-apiserver": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "b3d6c97864d55812a27711fc35c73ae1a8d16ab49992c7a3d7a1b57cd5166623"
+    ],
+    "exit_code": 0
+  },
+  "final-health-airflow-dag-processor": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "f415aab7d383a7d07971cfa277a942c8c787929fcfe1a940e4fb7eb622a098a6"
+    ],
+    "exit_code": 0
+  },
+  "final-health-airflow-scheduler": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "24a0092a8fdc7428ad244abc733246b41ea64c4a4ca8be62d315269d3bdb57fe"
+    ],
+    "exit_code": 0
+  },
+  "final-health-airflow-triggerer": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "4f1267d9caa139bca0c87e574080584010de326c01b2682a05970ac01fc4209c"
+    ],
+    "exit_code": 0
+  },
+  "final-health-postgres": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "02bd22778b80ec70b6b410cfc65dd7ce259840943847b3ab1b89abf8895d1f58"
+    ],
+    "exit_code": 0
+  },
+  "final-id-airflow-apiserver": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-aq",
+      "airflow-apiserver"
+    ],
+    "exit_code": 0
+  },
+  "final-id-airflow-dag-processor": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-aq",
+      "airflow-dag-processor"
+    ],
+    "exit_code": 0
+  },
+  "final-id-airflow-scheduler": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-aq",
+      "airflow-scheduler"
+    ],
+    "exit_code": 0
+  },
+  "final-id-airflow-triggerer": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-aq",
+      "airflow-triggerer"
+    ],
+    "exit_code": 0
+  },
+  "final-id-postgres": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-aq",
+      "postgres"
+    ],
+    "exit_code": 0
+  },
+  "generate-all-gold": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.generate_gold"
+    ],
+    "exit_code": 0
+  },
+  "health-airflow-apiserver": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "b3d6c97864d55812a27711fc35c73ae1a8d16ab49992c7a3d7a1b57cd5166623"
+    ],
+    "exit_code": 0
+  },
+  "health-airflow-dag-processor": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "f415aab7d383a7d07971cfa277a942c8c787929fcfe1a940e4fb7eb622a098a6"
+    ],
+    "exit_code": 0
+  },
+  "health-airflow-scheduler": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "24a0092a8fdc7428ad244abc733246b41ea64c4a4ca8be62d315269d3bdb57fe"
+    ],
+    "exit_code": 0
+  },
+  "health-airflow-triggerer": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "4f1267d9caa139bca0c87e574080584010de326c01b2682a05970ac01fc4209c"
+    ],
+    "exit_code": 0
+  },
+  "health-postgres": {
+    "command": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{json .State}}",
+      "02bd22778b80ec70b6b410cfc65dd7ce259840943847b3ab1b89abf8895d1f58"
+    ],
+    "exit_code": 0
+  },
+  "historical-backfill": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "backfill",
+      "create",
+      "--dag-id",
+      "data_pipeline",
+      "--from-date",
+      "2026-10-18",
+      "--to-date",
+      "2026-10-20",
+      "--max-active-runs",
+      "1",
+      "--reprocess-behavior",
+      "completed"
+    ],
+    "exit_code": 0
+  },
+  "historical-backfill-dry-run": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "backfill",
+      "create",
+      "--dag-id",
+      "data_pipeline",
+      "--from-date",
+      "2026-10-18",
+      "--to-date",
+      "2026-10-20",
+      "--max-active-runs",
+      "1",
+      "--reprocess-behavior",
+      "completed",
+      "--dry-run"
+    ],
+    "exit_code": 0
+  },
+  "id-airflow-apiserver": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-q",
+      "airflow-apiserver"
+    ],
+    "exit_code": 0
+  },
+  "id-airflow-dag-processor": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-q",
+      "airflow-dag-processor"
+    ],
+    "exit_code": 0
+  },
+  "id-airflow-scheduler": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-q",
+      "airflow-scheduler"
+    ],
+    "exit_code": 0
+  },
+  "id-airflow-triggerer": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-q",
+      "airflow-triggerer"
+    ],
+    "exit_code": 0
+  },
+  "id-postgres": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "ps",
+      "-q",
+      "postgres"
+    ],
+    "exit_code": 0
+  },
+  "idempotent-backfill": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "backfill",
+      "create",
+      "--dag-id",
+      "data_pipeline",
+      "--from-date",
+      "2026-10-18",
+      "--to-date",
+      "2026-10-18",
+      "--max-active-runs",
+      "1",
+      "--reprocess-behavior",
+      "completed"
+    ],
+    "exit_code": 0
+  },
+  "idempotent-backfill-dry-run": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "backfill",
+      "create",
+      "--dag-id",
+      "data_pipeline",
+      "--from-date",
+      "2026-10-18",
+      "--to-date",
+      "2026-10-18",
+      "--max-active-runs",
+      "1",
+      "--reprocess-behavior",
+      "completed",
+      "--dry-run"
+    ],
+    "exit_code": 0
+  },
+  "memory": {
+    "command": [
+      "free",
+      "-h"
+    ],
+    "exit_code": 0
+  },
+  "pause-data_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "pause",
+      "data_pipeline"
+    ],
+    "exit_code": 0
+  },
+  "pause-ml_training_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "pause",
+      "ml_training_pipeline"
+    ],
+    "exit_code": 0
+  },
+  "phase6-pause": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "pause",
+      "data_pipeline"
+    ],
+    "exit_code": 0
+  },
+  "phase6-probe": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.reliability_probe"
+    ],
+    "exit_code": 0
+  },
+  "phase6-unpause": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "unpause",
+      "data_pipeline"
+    ],
+    "exit_code": 0
+  },
+  "postgres-start": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "180",
+      "postgres"
+    ],
+    "exit_code": 0
+  },
+  "services-start": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "300",
+      "airflow-apiserver",
+      "airflow-scheduler",
+      "airflow-dag-processor",
+      "airflow-triggerer"
+    ],
+    "exit_code": 0
+  },
+  "shutdown": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "down",
+      "--volumes",
+      "--remove-orphans"
+    ],
+    "exit_code": 0
+  },
+  "states-data_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.airflow_runtime_probe",
+      "states",
+      "--dag-id",
+      "data_pipeline",
+      "--run-id",
+      "phase5b-data_pipeline-42237926425-1"
+    ],
+    "exit_code": 0
+  },
+  "states-ml_training_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "python",
+      "-m",
+      "scripts.airflow_runtime_probe",
+      "states",
+      "--dag-id",
+      "ml_training_pipeline",
+      "--run-id",
+      "phase5b-ml_training_pipeline-42237926425-1"
+    ],
+    "exit_code": 0
+  },
+  "test-image-build": {
+    "command": [
+      "docker",
+      "build",
+      "--target",
+      "test",
+      "-t",
+      "assignment04-airflow:test",
+      "."
+    ],
+    "exit_code": 0
+  },
+  "trigger-data_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "trigger",
+      "data_pipeline",
+      "--run-id",
+      "phase5b-data_pipeline-42237926425-1",
+      "--conf",
+      "{\"batch_date\": \"2026-10-18\"}"
+    ],
+    "exit_code": 0
+  },
+  "trigger-exhaust": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "trigger",
+      "data_pipeline",
+      "--run-id",
+      "phase6-exhaust-42237926425-1",
+      "--conf",
+      "{\"batch_date\": \"2026-10-18\", \"phase6_fault\": \"exhaust\"}"
+    ],
+    "exit_code": 0
+  },
+  "trigger-ml_training_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "trigger",
+      "ml_training_pipeline",
+      "--run-id",
+      "phase5b-ml_training_pipeline-42237926425-1",
+      "--conf",
+      "{}"
+    ],
+    "exit_code": 0
+  },
+  "trigger-once": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "trigger",
+      "data_pipeline",
+      "--run-id",
+      "phase6-retry-42237926425-1",
+      "--conf",
+      "{\"batch_date\": \"2026-10-18\", \"phase6_fault\": \"once\"}"
+    ],
+    "exit_code": 0
+  },
+  "unpause-data_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "unpause",
+      "data_pipeline"
+    ],
+    "exit_code": 0
+  },
+  "unpause-ml_training_pipeline": {
+    "command": [
+      "docker",
+      "compose",
+      "-f",
+      "docker-compose.yml",
+      "-f",
+      "work/compose.ci.yml",
+      "exec",
+      "-T",
+      "airflow-scheduler",
+      "airflow",
+      "dags",
+      "unpause",
+      "ml_training_pipeline"
+    ],
+    "exit_code": 0
+  }
+}

@@ -1,0 +1,1400 @@
+{
+  "backfills": [
+    {
+      "completed_at": "2026-11-06 15:01:50.380083+00:00",
+      "dag_id": "data_pipeline",
+      "from_date": "2026-10-18 00:00:00+00:00",
+      "id": "1",
+      "to_date": "2026-10-20 00:00:00+00:00"
+    },
+    {
+      "completed_at": "2026-11-06 15:02:20.400840+00:00",
+      "dag_id": "data_pipeline",
+      "from_date": "2026-10-18 00:00:00+00:00",
+      "id": "2",
+      "to_date": "2026-10-18 00:00:00+00:00"
+    }
+  ],
+  "files": {
+    "data/bronze/orders_2026-10-01.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "3373d3343fcdc0391728ec22d74b96325e5064ec4e8db86922af301df4b2d88a"
+    },
+    "data/bronze/orders_2026-10-02.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "e386acd2f68a98e8190346d6134248ce7a6d61ffa286104e18f240284525aff6"
+    },
+    "data/bronze/orders_2026-10-03.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "202acb8bae9909835ab49a4ea786f81e2b9044dc60f67a06eff21b935cff7a21"
+    },
+    "data/bronze/orders_2026-10-04.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "968d99fc6df9a68454eaf21fd373155be914d6a052a7f63897e1111aecb8cf2a"
+    },
+    "data/bronze/orders_2026-10-05.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "d2fe7679c22aa97976fe33dbaf8873ee29df932387f1b8d35d9227eb0a12170b"
+    },
+    "data/bronze/orders_2026-10-06.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "8ef573c62db3b6745ceece009bb7b52183864c01debc8971e8cd8aaf35b7b66a"
+    },
+    "data/bronze/orders_2026-10-07.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "2703d575e2464ef69102eafcda21f82edc6e79d56802cbcf50c617761bd16480"
+    },
+    "data/bronze/orders_2026-10-08.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 200,
+      "sha256": "b299b80d77223abc345824953221e96997dc587cbff5ce01e1accc2a27d905dc"
+    },
+    "data/bronze/orders_2026-10-09.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 213,
+      "sha256": "894e51cfb40b2b3300bf3f1863ddf51be8f4f28badbd82d161343cb8b72041c5"
+    },
+    "data/bronze/orders_2026-10-10.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 226,
+      "sha256": "0e2e08a61736ebf49563b80484cdb4d600b89978c81b0d31af82c35c05d956cf"
+    },
+    "data/bronze/orders_2026-10-11.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 239,
+      "sha256": "e5e358f87bb30d08efda86d2709b244c31da941778b56e9cae7570f320a2bbd3"
+    },
+    "data/bronze/orders_2026-10-12.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 252,
+      "sha256": "e930413685c56a26f3dde194ef5ddf40691a1e269f7ee5a705924f19e311aeff"
+    },
+    "data/bronze/orders_2026-10-13.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 187,
+      "sha256": "423dca585f50fb3c32250c73f7e210a68c7cbd37011e147ffa738370b4bcddbf"
+    },
+    "data/bronze/orders_2026-10-14.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 200,
+      "sha256": "50936b7c3b35b0dba75de70bf80d3b9b68d4223eb73b105003e52a8a6f7b6a82"
+    },
+    "data/bronze/orders_2026-10-15.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "dec2183dba229e884f9c4e83180277811f0cb79d386ebdfa19bbf09f709f6b11"
+    },
+    "data/bronze/orders_2026-10-16.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "d3775a1a8ed03580c7b18134f1f6a551740af258b3dd16a09195f2a1d9361449"
+    },
+    "data/bronze/orders_2026-10-17.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "457fa7de95b412885fa1f97c39494686a6536acce5343bfae59b069e4ac7915b"
+    },
+    "data/bronze/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+    },
+    "data/bronze/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+    },
+    "data/bronze/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+    },
+    "data/bronze/orders_2026-10-21.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "8b518ef05018a690c6f903e5c613f9daeb90193f1aeb76ed667ee1c55b0d6363"
+    },
+    "data/bronze/orders_2026-10-22.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "0887e59ab4ff5bdd52c12f9db3e0299c18c38dfb9e4f44fe4769c3bcf89a80a1"
+    },
+    "data/bronze/orders_2026-10-23.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "6d4cbe6985474ecabbddea0211f79899e57c06d12a59e5f61484c9f827bac08b"
+    },
+    "data/bronze/orders_2026-10-24.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a63d1acc8f3bee8768facfe627274c1e5fb017c235c702cf72cc7c1829f696b3"
+    },
+    "data/bronze/orders_2026-10-25.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "a19fb848d606c3f06c14aa1f94dfc24c3bd0346cf7429315be2da04cd2bda0d6"
+    },
+    "data/bronze/orders_2026-10-26.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "252f30e0bc3b657f54aed495f9b609180bbaa4ce5b80dc03f5c598cad06cdcb3"
+    },
+    "data/bronze/orders_2026-10-27.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "c9efed4d94bd35092908f247ab0cab78e55727b36b7559e5f6a4985677097036"
+    },
+    "data/bronze/orders_2026-10-28.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "4a854516258470d283024cb4ced3547fdaa96a1f0af4d4804787138a2c4fc6d8"
+    },
+    "data/bronze/orders_2026-10-29.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "85b4d064df808272f9e010ee7a040d00827254a9c639901bce985c81d29ce831"
+    },
+    "data/bronze/orders_2026-10-30.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "ea8b78112ea46acbb3a8bbefe109ccd8b9f98e2d1194261661b8bbef1eaddef6"
+    },
+    "data/bronze/orders_2026-10-31.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "2a29394fa7aa7b0be3ddcdc6f3f0ef6dde5674e67b59f2d569f032f1fb167b52"
+    },
+    "data/bronze/orders_2026-11-01.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "ed27402ab68d53fa2a591eda47aba7908031d758182a1b09a5863f7f2d655510"
+    },
+    "data/bronze/orders_2026-11-02.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "748df594a5cef1208988c9ea478553f219136bfe4f04e753607b2df9c1521b34"
+    },
+    "data/bronze/orders_2026-11-03.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "61bf6d4cb6c604c12c4a78efe347353d912890f2c7444a1898d26de14f12c239"
+    },
+    "data/bronze/orders_2026-11-04.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "7442a45fa6c58c777f9582b51ae0832f8e44dc24ae8b85fa787dbcc19fdbccce"
+    },
+    "data/bronze/orders_2026-11-05.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 278,
+      "sha256": "b6a120f533a89c61fa0188e08c215e7e64d4efcfa0cce1c2190889e70735d195"
+    },
+    "data/bronze/orders_2026-11-06.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 213,
+      "sha256": "038d47305bb90f352902672385bc616236bef807dfd077f872aab17b74287d7e"
+    },
+    "data/bronze/orders_2026-11-07.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 226,
+      "sha256": "ef838ce3955e184a24615ec060f686996bfe09f5b736e2ce316a639e21660a16"
+    },
+    "data/bronze/orders_2026-11-08.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 239,
+      "sha256": "d847bf463a9e6c736494922f1f3870ea4bd99c401dacd5fd0a02c4e11374aab8"
+    },
+    "data/bronze/orders_2026-11-09.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 252,
+      "sha256": "8be59904575207a24b36d32acc332ec16711822211d50ed78361e0f1ff4be0b9"
+    },
+    "data/bronze/orders_2026-11-10.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 265,
+      "sha256": "0a47b724684d94d4d16163a2761dbb24f100bfa8e50a462a65fa566f6d0206ce"
+    },
+    "data/bronze/orders_2026-11-11.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 278,
+      "sha256": "54e9f9a8c66f655c926a7200c5d538bab15ad24e4fc21babb61a0d4e51f46fcf"
+    },
+    "data/bronze/orders_2026-11-12.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 213,
+      "sha256": "1419d5bd2693879009c6f47b15666209b280e9a3996b337de7ba7067af17dab0"
+    },
+    "data/bronze/orders_2026-11-13.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 226,
+      "sha256": "a0e24508b232e293dfe5699e2af9a4d2a9e70f4c4a4315acd60ca0d40a42fa67"
+    },
+    "data/bronze/orders_2026-11-14.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 239,
+      "sha256": "0d84ac8a24d2aff3f7bd7ea640b459cf712d134f36ae1f6070f16e8f9c7aa06b"
+    },
+    "data/bronze/orders_2026-11-15.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 252,
+      "sha256": "b9ba356bdc61197be644bdb10cbb976710ea4b965d9496abf8645a51ac3c0fae"
+    },
+    "data/gold/orders_2026-10-01.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "3b158fe8d86b9b87adb226da2c2228225ee22e949f2fa7a30e1fff66efe48c4f"
+    },
+    "data/gold/orders_2026-10-02.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "d7370a7d72abcc79c37f30a79abedb3e0fe167e4ff95c8aaa56908f6fb3c4088"
+    },
+    "data/gold/orders_2026-10-03.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "257226c32adc5274f647f601f8bde385fe100b3297eac64de8d86884807ba6fc"
+    },
+    "data/gold/orders_2026-10-04.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "e9f447f55e98f07c08f57374735732f6d9f22e76bd7fbc99c77c784c41c5630e"
+    },
+    "data/gold/orders_2026-10-05.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "acd294182c35ea5c8e9bff611e29da608df3ef0f58c079facea4498fdd55acd1"
+    },
+    "data/gold/orders_2026-10-06.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "d7772b4c8a071252dac7b5b5b109377c9ca6e7808b60a5719f2f40722a05fb8c"
+    },
+    "data/gold/orders_2026-10-07.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "edee9d3131ca85f640c6f3e79e4e4b8b8f6b11d803b06c0726bccc37fccfaa8b"
+    },
+    "data/gold/orders_2026-10-08.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "6296852dbe82967ec25a1da747ae9c751273e88e924e72133e3293209a761f3d"
+    },
+    "data/gold/orders_2026-10-09.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "08e645661432193571fb986b31a7394b4de10c221bbb145ee755fb5846b8247e"
+    },
+    "data/gold/orders_2026-10-10.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "b804b48eb9310015edf33ccb00c78f0d14939be5e567c812e3a31d9df7f80b22"
+    },
+    "data/gold/orders_2026-10-11.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "51674da57661f7ad5f5877a44f64b13ef7555baccdaebb3b5d5906d53d78c288"
+    },
+    "data/gold/orders_2026-10-12.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "3da1b5b58e2c9909ac49586c72785b323bb5c42c9e1c2243e35791e235f4b4a6"
+    },
+    "data/gold/orders_2026-10-13.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "77f0cdb6e8ede5d3c11003f38bac1025b4dd14a89ba5caa2261a4c145e02ccbc"
+    },
+    "data/gold/orders_2026-10-14.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "3ebf712d7d16833491923d12cdac316e30877e6bf209572cf75ab95c40b8267f"
+    },
+    "data/gold/orders_2026-10-15.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "cc1daeb65cc1fa1e59bf13b1e4420a8eeec7bcd44e453e2e918764b2ccf768a9"
+    },
+    "data/gold/orders_2026-10-16.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "13c106b0f84c63fb2c53520afe840c2fef0d9e9ed7119cb5f9735e00b9766b78"
+    },
+    "data/gold/orders_2026-10-17.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "23bd92d986eceaf7ade1205e82b2b60e0401e9d8756c24b02a55920916dd916a"
+    },
+    "data/gold/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "dd505ef61d2145f227a8ce4ea5a5d817d286d98ecbd4790bc6c3bbf89d4c2177"
+    },
+    "data/gold/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "3cb0a8e3278786dbbeb8ff67a974107b845be322cba6a8203c5b266e15615773"
+    },
+    "data/gold/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "93f6b24b3c7c20a048362f2bfeba286de19c3c4904bb8286b3a83dc7d630525d"
+    },
+    "data/gold/orders_2026-10-21.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "89d698a893df04cfe05f4516d95dfe396caa7f7ed02d2e736a39b4229fff9c3b"
+    },
+    "data/gold/orders_2026-10-22.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "172d25e2654f2c18fc4ab50881ba33360c3b20b7e7620216b24ca4720ec2a1e6"
+    },
+    "data/gold/orders_2026-10-23.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "0149d139562a5b8c6d560a40ed82418215cfbf088036f2983ce4b35064a5cd9a"
+    },
+    "data/gold/orders_2026-10-24.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "bb452fe4bf7dabcf93fe36e151ea08013279e16fcf5bfb7ce577ecf395c156c3"
+    },
+    "data/gold/orders_2026-10-25.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "32429b42ebf2f6ba1e9f15511d906e12eac04f4ba8be7fc118c623c49e702035"
+    },
+    "data/gold/orders_2026-10-26.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "f7cd4534af9edd180985773df46adce573151e8892162cc19a77a0e32ac41f4c"
+    },
+    "data/gold/orders_2026-10-27.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "a974d24d53386b6e2172ef5060aff19c37ac43513de5c870c1e9f868d068f266"
+    },
+    "data/gold/orders_2026-10-28.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "88a75de20b7279652e51bb58612f6edf43f2b594b69204847f5f35f22c167c7d"
+    },
+    "data/gold/orders_2026-10-29.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "6c92242c883207debb3f7ffb1b6be2b40203a262c0b7fb4f1ef93516c111f1e9"
+    },
+    "data/gold/orders_2026-10-30.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "2c0471365e21521d34aca859d3c165fbacf7b757bcf26d0881378da8f8c5db55"
+    },
+    "data/gold/orders_2026-10-31.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "8c0c94f117ff438826c28b20482ecdf42712335c25ee260c07324fb25ddcfc92"
+    },
+    "data/gold/orders_2026-11-01.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "42444502f570b4f13680fb5513083544281048ff5daf2be7331b51dd45c11e8c"
+    },
+    "data/gold/orders_2026-11-02.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "2dcf891aaf08830f30d2062dd18e5eae5af489d9ede634dccb898ef8f6b65ef7"
+    },
+    "data/gold/orders_2026-11-03.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "90e058d6f1f19ed415996c9658ef8fdc279805a45817930dd24101eea07c912c"
+    },
+    "data/gold/orders_2026-11-04.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "765f869e4a120ff4778a5a63f51b87f8582d51e34056746da72bc89b303d506e"
+    },
+    "data/gold/orders_2026-11-05.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 275,
+      "sha256": "26705de547f0fc0c27c338176a60ce67870a3d32badcdb56835b4da88780aa4d"
+    },
+    "data/gold/orders_2026-11-06.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 210,
+      "sha256": "e49d754625b8c5c3647337d851942d6cac2f472e2294635186626e66c48184e3"
+    },
+    "data/gold/orders_2026-11-07.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 223,
+      "sha256": "81a1487c1d4afc0db4b5a9149b849480345fac07a54fe63d73a1b76d63154676"
+    },
+    "data/gold/orders_2026-11-08.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 236,
+      "sha256": "b266a396e0db5b8e890f21e9ab8afe027ee9c4b3a46e97e8bbb15999db5140d3"
+    },
+    "data/gold/orders_2026-11-09.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 249,
+      "sha256": "cbe1a97e33262a7ed586de065185ae17e17dde7b8ac8cfd3677450d575375503"
+    },
+    "data/gold/orders_2026-11-10.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 262,
+      "sha256": "e6f5a4f245aa792e9fe9c084cadb94f91f385ed876011a524713f615b4b99c35"
+    },
+    "data/gold/orders_2026-11-11.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 275,
+      "sha256": "e9290a42d8913753b32147aa2102f3eeb49b2769c3032506db8c10dce3b0bbe0"
+    },
+    "data/gold/orders_2026-11-12.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 210,
+      "sha256": "70129c7a8a6dc37961de77f22d111cf3ad67b9081b15e9538ceb607939f1587d"
+    },
+    "data/gold/orders_2026-11-13.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 223,
+      "sha256": "97215e67b99365f20304fb720478730223a13dfa6172bf8a0195ab29f5d7be4d"
+    },
+    "data/gold/orders_2026-11-14.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 236,
+      "sha256": "c144b7ece5a6f1aaa0628d89d619b7dfb62932b1e0b0eaeb2b09a01b1892ca54"
+    },
+    "data/gold/orders_2026-11-15.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 249,
+      "sha256": "21a1ea4a25c3f0857c71ff6bbde6555f0eb5db8c1182a67980ab0a09457ab995"
+    },
+    "data/raw/orders_2026-10-01.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "3373d3343fcdc0391728ec22d74b96325e5064ec4e8db86922af301df4b2d88a"
+    },
+    "data/raw/orders_2026-10-02.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "e386acd2f68a98e8190346d6134248ce7a6d61ffa286104e18f240284525aff6"
+    },
+    "data/raw/orders_2026-10-03.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "202acb8bae9909835ab49a4ea786f81e2b9044dc60f67a06eff21b935cff7a21"
+    },
+    "data/raw/orders_2026-10-04.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "968d99fc6df9a68454eaf21fd373155be914d6a052a7f63897e1111aecb8cf2a"
+    },
+    "data/raw/orders_2026-10-05.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "d2fe7679c22aa97976fe33dbaf8873ee29df932387f1b8d35d9227eb0a12170b"
+    },
+    "data/raw/orders_2026-10-06.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "8ef573c62db3b6745ceece009bb7b52183864c01debc8971e8cd8aaf35b7b66a"
+    },
+    "data/raw/orders_2026-10-07.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "2703d575e2464ef69102eafcda21f82edc6e79d56802cbcf50c617761bd16480"
+    },
+    "data/raw/orders_2026-10-08.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 200,
+      "sha256": "b299b80d77223abc345824953221e96997dc587cbff5ce01e1accc2a27d905dc"
+    },
+    "data/raw/orders_2026-10-09.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 213,
+      "sha256": "894e51cfb40b2b3300bf3f1863ddf51be8f4f28badbd82d161343cb8b72041c5"
+    },
+    "data/raw/orders_2026-10-10.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 226,
+      "sha256": "0e2e08a61736ebf49563b80484cdb4d600b89978c81b0d31af82c35c05d956cf"
+    },
+    "data/raw/orders_2026-10-11.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 239,
+      "sha256": "e5e358f87bb30d08efda86d2709b244c31da941778b56e9cae7570f320a2bbd3"
+    },
+    "data/raw/orders_2026-10-12.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 252,
+      "sha256": "e930413685c56a26f3dde194ef5ddf40691a1e269f7ee5a705924f19e311aeff"
+    },
+    "data/raw/orders_2026-10-13.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 187,
+      "sha256": "423dca585f50fb3c32250c73f7e210a68c7cbd37011e147ffa738370b4bcddbf"
+    },
+    "data/raw/orders_2026-10-14.csv": {
+      "duplicate_order_ids": 7,
+      "rows": 200,
+      "sha256": "50936b7c3b35b0dba75de70bf80d3b9b68d4223eb73b105003e52a8a6f7b6a82"
+    },
+    "data/raw/orders_2026-10-15.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "dec2183dba229e884f9c4e83180277811f0cb79d386ebdfa19bbf09f709f6b11"
+    },
+    "data/raw/orders_2026-10-16.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "d3775a1a8ed03580c7b18134f1f6a551740af258b3dd16a09195f2a1d9361449"
+    },
+    "data/raw/orders_2026-10-17.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "457fa7de95b412885fa1f97c39494686a6536acce5343bfae59b069e4ac7915b"
+    },
+    "data/raw/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+    },
+    "data/raw/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+    },
+    "data/raw/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+    },
+    "data/raw/orders_2026-10-21.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "8b518ef05018a690c6f903e5c613f9daeb90193f1aeb76ed667ee1c55b0d6363"
+    },
+    "data/raw/orders_2026-10-22.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "0887e59ab4ff5bdd52c12f9db3e0299c18c38dfb9e4f44fe4769c3bcf89a80a1"
+    },
+    "data/raw/orders_2026-10-23.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "6d4cbe6985474ecabbddea0211f79899e57c06d12a59e5f61484c9f827bac08b"
+    },
+    "data/raw/orders_2026-10-24.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a63d1acc8f3bee8768facfe627274c1e5fb017c235c702cf72cc7c1829f696b3"
+    },
+    "data/raw/orders_2026-10-25.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "a19fb848d606c3f06c14aa1f94dfc24c3bd0346cf7429315be2da04cd2bda0d6"
+    },
+    "data/raw/orders_2026-10-26.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "252f30e0bc3b657f54aed495f9b609180bbaa4ce5b80dc03f5c598cad06cdcb3"
+    },
+    "data/raw/orders_2026-10-27.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "c9efed4d94bd35092908f247ab0cab78e55727b36b7559e5f6a4985677097036"
+    },
+    "data/raw/orders_2026-10-28.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "4a854516258470d283024cb4ced3547fdaa96a1f0af4d4804787138a2c4fc6d8"
+    },
+    "data/raw/orders_2026-10-29.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "85b4d064df808272f9e010ee7a040d00827254a9c639901bce985c81d29ce831"
+    },
+    "data/raw/orders_2026-10-30.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "ea8b78112ea46acbb3a8bbefe109ccd8b9f98e2d1194261661b8bbef1eaddef6"
+    },
+    "data/raw/orders_2026-10-31.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "2a29394fa7aa7b0be3ddcdc6f3f0ef6dde5674e67b59f2d569f032f1fb167b52"
+    },
+    "data/raw/orders_2026-11-01.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "ed27402ab68d53fa2a591eda47aba7908031d758182a1b09a5863f7f2d655510"
+    },
+    "data/raw/orders_2026-11-02.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 209,
+      "sha256": "748df594a5cef1208988c9ea478553f219136bfe4f04e753607b2df9c1521b34"
+    },
+    "data/raw/orders_2026-11-03.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 222,
+      "sha256": "61bf6d4cb6c604c12c4a78efe347353d912890f2c7444a1898d26de14f12c239"
+    },
+    "data/raw/orders_2026-11-04.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 235,
+      "sha256": "7442a45fa6c58c777f9582b51ae0832f8e44dc24ae8b85fa787dbcc19fdbccce"
+    },
+    "data/raw/orders_2026-11-05.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 278,
+      "sha256": "b6a120f533a89c61fa0188e08c215e7e64d4efcfa0cce1c2190889e70735d195"
+    },
+    "data/raw/orders_2026-11-06.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 213,
+      "sha256": "038d47305bb90f352902672385bc616236bef807dfd077f872aab17b74287d7e"
+    },
+    "data/raw/orders_2026-11-07.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 226,
+      "sha256": "ef838ce3955e184a24615ec060f686996bfe09f5b736e2ce316a639e21660a16"
+    },
+    "data/raw/orders_2026-11-08.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 239,
+      "sha256": "d847bf463a9e6c736494922f1f3870ea4bd99c401dacd5fd0a02c4e11374aab8"
+    },
+    "data/raw/orders_2026-11-09.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 252,
+      "sha256": "8be59904575207a24b36d32acc332ec16711822211d50ed78361e0f1ff4be0b9"
+    },
+    "data/raw/orders_2026-11-10.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 265,
+      "sha256": "0a47b724684d94d4d16163a2761dbb24f100bfa8e50a462a65fa566f6d0206ce"
+    },
+    "data/raw/orders_2026-11-11.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 278,
+      "sha256": "54e9f9a8c66f655c926a7200c5d538bab15ad24e4fc21babb61a0d4e51f46fcf"
+    },
+    "data/raw/orders_2026-11-12.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 213,
+      "sha256": "1419d5bd2693879009c6f47b15666209b280e9a3996b337de7ba7067af17dab0"
+    },
+    "data/raw/orders_2026-11-13.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 226,
+      "sha256": "a0e24508b232e293dfe5699e2af9a4d2a9e70f4c4a4315acd60ca0d40a42fa67"
+    },
+    "data/raw/orders_2026-11-14.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 239,
+      "sha256": "0d84ac8a24d2aff3f7bd7ea640b459cf712d134f36ae1f6070f16e8f9c7aa06b"
+    },
+    "data/raw/orders_2026-11-15.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 252,
+      "sha256": "b9ba356bdc61197be644bdb10cbb976710ea4b965d9496abf8645a51ac3c0fae"
+    },
+    "data/silver/orders_2026-10-01.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "b64ef18e1c1fa2bbdf8cf2c4c5393af9cc1c2830e0d6599b8d87be2ae8583652"
+    },
+    "data/silver/orders_2026-10-02.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "1d3338e3ec93d38df29801d12764d6e5587a33562939d4d0a5fbd53429a07037"
+    },
+    "data/silver/orders_2026-10-03.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "b32f2bcf24e37fe2021d2e9bf712e5128e3674b0699b0589e268bca6dd6110dc"
+    },
+    "data/silver/orders_2026-10-04.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "dca16889ed4cb3963ba70866bb5a431eccaf9f4cf53c94291746f10c6e9fb0f5"
+    },
+    "data/silver/orders_2026-10-05.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "efb2f33216b57d694b437af2bc057d26885fcfdf5df91019cd6f9c43ee2bec0f"
+    },
+    "data/silver/orders_2026-10-06.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "9d6eb4ae09a9e84f051b27e0567fd0567ab6eeabd7cef9417be91618d71dda5b"
+    },
+    "data/silver/orders_2026-10-07.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "dec634370616aff6fb8a11de62d5b9e863630531ec562fe20cd84aac0345f5d4"
+    },
+    "data/silver/orders_2026-10-08.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "3fe8a2acdde952dd18687eb11dcd05b88ee4d8f5bbf942280366ccfd48bbb48e"
+    },
+    "data/silver/orders_2026-10-09.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "9be89b843a0f5fcfb512b337150bf20c0398032df01cf04668d9b860151cb373"
+    },
+    "data/silver/orders_2026-10-10.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "d34aa29ccf8d04886c4a9bb2e6cfdfef3b076648ec948634709b60e9ad49c0b0"
+    },
+    "data/silver/orders_2026-10-11.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "f0c8f9e5ca4baa914e9c455670dc7d2ac40f0f46953e91e55633935ca6530b12"
+    },
+    "data/silver/orders_2026-10-12.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "56d616370ac3def625b1caed8b2d361b09c3f4a2d2866b402f68cb305c71aa61"
+    },
+    "data/silver/orders_2026-10-13.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "2cc6edb388d42ada5a9cb3a220691cbcb212b4b9516b94ed2377331c4146c35b"
+    },
+    "data/silver/orders_2026-10-14.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "b1060f2c6360365ea16f0909fb11997b0855ea118167b6c1d98f3e3e6d01780b"
+    },
+    "data/silver/orders_2026-10-15.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "620a718e45b9c258bbc79d6482c2032727ee3eebedfc4a263c462061c9365573"
+    },
+    "data/silver/orders_2026-10-16.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "77f84e5611111c72c686a54da3a6a3ed23cc45f6f3b09c9e070a6c705e9d8906"
+    },
+    "data/silver/orders_2026-10-17.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "b7670da02605248aff6982f9b6c83fbf0038e7b0d722888b7ddc382fe1326f42"
+    },
+    "data/silver/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "9c356701a96dec6695c1b415561023416b2e62c6674c462b86015bd1f19df66d"
+    },
+    "data/silver/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "d4a79c869a90f59f56e3b502d8a6551ea0962aebcf8c2a8e2ad16fa34ba6a517"
+    },
+    "data/silver/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "522f8bc4e6dc92e1f295a3418483a99d94e2b9223ffce7efb79a705a244d425f"
+    },
+    "data/silver/orders_2026-10-21.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "2846eb2243419facc2d40a66b0b0f6893a2f5a6302b14ff8d9be2543e281d12c"
+    },
+    "data/silver/orders_2026-10-22.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "89c4816783bb4bea7a0dc1f03b1597b806c458408bdaa9957cfbc6b23e30e982"
+    },
+    "data/silver/orders_2026-10-23.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "e3f1fdc5e117fa730943917f53756dba21c332edc122981a7f903d8e47bf6b04"
+    },
+    "data/silver/orders_2026-10-24.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "d273f5c4b61f70017e6ea374c0eecf449d19db5609e7a226dfcfffc1794107fb"
+    },
+    "data/silver/orders_2026-10-25.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "dc3bc6617fc19341f23ccdd3edf8aca1da0a2066b4e76a50ba580c38f04211fb"
+    },
+    "data/silver/orders_2026-10-26.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "4e5389a28e33a3bef64deee009c6cec0dbc908d1258e8214b570c5c73f67c8ed"
+    },
+    "data/silver/orders_2026-10-27.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "3854d8d9b9450d35f4ae61318964afbdffb5c96bead0cb616c8d96dedfbd83cd"
+    },
+    "data/silver/orders_2026-10-28.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "071961411993263dad0ed4fb1157a886327c5b8070c6f8c4efd61570329cf759"
+    },
+    "data/silver/orders_2026-10-29.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "8e4339fd2498a0408fb989242812727f584479d64591d0f655a80be1b391cfbb"
+    },
+    "data/silver/orders_2026-10-30.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "cb9d2891a8785cf6670505d6694388b2721100baccc599ccb829fea818c2482a"
+    },
+    "data/silver/orders_2026-10-31.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "01a52af1dab641bd50cdfc1c8b75c1574c2fa5e814cc8b2efcf7b862cd6da02a"
+    },
+    "data/silver/orders_2026-11-01.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "a91dd5d3612fead21eaad4e4cfa0b3fb9f2ded4e6e0698a34586b1b9ec70d0c0"
+    },
+    "data/silver/orders_2026-11-02.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 206,
+      "sha256": "6ad9c7f19cd0cea79944aab93420a862eb242be4379fb5259c7795e0e2221a99"
+    },
+    "data/silver/orders_2026-11-03.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 219,
+      "sha256": "abf6d0699e2a8580cc8f2710b541ab587acb7f21b9c3dd0baa35e8cb8074aa5a"
+    },
+    "data/silver/orders_2026-11-04.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 232,
+      "sha256": "0b7d5d1b8dcd6dfe97aa56927a00b76f623e48405dca99c6e4748805f4b3c651"
+    },
+    "data/silver/orders_2026-11-05.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 275,
+      "sha256": "312fa6b9b36b89eadf58227e0ef7fce0200d40d2368ff322a8250e32b447df41"
+    },
+    "data/silver/orders_2026-11-06.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 210,
+      "sha256": "8adbecac365b959488cd1650a79240cfaa9e167b2794d4f76030a057f391da2a"
+    },
+    "data/silver/orders_2026-11-07.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 223,
+      "sha256": "e3b2b1a0dcd5b7dc3c3bc0c577f44a24316a5f921ce6e22c0321f27f6032a44b"
+    },
+    "data/silver/orders_2026-11-08.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 236,
+      "sha256": "aa7e3f24ef4e217100025413e0f3dfc24143c16b0414796e0ecbac716c3eec34"
+    },
+    "data/silver/orders_2026-11-09.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 249,
+      "sha256": "9ae93d862d92b10ac598431c0ff5bc290282b742f1241717df6e0a85154ca723"
+    },
+    "data/silver/orders_2026-11-10.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 262,
+      "sha256": "3fea0ae92a60308dc26786eaa535556603a113b5eaa90432b0e87bc6b80fb543"
+    },
+    "data/silver/orders_2026-11-11.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 275,
+      "sha256": "cc8e32fb48e806f19b4e7e0b945bde36f006c393241285c680f37a1392d71564"
+    },
+    "data/silver/orders_2026-11-12.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 210,
+      "sha256": "c0c275a1c08fdcb592affa9758a17d8ce2e6f2ba7a0998208606c0b27ca66f1e"
+    },
+    "data/silver/orders_2026-11-13.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 223,
+      "sha256": "68bf1739667a4f6de06dfddd02b9426b3614f5bd1ed4e15ee7daea0d6115eece"
+    },
+    "data/silver/orders_2026-11-14.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 236,
+      "sha256": "e837504cb71e3d5c2f88730b297f8748a9e5f4f23ebc85b6ccf2282e9a9dda76"
+    },
+    "data/silver/orders_2026-11-15.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 249,
+      "sha256": "4d6032b3518969f8d569ac05e6fa78a9979ed9a508a470cc56f98427a6df2268"
+    }
+  },
+  "runs": [
+    {
+      "backfill_id": null,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "None",
+      "data_interval_start": "None",
+      "end_date": "2026-11-06 15:04:04.973751+00:00",
+      "history": [
+        {
+          "end_date": "2026-11-06 15:02:59.314801+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "618",
+          "queued_dttm": "2026-11-06 15:02:58.785799+00:00",
+          "start_date": "2026-11-06 15:02:58.813922+00:00",
+          "state": "failed",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:03:30.465370+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "673",
+          "queued_dttm": "2026-11-06 15:03:29.972717+00:00",
+          "start_date": "2026-11-06 15:03:29.995960+00:00",
+          "state": "failed",
+          "task_id": "extract_to_bronze",
+          "try_number": "2"
+        }
+      ],
+      "logical_date": "None",
+      "run_id": "phase6-exhaust-42237926425-1",
+      "run_type": "manual",
+      "start_date": "2026-11-06 15:02:58.769558+00:00",
+      "state": "failed",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:04:01.917240+00:00",
+          "hostname": "",
+          "pid": null,
+          "queued_dttm": null,
+          "start_date": "2026-11-06 15:04:01.917240+00:00",
+          "state": "upstream_failed",
+          "task_id": "transform_to_silver",
+          "try_number": "0"
+        },
+        {
+          "end_date": "2026-11-06 15:04:01.428278+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "728",
+          "queued_dttm": "2026-11-06 15:04:00.874953+00:00",
+          "start_date": "2026-11-06 15:04:00.902959+00:00",
+          "state": "failed",
+          "task_id": "extract_to_bronze",
+          "try_number": "3"
+        },
+        {
+          "end_date": "2026-11-06 15:04:02.939798+00:00",
+          "hostname": "",
+          "pid": null,
+          "queued_dttm": null,
+          "start_date": "2026-11-06 15:04:02.939798+00:00",
+          "state": "upstream_failed",
+          "task_id": "prepare_gold",
+          "try_number": "0"
+        },
+        {
+          "end_date": "2026-11-06 15:04:03.956429+00:00",
+          "hostname": "",
+          "pid": null,
+          "queued_dttm": null,
+          "start_date": "2026-11-06 15:04:03.956429+00:00",
+          "state": "upstream_failed",
+          "task_id": "validate_gold",
+          "try_number": "0"
+        }
+      ]
+    },
+    {
+      "backfill_id": null,
+      "dag_id": "ml_training_pipeline",
+      "data_interval_end": "None",
+      "data_interval_start": "None",
+      "end_date": "2026-11-06 14:59:21.398738+00:00",
+      "history": [],
+      "logical_date": "None",
+      "run_id": "phase5b-ml_training_pipeline-42237926425-1",
+      "run_type": "manual",
+      "start_date": "2026-11-06 14:59:13.400457+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 14:59:16.836981+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "188",
+          "queued_dttm": "2026-11-06 14:59:15.474286+00:00",
+          "start_date": "2026-11-06 14:59:15.524097+00:00",
+          "state": "success",
+          "task_id": "train_model",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:59:18.698061+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "196",
+          "queued_dttm": "2026-11-06 14:59:17.531689+00:00",
+          "start_date": "2026-11-06 14:59:17.557597+00:00",
+          "state": "success",
+          "task_id": "evaluate_model",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:59:15.358187+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "179",
+          "queued_dttm": "2026-11-06 14:59:13.417098+00:00",
+          "start_date": "2026-11-06 14:59:13.443316+00:00",
+          "state": "success",
+          "task_id": "load_gold_data",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:59:20.646064+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "204",
+          "queued_dttm": "2026-11-06 14:59:19.596062+00:00",
+          "start_date": "2026-11-06 14:59:19.623780+00:00",
+          "state": "success",
+          "task_id": "save_model",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": 1,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-20 00:00:00+00:00",
+      "data_interval_start": "2026-10-19 00:00:00+00:00",
+      "end_date": "2026-11-06 15:01:23.625839+00:00",
+      "history": [],
+      "logical_date": "2026-10-19 00:00:00+00:00",
+      "run_id": "backfill__2026-10-20T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:19.808338+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:20.878568+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "359",
+          "queued_dttm": "2026-11-06 15:01:20.341453+00:00",
+          "start_date": "2026-11-06 15:01:20.369085+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:22.048525+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "363",
+          "queued_dttm": "2026-11-06 15:01:21.551638+00:00",
+          "start_date": "2026-11-06 15:01:21.579062+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:23.095440+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "367",
+          "queued_dttm": "2026-11-06 15:01:22.590681+00:00",
+          "start_date": "2026-11-06 15:01:22.621115+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:20.303380+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "355",
+          "queued_dttm": "2026-11-06 15:01:19.820171+00:00",
+          "start_date": "2026-11-06 15:01:19.845913+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": null,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "None",
+      "data_interval_start": "None",
+      "end_date": "2026-11-06 14:58:50.337304+00:00",
+      "history": [],
+      "logical_date": "None",
+      "run_id": "phase5b-data_pipeline-42237926425-1",
+      "run_type": "manual",
+      "start_date": "2026-11-06 14:58:44.374188+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 14:58:46.534939+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "98",
+          "queued_dttm": "2026-11-06 14:58:44.408138+00:00",
+          "start_date": "2026-11-06 14:58:44.511180+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:58:48.316169+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "110",
+          "queued_dttm": "2026-11-06 14:58:47.548242+00:00",
+          "start_date": "2026-11-06 14:58:47.632585+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:58:49.376731+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "115",
+          "queued_dttm": "2026-11-06 14:58:48.677190+00:00",
+          "start_date": "2026-11-06 14:58:48.729998+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 14:58:50.317050+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "119",
+          "queued_dttm": "2026-11-06 14:58:49.765670+00:00",
+          "start_date": "2026-11-06 14:58:49.819114+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": 2,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-19 00:00:00+00:00",
+      "data_interval_start": "2026-10-18 00:00:00+00:00",
+      "end_date": "2026-11-06 15:02:01.625585+00:00",
+      "history": [
+        {
+          "end_date": "2026-11-06 15:01:17.377402+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "343",
+          "queued_dttm": "2026-11-06 15:01:16.723060+00:00",
+          "start_date": "2026-11-06 15:01:16.761252+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:15.278328+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "329",
+          "queued_dttm": "2026-11-06 15:01:14.576338+00:00",
+          "start_date": "2026-11-06 15:01:14.642546+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:16.340098+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "339",
+          "queued_dttm": "2026-11-06 15:01:15.647269+00:00",
+          "start_date": "2026-11-06 15:01:15.714663+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:18.283080+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "351",
+          "queued_dttm": "2026-11-06 15:01:17.763351+00:00",
+          "start_date": "2026-11-06 15:01:17.796282+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ],
+      "logical_date": "2026-10-18 00:00:00+00:00",
+      "run_id": "backfill__2026-10-19T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:57.653318+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:58.171345+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "466",
+          "queued_dttm": "2026-11-06 15:01:57.666827+00:00",
+          "start_date": "2026-11-06 15:01:57.696016+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:01:59.211319+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "476",
+          "queued_dttm": "2026-11-06 15:01:58.704584+00:00",
+          "start_date": "2026-11-06 15:01:58.730697+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:02:00.261595+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "484",
+          "queued_dttm": "2026-11-06 15:01:59.742800+00:00",
+          "start_date": "2026-11-06 15:01:59.776707+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:02:01.062610+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "488",
+          "queued_dttm": "2026-11-06 15:02:00.592155+00:00",
+          "start_date": "2026-11-06 15:02:00.622829+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "2"
+        }
+      ]
+    },
+    {
+      "backfill_id": 1,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-21 00:00:00+00:00",
+      "data_interval_start": "2026-10-20 00:00:00+00:00",
+      "end_date": "2026-11-06 15:01:28.792148+00:00",
+      "history": [],
+      "logical_date": "2026-10-20 00:00:00+00:00",
+      "run_id": "backfill__2026-10-21T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:24.644772+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:25.150449+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "376",
+          "queued_dttm": "2026-11-06 15:01:24.658764+00:00",
+          "start_date": "2026-11-06 15:01:24.687545+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:26.211361+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "390",
+          "queued_dttm": "2026-11-06 15:01:25.694664+00:00",
+          "start_date": "2026-11-06 15:01:25.724630+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:27.241695+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "394",
+          "queued_dttm": "2026-11-06 15:01:26.734776+00:00",
+          "start_date": "2026-11-06 15:01:26.761499+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:28.346255+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "398",
+          "queued_dttm": "2026-11-06 15:01:27.766225+00:00",
+          "start_date": "2026-11-06 15:01:27.795119+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": null,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "None",
+      "data_interval_start": "None",
+      "end_date": "2026-11-06 15:02:46.949019+00:00",
+      "history": [
+        {
+          "end_date": "2026-11-06 15:02:12.223209+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "514",
+          "queued_dttm": "2026-11-06 15:02:11.641582+00:00",
+          "start_date": "2026-11-06 15:02:11.676658+00:00",
+          "state": "failed",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        }
+      ],
+      "logical_date": "None",
+      "run_id": "phase6-retry-42237926425-1",
+      "run_type": "manual",
+      "start_date": "2026-11-06 15:02:11.622585+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:02:43.204812+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "569",
+          "queued_dttm": "2026-11-06 15:02:42.709956+00:00",
+          "start_date": "2026-11-06 15:02:42.735383+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:02:44.372629+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "573",
+          "queued_dttm": "2026-11-06 15:02:43.746529+00:00",
+          "start_date": "2026-11-06 15:02:43.783268+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:02:45.517672+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "583",
+          "queued_dttm": "2026-11-06 15:02:44.795456+00:00",
+          "start_date": "2026-11-06 15:02:44.833048+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:02:46.577539+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "587",
+          "queued_dttm": "2026-11-06 15:02:45.857114+00:00",
+          "start_date": "2026-11-06 15:02:45.898966+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ]
+    }
+  ]
+}
