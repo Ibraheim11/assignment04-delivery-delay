@@ -1,0 +1,9 @@
+# Local environments and scratch work
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+work/
+logs/

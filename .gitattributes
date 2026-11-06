@@ -1,0 +1,2 @@
+# Preserve original archive bytes, including CRLF line endings.
+data/raw/*.csv -text whitespace=cr-at-eol

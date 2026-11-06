@@ -1,0 +1,3 @@
+# Phase 1 exploration only; later-phase dependencies are intentionally deferred.
+pandas==2.1.4
+numpy==1.26.4
