@@ -93,10 +93,12 @@ def main():
         for layer in ['bronze', 'silver', 'gold']:
             assert f'data/{layer}/orders_{date}.csv' in first['files']
     save('historical-backfill.json', {'dates': DATES, 'runs': runs, 'files': first['files']})
-    original_ids = {r['run_id'] for r in first['runs']}
+    original_backfill_ids = {r['backfill_id'] for r in first['runs'] if r['run_type'] == 'backfill'}
     backfill(DATES[0], DATES[0], 'idempotent-backfill')
-    second, reruns = wait(lambda r: r['run_id'] not in original_ids and r['run_type'] == 'backfill')
+    second, reruns = wait(lambda r: r['run_type'] == 'backfill' and r['backfill_id'] not in original_backfill_ids)
     assert reruns[0]['logical_date'][:10] == DATES[0]
+    assert all(int(t['try_number']) >= 2 for t in reruns[0]['tasks'])
+    assert set(t['task_id'] for t in reruns[0]['history'] if t['state'] == 'success' and t['try_number'] == '1') == set(TASKS)
     assert first['files'] == second['files'], 'Row counts, duplicate counts or SHA-256 changed on rerun'
     for layer in ['silver', 'gold']:
         assert second['files'][f'data/{layer}/orders_{DATES[0]}.csv']['duplicate_order_ids'] == 0

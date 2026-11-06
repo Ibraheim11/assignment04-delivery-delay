@@ -20,7 +20,8 @@ def metadata():
                 return {key: str(getattr(t, key)) if getattr(t, key) is not None else None
                         for key in ['task_id', 'state', 'try_number', 'start_date', 'end_date', 'hostname', 'pid', 'queued_dttm']}
             result.append({'dag_id': run.dag_id, 'run_id': run.run_id, 'state': run.state,
-                           'run_type': str(run.run_type),
+                           'run_type': str(run.run_type), 'backfill_id': run.backfill_id,
+                           'start_date': str(run.start_date), 'end_date': str(run.end_date),
                            'logical_date': str(run.logical_date),
                            'data_interval_start': str(run.data_interval_start),
                            'data_interval_end': str(run.data_interval_end),

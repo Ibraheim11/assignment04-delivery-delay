@@ -8,7 +8,7 @@ permissions:
   contents: write
 concurrency:
   group: phase6-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   reliability:
     runs-on: ubuntu-24.04

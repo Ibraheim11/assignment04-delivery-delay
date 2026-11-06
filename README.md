@@ -693,6 +693,11 @@ docker compose -f docker-compose.yml -f work/compose.ci.yml exec -T airflow-sche
   --max-active-runs 1 --reprocess-behavior completed
 ```
 
+Airflow 3.1 reprocessing clears the existing DagRun and associates it with a new
+Backfill ID; it does not create a new run ID for the same logical date. The verifier
+checks that new Backfill association, higher task attempt numbers and preserved
+successful first-attempt history to prove the second scheduler execution.
+
 The runner removes only the three selected Bronze/Silver/Gold outputs before the
 first backfill, so checked-in examples cannot satisfy the execution check. Date
 partitions retain the existing `orders_YYYY-MM-DD.csv` layout. Verification requires
