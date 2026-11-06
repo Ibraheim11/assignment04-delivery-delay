@@ -131,6 +131,7 @@ def run():
         import yaml
         override = {'services': {name: {'environment': {
             'AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS': 'true',
+            'AIRFLOW__API_AUTH__JWT_ISSUER': 'assignment04-phase6-ci',
             'ASSIGNMENT04_RELIABILITY_CI': 'true',
         }} for name in ['airflow-init', 'airflow-apiserver', 'airflow-scheduler',
                         'airflow-dag-processor', 'airflow-triggerer', 'airflow-cli']}}

@@ -670,7 +670,10 @@ strategy are unchanged.
 
 The generated `work/compose.ci.yml` sets
 `AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS=true` on **all** Airflow services
-before the first DAG parse. Production Compose retains its Phase 5B default.
+before the first DAG parse. It also sets a consistent nonempty
+`AIRFLOW__API_AUTH__JWT_ISSUER=assignment04-phase6-ci`: actual FAB login logs
+showed the installed JWT library rejecting a null issuer. Production Compose
+retains its Phase 5B defaults.
 With this timetable, logical date `2026-10-18T00:00:00Z` has interval
 `[2026-10-18T00:00:00Z, 2026-10-19T00:00:00Z)` and selects only
 `data/raw/orders_2026-10-18.csv`. The same mapping is asserted for October 19 and 20.
