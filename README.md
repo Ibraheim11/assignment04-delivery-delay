@@ -597,3 +597,38 @@ passed **104 tests**. Docker CLI/daemon were available, but both image builds fa
 while extracting/registering layers because the cloud's 8 GB vfs filesystem ran
 out of space. Initialization, service health and container DAG execution therefore
 remain unverified; no Docker metric comparison is claimed.
+
+## Phase 5B — GitHub-hosted Docker runtime verification
+
+`.github/workflows/docker-integration.yml` runs on pushes to
+`feature/phase5b-docker-runtime` using a fresh `ubuntu-24.04` GitHub-hosted runner.
+It requires only `contents: read`; checkout credentials are not persisted. No
+repository secrets or Windows Docker installation are required. The existing
+setup script generates a private ephemeral `.env` on the runner. Secrets are
+masked in Actions output and removed from evidence files before artifact upload.
+
+The workflow records Docker versions/driver, RAM, filesystem and Docker disk use,
+and requires 20 GiB free disk and 4 GiB RAM before building. Only when necessary,
+on a GitHub-hosted disposable runner, it removes unused Android/Haskell SDKs.
+It builds the existing slim Dockerfile, initializes PostgreSQL/Airflow, waits for
+all five long-running services to be healthy, and verifies DAGs, dependencies,
+model libraries and raw hashes inside the actual container environment.
+
+A CI-only Compose override disables automatic daily scheduling, preserving the
+production DAG's schedule. Manual runs still pass through the running scheduler,
+LocalExecutor subprocesses and Execution API. The data DAG receives explicit
+`batch_date=2026-10-18`; the workflow polls actual metadata task-instance states
+until all four tasks succeed or the timeout/failure gate stops the run. It then
+regenerates all 46 validated Gold partitions inside Docker, triggers and waits
+for all four ML tasks, and verifies persisted predictions/metrics against Phase 4.
+The complete existing suite runs in a separate test container with an isolated
+SQLite metadata DB, independently of the running service PostgreSQL database.
+
+Each workflow run uploads `docker-runtime-<run-id>-<attempt>` for 14 days, including
+command exit codes, build/service logs, health observations, DAG discovery,
+observed task states, task logs, Gold generation, model/metrics verification and
+test results. Failure collection runs with `always()`; partial execution never
+creates a success result. Only the evidence directory is uploaded, excluding
+`.env`, metadata databases and raw credentials. Services and the disposable DB
+volume are removed after evidence collection. Runner-generated model/metrics are
+artifacts; the workflow never commits changes to the checked-in baseline.

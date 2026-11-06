@@ -6,7 +6,7 @@ COPY --chown=airflow:root requirements.txt /opt/airflow/requirements.txt
 # Optional public CA bundle for managed proxy builds; never stored in an image layer.
 RUN --mount=type=secret,id=proxy_ca,required=false \
     if [ -f /run/secrets/proxy_ca ]; then export PIP_CERT=/run/secrets/proxy_ca; fi; \
-    pip install --no-cache-dir "apache-airflow==3.1.0" "apache-airflow-providers-fab==2.4.3" "psycopg2-binary==2.9.10" -r /opt/airflow/requirements.txt && \
+    pip install --no-cache-dir "apache-airflow==3.1.0" "apache-airflow-providers-fab==2.4.3" "psycopg2-binary==2.9.10" "asyncpg==0.30.0" -r /opt/airflow/requirements.txt && \
     pip check
 ENV PYTHONPATH=/opt/airflow
 WORKDIR /opt/airflow
