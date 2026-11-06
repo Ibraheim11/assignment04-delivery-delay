@@ -1,0 +1,23 @@
+{
+  "dag_id": "ml_training_pipeline",
+  "run_id": "phase5b-ml_training_pipeline-42242189893-1",
+  "state": "success",
+  "tasks": {
+    "evaluate_model": {
+      "state": "success",
+      "try_number": 1
+    },
+    "load_gold_data": {
+      "state": "success",
+      "try_number": 1
+    },
+    "save_model": {
+      "state": "success",
+      "try_number": 1
+    },
+    "train_model": {
+      "state": "success",
+      "try_number": 1
+    }
+  }
+}

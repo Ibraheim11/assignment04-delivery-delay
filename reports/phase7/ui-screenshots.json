@@ -1,0 +1,26 @@
+{
+  "workflow_run_id": 42242189893,
+  "source_commit": "ab471c3ea0f145d2b985e207ba86e4199ab43bd1",
+  "screenshots": [
+    {
+      "path": "screenshots/phase7/same-date-rerun-task-history.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline/runs/backfill__2026-10-19T00%3A00%3A00%2B00%3A00/tasks/validate_gold",
+      "sha256": "213f8a6d46183bff6c9d38cc4c2b0261d593cb392a3a6a5c4bee201ede58e55a",
+      "source_artifact_path": "screenshots/phase6/same-date-rerun-task-history.png"
+    },
+    {
+      "path": "screenshots/phase7/ml-successful-task-graph.png",
+      "url": "http://127.0.0.1:8080/dags/ml_training_pipeline/runs/phase5b-ml_training_pipeline-42242189893-1",
+      "sha256": "7d571fe3c0f50c923751e7067ce4cdcc5f21026a5aaf11439dc3b06647cd1a11",
+      "source_artifact_path": "screenshots/phase6/ml-successful-task-graph.png"
+    },
+    {
+      "path": "screenshots/phase7/ml-evaluation-task-logs.png",
+      "url": "http://127.0.0.1:8080/dags/ml_training_pipeline/runs/phase5b-ml_training_pipeline-42242189893-1/tasks/evaluate_model",
+      "sha256": "0f55dfd852d0fbdef141096066cc235b7d86867fc0d125762da1193e18e31368",
+      "source_artifact_path": "screenshots/phase6/ml-evaluation-task-logs.png"
+    }
+  ],
+  "limitations": [],
+  "note": "Unmodified original PNG bytes from the hosted artifact. Seven earlier Phase 6 captures remain in screenshots/phase6; these three fill the audit gaps."
+}

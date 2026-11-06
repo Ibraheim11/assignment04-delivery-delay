@@ -1,0 +1,23 @@
+{
+  "dag_id": "data_pipeline",
+  "run_id": "phase5b-data_pipeline-42242189893-1",
+  "state": "success",
+  "tasks": {
+    "extract_to_bronze": {
+      "state": "success",
+      "try_number": 1
+    },
+    "prepare_gold": {
+      "state": "success",
+      "try_number": 1
+    },
+    "transform_to_silver": {
+      "state": "success",
+      "try_number": 1
+    },
+    "validate_gold": {
+      "state": "success",
+      "try_number": 1
+    }
+  }
+}

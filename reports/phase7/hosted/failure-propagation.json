@@ -1,0 +1,80 @@
+{
+  "artifacts_unchanged": true,
+  "limitation": "Airflow sets timestamps when marking upstream_failed. Zero tries and no worker PID establish that downstream tasks never executed.",
+  "run": {
+    "backfill_id": null,
+    "dag_id": "data_pipeline",
+    "data_interval_end": "None",
+    "data_interval_start": "None",
+    "end_date": "2026-11-06 15:28:03.414673+00:00",
+    "history": [
+      {
+        "end_date": "2026-11-06 15:26:53.132777+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "611",
+        "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+        "start_date": "2026-11-06 15:26:52.586118+00:00",
+        "state": "failed",
+        "task_id": "extract_to_bronze",
+        "try_number": "1"
+      },
+      {
+        "end_date": "2026-11-06 15:27:24.022289+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "668",
+        "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+        "start_date": "2026-11-06 15:27:23.602897+00:00",
+        "state": "failed",
+        "task_id": "extract_to_bronze",
+        "try_number": "2"
+      }
+    ],
+    "logical_date": "None",
+    "run_id": "phase6-exhaust-42242189893-1",
+    "run_type": "manual",
+    "start_date": "2026-11-06 15:26:52.511841+00:00",
+    "state": "failed",
+    "tasks": [
+      {
+        "end_date": "2026-11-06 15:28:00.597514+00:00",
+        "hostname": "",
+        "pid": null,
+        "queued_dttm": null,
+        "start_date": "2026-11-06 15:28:00.597514+00:00",
+        "state": "upstream_failed",
+        "task_id": "transform_to_silver",
+        "try_number": "0"
+      },
+      {
+        "end_date": "2026-11-06 15:28:00.046523+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "727",
+        "queued_dttm": "2026-11-06 15:27:54.636875+00:00",
+        "start_date": "2026-11-06 15:27:54.663132+00:00",
+        "state": "failed",
+        "task_id": "extract_to_bronze",
+        "try_number": "3"
+      },
+      {
+        "end_date": "2026-11-06 15:28:01.622584+00:00",
+        "hostname": "",
+        "pid": null,
+        "queued_dttm": null,
+        "start_date": "2026-11-06 15:28:01.622584+00:00",
+        "state": "upstream_failed",
+        "task_id": "prepare_gold",
+        "try_number": "0"
+      },
+      {
+        "end_date": "2026-11-06 15:28:02.394700+00:00",
+        "hostname": "",
+        "pid": null,
+        "queued_dttm": null,
+        "start_date": "2026-11-06 15:28:02.394700+00:00",
+        "state": "upstream_failed",
+        "task_id": "validate_gold",
+        "try_number": "0"
+      }
+    ]
+  }
+}

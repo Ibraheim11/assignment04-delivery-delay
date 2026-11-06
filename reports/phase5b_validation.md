@@ -4,7 +4,8 @@
 
 - [Successful workflow run](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176)
 - Verified code commit: `83dcc4e2fb782a83503396bccb7a8f8054d5a3e5`
-- [Actual evidence artifact](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176/artifacts/13506538230)
+- [Actual evidence artifacts on the workflow summary (download requires GitHub sign-in)](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176)
+- Original artifact ID: `13506538230` (the direct download page returns 404 when signed out).
 - Artifact: `docker-runtime-42227343176-1`, SHA-256
   `761ff2526ef5c6f8779dbbb3581442916062c3b6c8ed78a07f4db7a47c19c00d`.
 

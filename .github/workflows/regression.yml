@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 15
     env:
       AIRFLOW_HOME: ${{ github.workspace }}/work/regression-airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:///${{ github.workspace }}/work/regression-airflow/airflow.db
       AIRFLOW__CORE__DAGS_FOLDER: ${{ github.workspace }}/dags
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
       RUN_AIRFLOW_INTEGRATION: '1'

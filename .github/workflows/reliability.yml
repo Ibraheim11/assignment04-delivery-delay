@@ -1,9 +1,5 @@
 name: Phase 6 reliability evidence
 on:
-  push:
-    # One final pre-main evidence run; remove this bootstrap trigger after capture.
-    branches: [feature/phase7-final-submission]
-    paths: ['scripts/reliability_screenshots.py', '.github/workflows/reliability.yml']
   workflow_dispatch:
 permissions:
   contents: read

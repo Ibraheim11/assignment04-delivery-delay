@@ -1,0 +1,100 @@
+{
+  "id": 42242189893,
+  "html_url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42242189893",
+  "source_commit": "ab471c3ea0f145d2b985e207ba86e4199ab43bd1",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 127975030719,
+      "name": "reliability",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42242189893,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Host dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Real backfill, idempotency, retry and exhausted failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Capture live Airflow UI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Require complete UI evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Collect sanitized logs and stop services",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 13516807840,
+      "name": "phase6-42242189893-1",
+      "size_in_bytes": 1488854,
+      "url": "https://api.github.com/repos/Ibraheim11/assignment04-delivery-delay/actions/artifacts/13516807840",
+      "archive_download_url": "https://api.github.com/repos/Ibraheim11/assignment04-delivery-delay/actions/artifacts/13516807840/zip",
+      "expired": false,
+      "created_at": "2026-11-06T15:29:03Z",
+      "expires_at": "2026-11-20T15:29:02Z",
+      "updated_at": "2026-11-06T15:29:03Z",
+      "digest": "sha256:ebecec885e6ffd7140453670927b814b1bbcfa887739c13c3a6768dbc28b1b52",
+      "workflow_run": {
+        "id": 42242189893,
+        "repository_id": 1448219771,
+        "head_repository_id": 1448219771,
+        "head_branch": "feature/phase7-final-submission",
+        "head_sha": "ab471c3ea0f145d2b985e207ba86e4199ab43bd1"
+      }
+    }
+  ]
+}

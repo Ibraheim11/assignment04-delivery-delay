@@ -1,0 +1,72 @@
+{
+  "final_try_number": 2,
+  "first_attempt_failed": true,
+  "limitation": "Airflow records the first failed try in task_instance_history; the live TI transitions to up_for_retry, not terminal failed.",
+  "retry_scheduled_observed": true,
+  "run": {
+    "backfill_id": null,
+    "dag_id": "data_pipeline",
+    "data_interval_end": "None",
+    "data_interval_start": "None",
+    "end_date": "2026-11-06 15:26:45.605334+00:00",
+    "history": [
+      {
+        "end_date": "2026-11-06 15:26:10.848777+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "507",
+        "queued_dttm": "2026-11-06 15:26:10.424595+00:00",
+        "start_date": "2026-11-06 15:26:10.455878+00:00",
+        "state": "failed",
+        "task_id": "extract_to_bronze",
+        "try_number": "1"
+      }
+    ],
+    "logical_date": "None",
+    "run_id": "phase6-retry-42242189893-1",
+    "run_type": "manual",
+    "start_date": "2026-11-06 15:26:10.412435+00:00",
+    "state": "success",
+    "tasks": [
+      {
+        "end_date": "2026-11-06 15:26:43.972938+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "575",
+        "queued_dttm": "2026-11-06 15:26:43.557083+00:00",
+        "start_date": "2026-11-06 15:26:43.578405+00:00",
+        "state": "success",
+        "task_id": "prepare_gold",
+        "try_number": "1"
+      },
+      {
+        "end_date": "2026-11-06 15:26:44.999090+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "579",
+        "queued_dttm": "2026-11-06 15:26:44.583914+00:00",
+        "start_date": "2026-11-06 15:26:44.609641+00:00",
+        "state": "success",
+        "task_id": "validate_gold",
+        "try_number": "1"
+      },
+      {
+        "end_date": "2026-11-06 15:26:41.953000+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "564",
+        "queued_dttm": "2026-11-06 15:26:41.498507+00:00",
+        "start_date": "2026-11-06 15:26:41.533035+00:00",
+        "state": "success",
+        "task_id": "extract_to_bronze",
+        "try_number": "2"
+      },
+      {
+        "end_date": "2026-11-06 15:26:42.958744+00:00",
+        "hostname": "b163e8a1573c",
+        "pid": "571",
+        "queued_dttm": "2026-11-06 15:26:42.527537+00:00",
+        "start_date": "2026-11-06 15:26:42.548857+00:00",
+        "state": "success",
+        "task_id": "transform_to_silver",
+        "try_number": "1"
+      }
+    ]
+  }
+}
