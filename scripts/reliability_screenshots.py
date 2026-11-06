@@ -80,8 +80,21 @@ def main():
                 route = '/dags/data_pipeline/runs/' + quote(retry['run_id'], safe='') + '/tasks/extract_to_bronze'
                 capture('retry-final-success-logs', route, ['success'])
                 capture('retry-first-failed-attempt-logs', route + '?try_number=1', ['PHASE6_CONTROLLED_TRANSIENT_FAILURE'])
+                rerun = next(r for r in runs if r['run_type'] == 'backfill' and r['logical_date'].startswith('2026-10-18'))
+                route = '/dags/data_pipeline/runs/' + quote(rerun['run_id'], safe='') + '/tasks/validate_gold'
+                capture('same-date-rerun-task-history', route, ['success', 'Task Tries'], True)
             else:
                 result['limitations'].append('Reliability execution did not reach final metadata; partial UI evidence only.')
+            ml_path = runtime.EVIDENCE / 'task-states-ml_training_pipeline.json'
+            if ml_path.exists():
+                ml = json.loads(ml_path.read_text())
+                if ml['state'] != 'success':
+                    raise RuntimeError('ML run did not succeed; no successful ML screenshot claimed')
+                route = '/dags/ml_training_pipeline/runs/' + quote(ml['run_id'], safe='')
+                capture('ml-successful-task-graph', route, ['success', 'load_gold_data', 'save_model'], True)
+                capture('ml-evaluation-task-logs', route + '/tasks/evaluate_model', ['success', 'evaluation='])
+            else:
+                result['limitations'].append('ML scheduler run metadata unavailable; no ML task-log capture.')
             browser.close()
     except Exception as exc:
         result['limitations'].append(runtime.redact(str(exc)))

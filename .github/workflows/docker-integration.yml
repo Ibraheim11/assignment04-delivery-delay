@@ -1,7 +1,5 @@
 name: Docker Airflow integration
 on:
-  push:
-    branches: [feature/phase5b-docker-runtime]
   workflow_dispatch:
 permissions:
   contents: read
