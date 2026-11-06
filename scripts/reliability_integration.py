@@ -114,9 +114,10 @@ def main():
     exhausted, failed_runs = wait(lambda r: r['run_id'] == failed_id, failed=True)
     tasks = {t['task_id']: t for t in failed_runs[0]['tasks']}
     assert tasks[TASKS[0]]['state'] == 'failed' and int(tasks[TASKS[0]]['try_number']) == 3
-    assert all(tasks[t]['state'] == 'upstream_failed' and tasks[t]['start_date'] is None and int(tasks[t]['try_number']) == 0 for t in TASKS[1:])
+    assert all(tasks[t]['state'] == 'upstream_failed' and tasks[t]['pid'] is None and int(tasks[t]['try_number']) == 0 for t in TASKS[1:])
     assert exhausted['files'] == retried['files'], 'Exhausted failure changed artifacts'
-    save('failure-propagation.json', {'run': failed_runs[0], 'artifacts_unchanged': True})
+    save('failure-propagation.json', {'run': failed_runs[0], 'artifacts_unchanged': True,
+         'limitation': 'Airflow sets timestamps when marking upstream_failed. Zero tries and no worker PID establish that downstream tasks never executed.'})
     runtime.container('phase6-pause', ['airflow', 'dags', 'pause', 'data_pipeline'])
     save('final-metadata.json', exhausted)
     save('execution.json', {'status': 'success', 'commit': os.environ.get('GITHUB_SHA'),

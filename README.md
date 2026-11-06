@@ -707,7 +707,9 @@ writes any artifact. `once` fails only try 1; `exhaust` fails all three attempts
 production retains the five minute delay. The regression container disables this
 CI hook and verifies the production defaults. Read-only metadata polling preserves
 `up_for_retry`, attempt history and final success; exhausted failures must leave
-all downstream tasks `upstream_failed` with no start time and zero tries.
+all downstream tasks `upstream_failed` with no worker PID and zero tries. Airflow
+may set a start timestamp when marking `upstream_failed`; this is a state transition
+timestamp and does not imply task execution.
 
 Real reports are persisted under [reports/phase6](reports/phase6), including
 `historical-backfill.json`, `idempotency.json` (full hashes and counts), `retry.json`,
