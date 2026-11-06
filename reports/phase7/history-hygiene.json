@@ -1,0 +1,5 @@
+{
+  "history_objects_scanned": 246,
+  "high_confidence_secret_findings": [],
+  "scope": "Reachable local Git objects from main, supplied Phase 6 and final branches; binary source/artifact formats excluded from text-pattern scan. Does not guarantee absence of every possible secret format."
+}

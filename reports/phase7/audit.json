@@ -1,0 +1,219 @@
+{
+  "examples": [
+    {
+      "batch_date": "2026-10-01",
+      "layers": {
+        "bronze": {
+          "rows": 183,
+          "sha256": "3373d3343fcdc0391728ec22d74b96325e5064ec4e8db86922af301df4b2d88a"
+        },
+        "gold": {
+          "rows": 180,
+          "sha256": "3b158fe8d86b9b87adb226da2c2228225ee22e949f2fa7a30e1fff66efe48c4f"
+        },
+        "silver": {
+          "rows": 180,
+          "sha256": "b64ef18e1c1fa2bbdf8cf2c4c5393af9cc1c2830e0d6599b8d87be2ae8583652"
+        }
+      }
+    },
+    {
+      "batch_date": "2026-10-18",
+      "layers": {
+        "bronze": {
+          "rows": 248,
+          "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+        },
+        "gold": {
+          "rows": 245,
+          "sha256": "dd505ef61d2145f227a8ce4ea5a5d817d286d98ecbd4790bc6c3bbf89d4c2177"
+        },
+        "silver": {
+          "rows": 245,
+          "sha256": "9c356701a96dec6695c1b415561023416b2e62c6674c462b86015bd1f19df66d"
+        }
+      }
+    },
+    {
+      "batch_date": "2026-10-19",
+      "layers": {
+        "bronze": {
+          "rows": 183,
+          "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+        },
+        "gold": {
+          "rows": 180,
+          "sha256": "3cb0a8e3278786dbbeb8ff67a974107b845be322cba6a8203c5b266e15615773"
+        },
+        "silver": {
+          "rows": 180,
+          "sha256": "d4a79c869a90f59f56e3b502d8a6551ea0962aebcf8c2a8e2ad16fa34ba6a517"
+        }
+      }
+    },
+    {
+      "batch_date": "2026-10-20",
+      "layers": {
+        "bronze": {
+          "rows": 196,
+          "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+        },
+        "gold": {
+          "rows": 193,
+          "sha256": "93f6b24b3c7c20a048362f2bfeba286de19c3c4904bb8286b3a83dc7d630525d"
+        },
+        "silver": {
+          "rows": 193,
+          "sha256": "522f8bc4e6dc92e1f295a3418483a99d94e2b9223ffce7efb79a705a244d425f"
+        }
+      }
+    }
+  ],
+  "hygiene": {
+    "broken_local_links": [],
+    "files_checked": 201,
+    "forbidden_runtime_files": [],
+    "high_confidence_secret_findings": [],
+    "local_markdown_links_checked": 117,
+    "scope": "Tracked and nonignored proposed files; pattern scan plus manual review. External URL status and prose claims reviewed separately."
+  },
+  "original_data": {
+    "archive_byte_equality": true,
+    "csv_files": 46,
+    "dictionary_byte_equality": true,
+    "sha256_manifest_match": true
+  },
+  "regeneration": {
+    "identical_runs_per_date": 2,
+    "submitted_examples_match": true,
+    "total_unique_orders": 10053,
+    "validated_dates": 46
+  },
+  "saved_model": {
+    "metrics": {
+      "accuracy": 0.7332490518331226,
+      "candidate_sha256": "b7a8a2d004be6b8a8310803343d321246d6c2f346dfb280f04c5eec940e82cd5",
+      "confusion_matrix": [
+        [
+          1571,
+          104
+        ],
+        [
+          529,
+          169
+        ]
+      ],
+      "confusion_matrix_labels": [
+        0,
+        1
+      ],
+      "cutoff_date": "2026-11-06",
+      "f1_score": 0.34809474768280124,
+      "model_name": "LogisticRegression",
+      "precision": 0.6190476190476191,
+      "random_state": 42,
+      "recall": 0.24212034383954154,
+      "selected_features": [
+        "order_hour",
+        "items_count",
+        "promised_delivery_days",
+        "distance_km",
+        "package_weight_kg",
+        "order_value_egp",
+        "warehouse_load_pct",
+        "carrier_on_time_rate",
+        "is_weekend",
+        "distance_per_promised_day",
+        "customer_region",
+        "shipping_method",
+        "weather_risk_level"
+      ],
+      "split_strategy": "chronological earliest floor(train_fraction * dates) train; latest dates test",
+      "target_class_distribution": {
+        "test": {
+          "0": 1675,
+          "1": 698
+        },
+        "train": {
+          "0": 5999,
+          "1": 1681
+        }
+      },
+      "test_date_range": [
+        "2026-11-06",
+        "2026-11-15"
+      ],
+      "test_dates": [
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-15"
+      ],
+      "test_rows": 2373,
+      "train_date_range": [
+        "2026-10-01",
+        "2026-11-05"
+      ],
+      "train_dates": [
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-10",
+        "2026-10-11",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05"
+      ],
+      "train_fraction": 0.8,
+      "train_rows": 7680
+    },
+    "predictions_and_metrics_match": true
+  },
+  "screenshots": [
+    "screenshots/phase6/both-dags.png",
+    "screenshots/phase6/data-pipeline-graph.png",
+    "screenshots/phase6/ml-training-graph.png",
+    "screenshots/phase6/historical-backfills.png",
+    "screenshots/phase6/backfill-successful-tasks.png",
+    "screenshots/phase6/retry-final-success-logs.png",
+    "screenshots/phase6/retry-first-failed-attempt-logs.png",
+    "screenshots/phase7/same-date-rerun-task-history.png",
+    "screenshots/phase7/ml-successful-task-graph.png",
+    "screenshots/phase7/ml-evaluation-task-logs.png"
+  ],
+  "status": "passed"
+}

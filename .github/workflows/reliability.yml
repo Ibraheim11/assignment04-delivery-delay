@@ -1,0 +1,50 @@
+name: Phase 6 reliability evidence
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: phase6-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  reliability:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Host dependencies
+        run: |
+          python3 -m pip install PyYAML==6.0.2 playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Real backfill, idempotency, retry and exhausted failure
+        run: python3 -m scripts.reliability_integration
+      - name: Capture live Airflow UI
+        if: always()
+        run: python3 -m scripts.reliability_screenshots
+      - name: Require complete UI evidence
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          observed = json.loads(Path('reports/phase6/screenshots.json').read_text())
+          assert not observed['limitations'], observed['limitations']
+          required = {'same-date-rerun-task-history', 'ml-successful-task-graph', 'ml-evaluation-task-logs'}
+          assert required <= {Path(s['path']).stem for s in observed['screenshots']}
+          PY
+      - name: Collect sanitized logs and stop services
+        if: always()
+        run: |
+          python3 scripts/docker_integration.py collect
+          python3 -m scripts.reliability_archive
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase6-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            work/docker-integration/
+            reports/phase6/
+            screenshots/phase6/
+          if-no-files-found: error
+          retention-days: 14

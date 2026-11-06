@@ -1,0 +1,41 @@
+{
+  "screenshots": [
+    {
+      "path": "screenshots/phase6/both-dags.png",
+      "url": "http://127.0.0.1:8080/dags",
+      "sha256": "a8f4b79e6ff12e6b32a50fc0039853a14a7bb6095dfb6e5b6adf0bc922d7cdd0"
+    },
+    {
+      "path": "screenshots/phase6/data-pipeline-graph.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline",
+      "sha256": "23823fe0bfb1a49572854d59863259ffd690030fe74f8fb4baa2932b97c5564e"
+    },
+    {
+      "path": "screenshots/phase6/ml-training-graph.png",
+      "url": "http://127.0.0.1:8080/dags/ml_training_pipeline",
+      "sha256": "715b0b0d80d0544f61e06a5fab60cea36e72fd2054a514779524fcdc4615c98a"
+    },
+    {
+      "path": "screenshots/phase6/historical-backfills.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline/backfills",
+      "sha256": "0475d5f70dbf2617388f63c95452e0a630de8d01951a604813cedd4832fc453a"
+    },
+    {
+      "path": "screenshots/phase6/backfill-successful-tasks.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline/runs/backfill__2026-10-20T00%3A00%3A00%2B00%3A00",
+      "sha256": "1b4bc82de946b8a1d6b175c30c05336ef9b104a065b67867f6ca78ff25ac8c81"
+    },
+    {
+      "path": "screenshots/phase6/retry-final-success-logs.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline/runs/phase6-retry-42237926425-1/tasks/extract_to_bronze",
+      "sha256": "446988ae363473f6682bbcad2f513449f520127627d7615406ca4625ec78159a"
+    },
+    {
+      "path": "screenshots/phase6/retry-first-failed-attempt-logs.png",
+      "url": "http://127.0.0.1:8080/dags/data_pipeline/runs/phase6-retry-42237926425-1/tasks/extract_to_bronze?try_number=1",
+      "sha256": "5370eb6c98565b29be7caed572ab1cebea4a414a3bea877d2bb887d8c1d626a1"
+    }
+  ],
+  "limitations": [],
+  "authentication": "FAB token endpoint"
+}

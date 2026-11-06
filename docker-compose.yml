@@ -1,0 +1,142 @@
+# Adapted from Apache Airflow 3.1.0's official Compose quickstart.
+# LocalExecutor executes task subprocesses in the scheduler; no Celery/Redis needed.
+name: assignment04
+x-airflow-common: &airflow-common
+  image: assignment04-airflow:3.1.0
+  build:
+    context: .
+    target: runtime
+  user: "${AIRFLOW_UID:-50000}:0"
+  working_dir: /opt/airflow
+  environment: &airflow-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__AUTH_MANAGER: airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${POSTGRES_PASSWORD:?Copy .env.example to .env and set POSTGRES_PASSWORD}@postgres/airflow
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-apiserver:8080/execution/
+    AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW_JWT_SECRET:?Set AIRFLOW_JWT_SECRET in .env}
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:?Set AIRFLOW_FERNET_KEY in .env}
+    AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: utc
+    AIRFLOW__CORE__PARALLELISM: '4'
+    AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS: 'false'
+    PYTHONPATH: /opt/airflow
+    # Container-to-container execution API calls must bypass any external proxy.
+    NO_PROXY: localhost,127.0.0.1,postgres,airflow-apiserver,airflow-scheduler,airflow-dag-processor,airflow-triggerer
+    no_proxy: localhost,127.0.0.1,postgres,airflow-apiserver,airflow-scheduler,airflow-dag-processor,airflow-triggerer
+  volumes:
+    - ./dags:/opt/airflow/dags:ro
+    - ./src:/opt/airflow/src:ro
+    - ./scripts:/opt/airflow/scripts:ro
+    - ./data:/opt/airflow/data
+    - ./data/raw:/opt/airflow/data/raw:ro
+    - ./models:/opt/airflow/models
+    - ./metrics:/opt/airflow/metrics
+    - ./reports:/opt/airflow/reports
+    - ./logs:/opt/airflow/logs
+    - ./tests:/opt/airflow/tests:ro
+    - ./data_dictionary.csv:/opt/airflow/data_dictionary.csv:ro
+    # Deployment contracts are included for the optional container test target.
+    - ./Dockerfile:/opt/airflow/Dockerfile:ro
+    - ./docker-compose.yml:/opt/airflow/docker-compose.yml:ro
+    - ./.dockerignore:/opt/airflow/.dockerignore:ro
+    - ./.env.example:/opt/airflow/.env.example:ro
+    - ./requirements.txt:/opt/airflow/requirements.txt:ro
+    - ./requirements-dev.txt:/opt/airflow/requirements-dev.txt:ro
+  depends_on: &airflow-depends
+    postgres:
+      condition: service_healthy
+    airflow-init:
+      condition: service_completed_successfully
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD, pg_isready, -U, airflow, -d, airflow]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  airflow-init:
+    <<: *airflow-common
+    # Official image entrypoint performs migration and creates the FAB admin user.
+    command: version
+    environment:
+      <<: *airflow-env
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: ${AIRFLOW_ADMIN_USER:-admin}
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_ADMIN_PASSWORD:?Set AIRFLOW_ADMIN_PASSWORD in .env}
+      _AIRFLOW_WWW_USER_ROLE: Admin
+      _AIRFLOW_WWW_USER_EMAIL: admin@example.invalid
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: 'no'
+
+  airflow-apiserver:
+    <<: *airflow-common
+    command: api-server
+    ports:
+      - 127.0.0.1:8080:8080
+    healthcheck:
+      test: [CMD, curl, --fail, http://localhost:8080/api/v2/version]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    depends_on:
+      <<: *airflow-depends
+      airflow-apiserver:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, curl, --fail, http://localhost:8974/health]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  airflow-dag-processor:
+    <<: *airflow-common
+    command: dag-processor
+    healthcheck:
+      test: [CMD-SHELL, 'airflow jobs check --job-type DagProcessorJob --hostname "$${HOSTNAME}"']
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  airflow-triggerer:
+    <<: *airflow-common
+    command: triggerer
+    healthcheck:
+      test: [CMD-SHELL, 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  airflow-cli:
+    <<: *airflow-common
+    profiles: [tools]
+    command: version
+    restart: 'no'
+
+volumes:
+  postgres-db:

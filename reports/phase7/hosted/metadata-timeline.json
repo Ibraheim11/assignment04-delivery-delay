@@ -1,0 +1,1312 @@
+[
+  {
+    "observed_at_utc": "2026-11-06T15:25:17Z",
+    "runs": [
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-21 00:00:00+00:00",
+        "data_interval_start": "2026-10-20 00:00:00+00:00",
+        "end_date": "None",
+        "history": [],
+        "logical_date": "2026-10-20 00:00:00+00:00",
+        "run_id": "backfill__2026-10-21T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "None",
+        "state": "queued",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "extract_to_bronze",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-19 00:00:00+00:00",
+        "data_interval_start": "2026-10-18 00:00:00+00:00",
+        "end_date": "None",
+        "history": [],
+        "logical_date": "2026-10-18 00:00:00+00:00",
+        "run_id": "backfill__2026-10-19T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:15.371945+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:25:15.866515+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "319",
+            "queued_dttm": "2026-11-06 15:25:15.390110+00:00",
+            "start_date": "2026-11-06 15:25:15.418935+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": null,
+            "hostname": "b163e8a1573c",
+            "pid": "323",
+            "queued_dttm": "2026-11-06 15:25:16.432185+00:00",
+            "start_date": "2026-11-06 15:25:16.466996+00:00",
+            "state": "running",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-20 00:00:00+00:00",
+        "data_interval_start": "2026-10-19 00:00:00+00:00",
+        "end_date": "None",
+        "history": [],
+        "logical_date": "2026-10-19 00:00:00+00:00",
+        "run_id": "backfill__2026-10-20T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "None",
+        "state": "queued",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "extract_to_bronze",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:25:26Z",
+    "runs": [
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-21 00:00:00+00:00",
+        "data_interval_start": "2026-10-20 00:00:00+00:00",
+        "end_date": "None",
+        "history": [],
+        "logical_date": "2026-10-20 00:00:00+00:00",
+        "run_id": "backfill__2026-10-21T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "None",
+        "state": "queued",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "extract_to_bronze",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-20 00:00:00+00:00",
+        "data_interval_start": "2026-10-19 00:00:00+00:00",
+        "end_date": "2026-11-06 15:25:24.540309+00:00",
+        "history": [],
+        "logical_date": "2026-10-19 00:00:00+00:00",
+        "run_id": "backfill__2026-10-20T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:20.373425+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:20.831253+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "345",
+            "queued_dttm": "2026-11-06 15:25:20.386509+00:00",
+            "start_date": "2026-11-06 15:25:20.408037+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:21.890066+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "349",
+            "queued_dttm": "2026-11-06 15:25:21.417471+00:00",
+            "start_date": "2026-11-06 15:25:21.440152+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:23.113973+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "353",
+            "queued_dttm": "2026-11-06 15:25:22.447699+00:00",
+            "start_date": "2026-11-06 15:25:22.478804+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:24.211791+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "363",
+            "queued_dttm": "2026-11-06 15:25:23.490773+00:00",
+            "start_date": "2026-11-06 15:25:23.550588+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-19 00:00:00+00:00",
+        "data_interval_start": "2026-10-18 00:00:00+00:00",
+        "end_date": "2026-11-06 15:25:19.359421+00:00",
+        "history": [],
+        "logical_date": "2026-10-18 00:00:00+00:00",
+        "run_id": "backfill__2026-10-19T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:15.371945+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:15.866515+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "319",
+            "queued_dttm": "2026-11-06 15:25:15.390110+00:00",
+            "start_date": "2026-11-06 15:25:15.418935+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:16.951357+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "323",
+            "queued_dttm": "2026-11-06 15:25:16.432185+00:00",
+            "start_date": "2026-11-06 15:25:16.466996+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:17.697128+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "331",
+            "queued_dttm": "2026-11-06 15:25:17.175374+00:00",
+            "start_date": "2026-11-06 15:25:17.206147+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:18.781715+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "335",
+            "queued_dttm": "2026-11-06 15:25:18.333095+00:00",
+            "start_date": "2026-11-06 15:25:18.355048+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:25:33Z",
+    "runs": [
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-20 00:00:00+00:00",
+        "data_interval_start": "2026-10-19 00:00:00+00:00",
+        "end_date": "2026-11-06 15:25:24.540309+00:00",
+        "history": [],
+        "logical_date": "2026-10-19 00:00:00+00:00",
+        "run_id": "backfill__2026-10-20T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:20.373425+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:20.831253+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "345",
+            "queued_dttm": "2026-11-06 15:25:20.386509+00:00",
+            "start_date": "2026-11-06 15:25:20.408037+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:21.890066+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "349",
+            "queued_dttm": "2026-11-06 15:25:21.417471+00:00",
+            "start_date": "2026-11-06 15:25:21.440152+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:23.113973+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "353",
+            "queued_dttm": "2026-11-06 15:25:22.447699+00:00",
+            "start_date": "2026-11-06 15:25:22.478804+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:24.211791+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "363",
+            "queued_dttm": "2026-11-06 15:25:23.490773+00:00",
+            "start_date": "2026-11-06 15:25:23.550588+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-19 00:00:00+00:00",
+        "data_interval_start": "2026-10-18 00:00:00+00:00",
+        "end_date": "2026-11-06 15:25:19.359421+00:00",
+        "history": [],
+        "logical_date": "2026-10-18 00:00:00+00:00",
+        "run_id": "backfill__2026-10-19T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:15.371945+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:15.866515+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "319",
+            "queued_dttm": "2026-11-06 15:25:15.390110+00:00",
+            "start_date": "2026-11-06 15:25:15.418935+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:16.951357+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "323",
+            "queued_dttm": "2026-11-06 15:25:16.432185+00:00",
+            "start_date": "2026-11-06 15:25:16.466996+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:17.697128+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "331",
+            "queued_dttm": "2026-11-06 15:25:17.175374+00:00",
+            "start_date": "2026-11-06 15:25:17.206147+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:18.781715+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "335",
+            "queued_dttm": "2026-11-06 15:25:18.333095+00:00",
+            "start_date": "2026-11-06 15:25:18.355048+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      },
+      {
+        "backfill_id": 1,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-21 00:00:00+00:00",
+        "data_interval_start": "2026-10-20 00:00:00+00:00",
+        "end_date": "2026-11-06 15:25:29.389975+00:00",
+        "history": [],
+        "logical_date": "2026-10-20 00:00:00+00:00",
+        "run_id": "backfill__2026-10-21T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:25.554985+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:27.092899+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "375",
+            "queued_dttm": "2026-11-06 15:25:26.616711+00:00",
+            "start_date": "2026-11-06 15:25:26.646320+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:26.330765+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "371",
+            "queued_dttm": "2026-11-06 15:25:25.575660+00:00",
+            "start_date": "2026-11-06 15:25:25.878171+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:27.795795+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "379",
+            "queued_dttm": "2026-11-06 15:25:27.332262+00:00",
+            "start_date": "2026-11-06 15:25:27.354317+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:28.818129+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "383",
+            "queued_dttm": "2026-11-06 15:25:28.364873+00:00",
+            "start_date": "2026-11-06 15:25:28.389459+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:00Z",
+    "runs": [
+      {
+        "backfill_id": 2,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-19 00:00:00+00:00",
+        "data_interval_start": "2026-10-18 00:00:00+00:00",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:25:15.866515+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "319",
+            "queued_dttm": "2026-11-06 15:25:15.390110+00:00",
+            "start_date": "2026-11-06 15:25:15.418935+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:16.951357+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "323",
+            "queued_dttm": "2026-11-06 15:25:16.432185+00:00",
+            "start_date": "2026-11-06 15:25:16.466996+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:17.697128+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "331",
+            "queued_dttm": "2026-11-06 15:25:17.175374+00:00",
+            "start_date": "2026-11-06 15:25:17.206147+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:18.781715+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "335",
+            "queued_dttm": "2026-11-06 15:25:18.333095+00:00",
+            "start_date": "2026-11-06 15:25:18.355048+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "2026-10-18 00:00:00+00:00",
+        "run_id": "backfill__2026-10-19T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:57.361681+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:17.697128+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "331",
+            "queued_dttm": "2026-11-06 15:25:17.175374+00:00",
+            "start_date": "2026-11-06 15:25:17.206147+00:00",
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:57.822141+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "458",
+            "queued_dttm": "2026-11-06 15:25:57.375512+00:00",
+            "start_date": "2026-11-06 15:25:57.401060+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          },
+          {
+            "end_date": null,
+            "hostname": "b163e8a1573c",
+            "pid": "462",
+            "queued_dttm": "2026-11-06 15:25:58.418224+00:00",
+            "start_date": "2026-11-06 15:25:58.453501+00:00",
+            "state": "running",
+            "task_id": "transform_to_silver",
+            "try_number": "2"
+          },
+          {
+            "end_date": "2026-11-06 15:25:18.781715+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "335",
+            "queued_dttm": "2026-11-06 15:25:18.333095+00:00",
+            "start_date": "2026-11-06 15:25:18.355048+00:00",
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:07Z",
+    "runs": [
+      {
+        "backfill_id": 2,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "2026-10-19 00:00:00+00:00",
+        "data_interval_start": "2026-10-18 00:00:00+00:00",
+        "end_date": "2026-11-06 15:26:01.551505+00:00",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:25:15.866515+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "319",
+            "queued_dttm": "2026-11-06 15:25:15.390110+00:00",
+            "start_date": "2026-11-06 15:25:15.418935+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:16.951357+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "323",
+            "queued_dttm": "2026-11-06 15:25:16.432185+00:00",
+            "start_date": "2026-11-06 15:25:16.466996+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:17.697128+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "331",
+            "queued_dttm": "2026-11-06 15:25:17.175374+00:00",
+            "start_date": "2026-11-06 15:25:17.206147+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:25:18.781715+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "335",
+            "queued_dttm": "2026-11-06 15:25:18.333095+00:00",
+            "start_date": "2026-11-06 15:25:18.355048+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "2026-10-18 00:00:00+00:00",
+        "run_id": "backfill__2026-10-19T00:00:00+00:00",
+        "run_type": "backfill",
+        "start_date": "2026-11-06 15:25:57.361681+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:25:57.822141+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "458",
+            "queued_dttm": "2026-11-06 15:25:57.375512+00:00",
+            "start_date": "2026-11-06 15:25:57.401060+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          },
+          {
+            "end_date": "2026-11-06 15:25:59.125358+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "462",
+            "queued_dttm": "2026-11-06 15:25:58.418224+00:00",
+            "start_date": "2026-11-06 15:25:58.453501+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "2"
+          },
+          {
+            "end_date": "2026-11-06 15:26:00.147290+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "470",
+            "queued_dttm": "2026-11-06 15:25:59.469004+00:00",
+            "start_date": "2026-11-06 15:25:59.526610+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "2"
+          },
+          {
+            "end_date": "2026-11-06 15:26:01.129121+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "474",
+            "queued_dttm": "2026-11-06 15:26:00.525801+00:00",
+            "start_date": "2026-11-06 15:26:00.560599+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:12Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:10.848777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "507",
+            "queued_dttm": "2026-11-06 15:26:10.424595+00:00",
+            "start_date": "2026-11-06 15:26:10.455878+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-retry-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:10.412435+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:26:10.848777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "507",
+            "queued_dttm": "2026-11-06 15:26:10.424595+00:00",
+            "start_date": "2026-11-06 15:26:10.455878+00:00",
+            "state": "up_for_retry",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:42Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:10.848777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "507",
+            "queued_dttm": "2026-11-06 15:26:10.424595+00:00",
+            "start_date": "2026-11-06 15:26:10.455878+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-retry-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:10.412435+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "b163e8a1573c",
+            "pid": "564",
+            "queued_dttm": "2026-11-06 15:26:41.498507+00:00",
+            "start_date": "2026-11-06 15:26:41.533035+00:00",
+            "state": "running",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:49Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "2026-11-06 15:26:45.605334+00:00",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:10.848777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "507",
+            "queued_dttm": "2026-11-06 15:26:10.424595+00:00",
+            "start_date": "2026-11-06 15:26:10.455878+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-retry-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:10.412435+00:00",
+        "state": "success",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:26:43.972938+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "575",
+            "queued_dttm": "2026-11-06 15:26:43.557083+00:00",
+            "start_date": "2026-11-06 15:26:43.578405+00:00",
+            "state": "success",
+            "task_id": "prepare_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:26:44.999090+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "579",
+            "queued_dttm": "2026-11-06 15:26:44.583914+00:00",
+            "start_date": "2026-11-06 15:26:44.609641+00:00",
+            "state": "success",
+            "task_id": "validate_gold",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:26:41.953000+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "564",
+            "queued_dttm": "2026-11-06 15:26:41.498507+00:00",
+            "start_date": "2026-11-06 15:26:41.533035+00:00",
+            "state": "success",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          },
+          {
+            "end_date": "2026-11-06 15:26:42.958744+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "571",
+            "queued_dttm": "2026-11-06 15:26:42.527537+00:00",
+            "start_date": "2026-11-06 15:26:42.548857+00:00",
+            "state": "success",
+            "task_id": "transform_to_silver",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:26:54Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-exhaust-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:52.511841+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "up_for_retry",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:27:24Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-exhaust-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:52.511841+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "b163e8a1573c",
+            "pid": "668",
+            "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+            "start_date": "2026-11-06 15:27:23.602897+00:00",
+            "state": "running",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:27:31Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:27:24.022289+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "668",
+            "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+            "start_date": "2026-11-06 15:27:23.602897+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-exhaust-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:52.511841+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:27:24.022289+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "668",
+            "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+            "start_date": "2026-11-06 15:27:23.602897+00:00",
+            "state": "up_for_retry",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:28:01Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "None",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:27:24.022289+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "668",
+            "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+            "start_date": "2026-11-06 15:27:23.602897+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-exhaust-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:52.511841+00:00",
+        "state": "running",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:28:00.046523+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "727",
+            "queued_dttm": "2026-11-06 15:27:54.636875+00:00",
+            "start_date": "2026-11-06 15:27:54.663132+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "3"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": null,
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": null,
+            "state": null,
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "observed_at_utc": "2026-11-06T15:28:08Z",
+    "runs": [
+      {
+        "backfill_id": null,
+        "dag_id": "data_pipeline",
+        "data_interval_end": "None",
+        "data_interval_start": "None",
+        "end_date": "2026-11-06 15:28:03.414673+00:00",
+        "history": [
+          {
+            "end_date": "2026-11-06 15:26:53.132777+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "611",
+            "queued_dttm": "2026-11-06 15:26:52.529524+00:00",
+            "start_date": "2026-11-06 15:26:52.586118+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "1"
+          },
+          {
+            "end_date": "2026-11-06 15:27:24.022289+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "668",
+            "queued_dttm": "2026-11-06 15:27:23.578506+00:00",
+            "start_date": "2026-11-06 15:27:23.602897+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "2"
+          }
+        ],
+        "logical_date": "None",
+        "run_id": "phase6-exhaust-42242189893-1",
+        "run_type": "manual",
+        "start_date": "2026-11-06 15:26:52.511841+00:00",
+        "state": "failed",
+        "tasks": [
+          {
+            "end_date": "2026-11-06 15:28:00.597514+00:00",
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": "2026-11-06 15:28:00.597514+00:00",
+            "state": "upstream_failed",
+            "task_id": "transform_to_silver",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:28:00.046523+00:00",
+            "hostname": "b163e8a1573c",
+            "pid": "727",
+            "queued_dttm": "2026-11-06 15:27:54.636875+00:00",
+            "start_date": "2026-11-06 15:27:54.663132+00:00",
+            "state": "failed",
+            "task_id": "extract_to_bronze",
+            "try_number": "3"
+          },
+          {
+            "end_date": "2026-11-06 15:28:01.622584+00:00",
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": "2026-11-06 15:28:01.622584+00:00",
+            "state": "upstream_failed",
+            "task_id": "prepare_gold",
+            "try_number": "0"
+          },
+          {
+            "end_date": "2026-11-06 15:28:02.394700+00:00",
+            "hostname": "",
+            "pid": null,
+            "queued_dttm": null,
+            "start_date": "2026-11-06 15:28:02.394700+00:00",
+            "state": "upstream_failed",
+            "task_id": "validate_gold",
+            "try_number": "0"
+          }
+        ]
+      }
+    ]
+  }
+]

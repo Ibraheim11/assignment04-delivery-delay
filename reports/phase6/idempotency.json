@@ -1,0 +1,365 @@
+{
+  "all_other_partitions_unchanged": true,
+  "first": {
+    "data/bronze/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+    },
+    "data/bronze/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+    },
+    "data/bronze/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+    },
+    "data/gold/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "dd505ef61d2145f227a8ce4ea5a5d817d286d98ecbd4790bc6c3bbf89d4c2177"
+    },
+    "data/gold/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "3cb0a8e3278786dbbeb8ff67a974107b845be322cba6a8203c5b266e15615773"
+    },
+    "data/gold/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "93f6b24b3c7c20a048362f2bfeba286de19c3c4904bb8286b3a83dc7d630525d"
+    },
+    "data/silver/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "9c356701a96dec6695c1b415561023416b2e62c6674c462b86015bd1f19df66d"
+    },
+    "data/silver/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "d4a79c869a90f59f56e3b502d8a6551ea0962aebcf8c2a8e2ad16fa34ba6a517"
+    },
+    "data/silver/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "522f8bc4e6dc92e1f295a3418483a99d94e2b9223ffce7efb79a705a244d425f"
+    }
+  },
+  "first_runs": [
+    {
+      "backfill_id": 1,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-20 00:00:00+00:00",
+      "data_interval_start": "2026-10-19 00:00:00+00:00",
+      "end_date": "2026-11-06 15:01:23.625839+00:00",
+      "history": [],
+      "logical_date": "2026-10-19 00:00:00+00:00",
+      "run_id": "backfill__2026-10-20T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:19.808338+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:20.878568+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "359",
+          "queued_dttm": "2026-11-06 15:01:20.341453+00:00",
+          "start_date": "2026-11-06 15:01:20.369085+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:22.048525+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "363",
+          "queued_dttm": "2026-11-06 15:01:21.551638+00:00",
+          "start_date": "2026-11-06 15:01:21.579062+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:23.095440+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "367",
+          "queued_dttm": "2026-11-06 15:01:22.590681+00:00",
+          "start_date": "2026-11-06 15:01:22.621115+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:20.303380+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "355",
+          "queued_dttm": "2026-11-06 15:01:19.820171+00:00",
+          "start_date": "2026-11-06 15:01:19.845913+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": 1,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-19 00:00:00+00:00",
+      "data_interval_start": "2026-10-18 00:00:00+00:00",
+      "end_date": "2026-11-06 15:01:18.793411+00:00",
+      "history": [],
+      "logical_date": "2026-10-18 00:00:00+00:00",
+      "run_id": "backfill__2026-10-19T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:14.552365+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:17.377402+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "343",
+          "queued_dttm": "2026-11-06 15:01:16.723060+00:00",
+          "start_date": "2026-11-06 15:01:16.761252+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:15.278328+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "329",
+          "queued_dttm": "2026-11-06 15:01:14.576338+00:00",
+          "start_date": "2026-11-06 15:01:14.642546+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:16.340098+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "339",
+          "queued_dttm": "2026-11-06 15:01:15.647269+00:00",
+          "start_date": "2026-11-06 15:01:15.714663+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:18.283080+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "351",
+          "queued_dttm": "2026-11-06 15:01:17.763351+00:00",
+          "start_date": "2026-11-06 15:01:17.796282+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ]
+    },
+    {
+      "backfill_id": 1,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-21 00:00:00+00:00",
+      "data_interval_start": "2026-10-20 00:00:00+00:00",
+      "end_date": "2026-11-06 15:01:28.792148+00:00",
+      "history": [],
+      "logical_date": "2026-10-20 00:00:00+00:00",
+      "run_id": "backfill__2026-10-21T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:24.644772+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:28.346255+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "398",
+          "queued_dttm": "2026-11-06 15:01:27.766225+00:00",
+          "start_date": "2026-11-06 15:01:27.795119+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:25.150449+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "376",
+          "queued_dttm": "2026-11-06 15:01:24.658764+00:00",
+          "start_date": "2026-11-06 15:01:24.687545+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:26.211361+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "390",
+          "queued_dttm": "2026-11-06 15:01:25.694664+00:00",
+          "start_date": "2026-11-06 15:01:25.724630+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:27.241695+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "394",
+          "queued_dttm": "2026-11-06 15:01:26.734776+00:00",
+          "start_date": "2026-11-06 15:01:26.761499+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        }
+      ]
+    }
+  ],
+  "identical": true,
+  "no_append": true,
+  "raw_hashes_unchanged": 46,
+  "second": {
+    "data/bronze/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 248,
+      "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+    },
+    "data/bronze/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 183,
+      "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+    },
+    "data/bronze/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 3,
+      "rows": 196,
+      "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+    },
+    "data/gold/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "dd505ef61d2145f227a8ce4ea5a5d817d286d98ecbd4790bc6c3bbf89d4c2177"
+    },
+    "data/gold/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "3cb0a8e3278786dbbeb8ff67a974107b845be322cba6a8203c5b266e15615773"
+    },
+    "data/gold/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "93f6b24b3c7c20a048362f2bfeba286de19c3c4904bb8286b3a83dc7d630525d"
+    },
+    "data/silver/orders_2026-10-18.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 245,
+      "sha256": "9c356701a96dec6695c1b415561023416b2e62c6674c462b86015bd1f19df66d"
+    },
+    "data/silver/orders_2026-10-19.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 180,
+      "sha256": "d4a79c869a90f59f56e3b502d8a6551ea0962aebcf8c2a8e2ad16fa34ba6a517"
+    },
+    "data/silver/orders_2026-10-20.csv": {
+      "duplicate_order_ids": 0,
+      "rows": 193,
+      "sha256": "522f8bc4e6dc92e1f295a3418483a99d94e2b9223ffce7efb79a705a244d425f"
+    }
+  },
+  "second_runs": [
+    {
+      "backfill_id": 2,
+      "dag_id": "data_pipeline",
+      "data_interval_end": "2026-10-19 00:00:00+00:00",
+      "data_interval_start": "2026-10-18 00:00:00+00:00",
+      "end_date": "2026-11-06 15:02:01.625585+00:00",
+      "history": [
+        {
+          "end_date": "2026-11-06 15:01:17.377402+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "343",
+          "queued_dttm": "2026-11-06 15:01:16.723060+00:00",
+          "start_date": "2026-11-06 15:01:16.761252+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:15.278328+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "329",
+          "queued_dttm": "2026-11-06 15:01:14.576338+00:00",
+          "start_date": "2026-11-06 15:01:14.642546+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:16.340098+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "339",
+          "queued_dttm": "2026-11-06 15:01:15.647269+00:00",
+          "start_date": "2026-11-06 15:01:15.714663+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "1"
+        },
+        {
+          "end_date": "2026-11-06 15:01:18.283080+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "351",
+          "queued_dttm": "2026-11-06 15:01:17.763351+00:00",
+          "start_date": "2026-11-06 15:01:17.796282+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "1"
+        }
+      ],
+      "logical_date": "2026-10-18 00:00:00+00:00",
+      "run_id": "backfill__2026-10-19T00:00:00+00:00",
+      "run_type": "backfill",
+      "start_date": "2026-11-06 15:01:57.653318+00:00",
+      "state": "success",
+      "tasks": [
+        {
+          "end_date": "2026-11-06 15:01:58.171345+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "466",
+          "queued_dttm": "2026-11-06 15:01:57.666827+00:00",
+          "start_date": "2026-11-06 15:01:57.696016+00:00",
+          "state": "success",
+          "task_id": "extract_to_bronze",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:01:59.211319+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "476",
+          "queued_dttm": "2026-11-06 15:01:58.704584+00:00",
+          "start_date": "2026-11-06 15:01:58.730697+00:00",
+          "state": "success",
+          "task_id": "transform_to_silver",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:02:00.261595+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "484",
+          "queued_dttm": "2026-11-06 15:01:59.742800+00:00",
+          "start_date": "2026-11-06 15:01:59.776707+00:00",
+          "state": "success",
+          "task_id": "prepare_gold",
+          "try_number": "2"
+        },
+        {
+          "end_date": "2026-11-06 15:02:01.062610+00:00",
+          "hostname": "24a0092a8fdc",
+          "pid": "488",
+          "queued_dttm": "2026-11-06 15:02:00.592155+00:00",
+          "start_date": "2026-11-06 15:02:00.622829+00:00",
+          "state": "success",
+          "task_id": "validate_gold",
+          "try_number": "2"
+        }
+      ]
+    }
+  ]
+}

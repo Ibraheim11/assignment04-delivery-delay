@@ -1,0 +1,5 @@
+# The image installs dependencies only; code, inputs and artifacts are bind-mounted.
+**
+!Dockerfile
+!requirements.txt
+!requirements-dev.txt

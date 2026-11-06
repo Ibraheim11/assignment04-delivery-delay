@@ -1,0 +1,17 @@
+{
+  "backfill_dates": [
+    "2026-10-18",
+    "2026-10-19",
+    "2026-10-20"
+  ],
+  "commit": "e1dbe3f46906337ffe7b715be76a08d35594ff3b",
+  "execution": "Airflow 3.1 backfill CLI, real scheduler, LocalExecutor, PostgreSQL",
+  "failure_run_id": "phase6-exhaust-42237926425-1",
+  "limitations": [
+    "CI retry delay is 30 seconds; production remains 5 minutes with retries=2.",
+    "Date partitions are separate orders_YYYY-MM-DD.csv files, preserving the existing layout."
+  ],
+  "retry_run_id": "phase6-retry-42237926425-1",
+  "status": "success",
+  "workflow_run_url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42237926425"
+}

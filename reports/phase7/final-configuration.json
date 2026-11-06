@@ -1,0 +1,26 @@
+{
+  "triggers": {
+    "docker-integration.yml": {
+      "workflow_dispatch": ""
+    },
+    "reliability.yml": {
+      "workflow_dispatch": ""
+    },
+    "regression.yml": {
+      "push": {
+        "branches": [
+          "main"
+        ]
+      },
+      "pull_request": {
+        "branches": [
+          "main"
+        ]
+      },
+      "workflow_dispatch": ""
+    }
+  },
+  "all_workflows_contents_read": true,
+  "no_workflow_git_push": true,
+  "changed_python_syntax_valid": true
+}

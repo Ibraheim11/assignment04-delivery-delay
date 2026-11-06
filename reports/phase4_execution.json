@@ -1,0 +1,381 @@
+{
+  "base_commit": "0d3bf5e6818a857e44cd0da72e635a46b471b0e3",
+  "dag_discovery_output": "/workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/cli/commands/dag_command.py:49 UserWarning: Could not import graphviz. Rendering graph to the graphical format will not be possible.\nYou might need to install the graphviz package and necessary system packages.\nRun `pip install graphviz` to attempt to install it.\ndag_id               | fileloc                                                             | owners  | is_paused | bundle_name | bundle_version\n=====================+=====================================================================+=========+===========+=============+===============\ndata_pipeline        | /workspace/assignment04-delivery-delay/dags/data_pipeline.py        | airflow | None      | None        | None          \nml_training_pipeline | /workspace/assignment04-delivery-delay/dags/ml_training_pipeline.py | airflow | None      | None        | None          \n                                                                                                                                               \n",
+  "dag_import_errors_output": "/workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/cli/commands/dag_command.py:49 UserWarning: Could not import graphviz. Rendering graph to the graphical format will not be possible.\nYou might need to install the graphviz package and necessary system packages.\nRun `pip install graphviz` to attempt to install it.\nNo data found\n",
+  "full_suite_output": "........................................................................ [ 72%]\n...........................                                              [100%]\n=============================== warnings summary ===============================\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\n  /workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/api_fastapi/execution_api/routes/__init__.py:23: DeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.\n    from airflow.api_fastapi.execution_api.routes import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n99 passed, 7 warnings in 84.20s (0:01:24)\n",
+  "gold_generation": [
+    {
+      "batch_date": "2026-10-01",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-10-02",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-10-03",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-10-04",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-10-05",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-10-06",
+      "duplicate_ids": 0,
+      "rows": 245
+    },
+    {
+      "batch_date": "2026-10-07",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-10-08",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-10-09",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-10-10",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-10-11",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-10-12",
+      "duplicate_ids": 0,
+      "rows": 245
+    },
+    {
+      "batch_date": "2026-10-13",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-10-14",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-10-15",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-10-16",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-10-17",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-10-18",
+      "duplicate_ids": 0,
+      "rows": 245
+    },
+    {
+      "batch_date": "2026-10-19",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-10-20",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-10-21",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-10-22",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-10-23",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-10-24",
+      "duplicate_ids": 0,
+      "rows": 245
+    },
+    {
+      "batch_date": "2026-10-25",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-10-26",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-10-27",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-10-28",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-10-29",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-10-30",
+      "duplicate_ids": 0,
+      "rows": 245
+    },
+    {
+      "batch_date": "2026-10-31",
+      "duplicate_ids": 0,
+      "rows": 180
+    },
+    {
+      "batch_date": "2026-11-01",
+      "duplicate_ids": 0,
+      "rows": 193
+    },
+    {
+      "batch_date": "2026-11-02",
+      "duplicate_ids": 0,
+      "rows": 206
+    },
+    {
+      "batch_date": "2026-11-03",
+      "duplicate_ids": 0,
+      "rows": 219
+    },
+    {
+      "batch_date": "2026-11-04",
+      "duplicate_ids": 0,
+      "rows": 232
+    },
+    {
+      "batch_date": "2026-11-05",
+      "duplicate_ids": 0,
+      "rows": 275
+    },
+    {
+      "batch_date": "2026-11-06",
+      "duplicate_ids": 0,
+      "rows": 210
+    },
+    {
+      "batch_date": "2026-11-07",
+      "duplicate_ids": 0,
+      "rows": 223
+    },
+    {
+      "batch_date": "2026-11-08",
+      "duplicate_ids": 0,
+      "rows": 236
+    },
+    {
+      "batch_date": "2026-11-09",
+      "duplicate_ids": 0,
+      "rows": 249
+    },
+    {
+      "batch_date": "2026-11-10",
+      "duplicate_ids": 0,
+      "rows": 262
+    },
+    {
+      "batch_date": "2026-11-11",
+      "duplicate_ids": 0,
+      "rows": 275
+    },
+    {
+      "batch_date": "2026-11-12",
+      "duplicate_ids": 0,
+      "rows": 210
+    },
+    {
+      "batch_date": "2026-11-13",
+      "duplicate_ids": 0,
+      "rows": 223
+    },
+    {
+      "batch_date": "2026-11-14",
+      "duplicate_ids": 0,
+      "rows": 236
+    },
+    {
+      "batch_date": "2026-11-15",
+      "duplicate_ids": 0,
+      "rows": 249
+    }
+  ],
+  "metrics": {
+    "accuracy": 0.7332490518331226,
+    "candidate_sha256": "b7a8a2d004be6b8a8310803343d321246d6c2f346dfb280f04c5eec940e82cd5",
+    "confusion_matrix": [
+      [
+        1571,
+        104
+      ],
+      [
+        529,
+        169
+      ]
+    ],
+    "confusion_matrix_labels": [
+      0,
+      1
+    ],
+    "cutoff_date": "2026-11-06",
+    "f1_score": 0.34809474768280124,
+    "model_name": "LogisticRegression",
+    "precision": 0.6190476190476191,
+    "random_state": 42,
+    "recall": 0.24212034383954154,
+    "selected_features": [
+      "order_hour",
+      "items_count",
+      "promised_delivery_days",
+      "distance_km",
+      "package_weight_kg",
+      "order_value_egp",
+      "warehouse_load_pct",
+      "carrier_on_time_rate",
+      "is_weekend",
+      "distance_per_promised_day",
+      "customer_region",
+      "shipping_method",
+      "weather_risk_level"
+    ],
+    "split_strategy": "chronological earliest floor(train_fraction * dates) train; latest dates test",
+    "target_class_distribution": {
+      "test": {
+        "0": 1675,
+        "1": 698
+      },
+      "train": {
+        "0": 5999,
+        "1": 1681
+      }
+    },
+    "test_date_range": [
+      "2026-11-06",
+      "2026-11-15"
+    ],
+    "test_dates": [
+      "2026-11-06",
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-09",
+      "2026-11-10",
+      "2026-11-11",
+      "2026-11-12",
+      "2026-11-13",
+      "2026-11-14",
+      "2026-11-15"
+    ],
+    "test_rows": 2373,
+    "train_date_range": [
+      "2026-10-01",
+      "2026-11-05"
+    ],
+    "train_dates": [
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04",
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07",
+      "2026-10-08",
+      "2026-10-09",
+      "2026-10-10",
+      "2026-10-11",
+      "2026-10-12",
+      "2026-10-13",
+      "2026-10-14",
+      "2026-10-15",
+      "2026-10-16",
+      "2026-10-17",
+      "2026-10-18",
+      "2026-10-19",
+      "2026-10-20",
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+      "2026-10-26",
+      "2026-10-27",
+      "2026-10-28",
+      "2026-10-29",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+      "2026-11-05"
+    ],
+    "train_fraction": 0.8,
+    "train_rows": 7680
+  },
+  "ml_cli_latest_run": {
+    "dag_id": "ml_training_pipeline",
+    "logical_date": "2026-11-06T00:00:00+00:00",
+    "run_id": "manual__2026-11-06T13:06:04.062534+00:00",
+    "state": "success",
+    "tasks": {
+      "evaluate_model": "success",
+      "load_gold_data": "success",
+      "save_model": "success",
+      "train_model": "success"
+    }
+  },
+  "ml_cli_rerun_byte_identical": true,
+  "model_sha256": "b7a8a2d004be6b8a8310803343d321246d6c2f346dfb280f04c5eec940e82cd5",
+  "python": "3.12.14",
+  "unit_suite_output": "..............................sssssssss........................sssss.... [ 72%]\n...........................                                              [100%]\n85 passed, 14 skipped in 7.17s\n",
+  "verification": {
+    "gold_partitions_validated": 46,
+    "phases_1_3_preserved": true,
+    "raw_hashes_verified": 46,
+    "saved_model_metrics_reproduced": true,
+    "test_rows": 2373,
+    "train_rows": 7680,
+    "unique_rows": 10053
+  },
+  "versions": {
+    "apache-airflow": "3.1.0",
+    "joblib": "1.5.2",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scikit-learn": "1.7.2"
+  }
+}

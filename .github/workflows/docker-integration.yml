@@ -1,0 +1,29 @@
+name: Docker Airflow integration
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: docker-integration-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  docker-runtime:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build, start and execute both DAGs
+        run: python3 scripts/docker_integration.py run
+      - name: Collect sanitized diagnostics and stop services
+        if: always()
+        run: python3 scripts/docker_integration.py collect
+      - name: Upload actual runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-runtime-${{ github.run_id }}-${{ github.run_attempt }}
+          path: work/docker-integration/
+          if-no-files-found: error
+          retention-days: 14

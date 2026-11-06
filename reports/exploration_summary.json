@@ -1,0 +1,190 @@
+{
+  "rows": 10219,
+  "unique_order_ids": 10053,
+  "duplicate_ids": 166,
+  "exact_duplicates": 166,
+  "missing": {
+    "order_id": 0,
+    "order_date": 0,
+    "order_hour": 0,
+    "customer_region": 0,
+    "warehouse_id": 0,
+    "shipping_method": 74,
+    "distance_km": 142,
+    "items_count": 0,
+    "package_weight_kg": 0,
+    "order_value_egp": 0,
+    "promised_delivery_days": 0,
+    "warehouse_load_pct": 149,
+    "weather_risk_level": 94,
+    "carrier_on_time_rate": 87,
+    "late_delivery": 0
+  },
+  "dtypes": {
+    "order_id": "object",
+    "order_date": "object",
+    "order_hour": "int64",
+    "customer_region": "object",
+    "warehouse_id": "object",
+    "shipping_method": "object",
+    "distance_km": "float64",
+    "items_count": "int64",
+    "package_weight_kg": "float64",
+    "order_value_egp": "float64",
+    "promised_delivery_days": "int64",
+    "warehouse_load_pct": "float64",
+    "weather_risk_level": "object",
+    "carrier_on_time_rate": "float64",
+    "late_delivery": "int64"
+  },
+  "numeric_parse_failures": {
+    "order_hour": 0,
+    "distance_km": 0,
+    "items_count": 0,
+    "package_weight_kg": 0,
+    "order_value_egp": 0,
+    "promised_delivery_days": 0,
+    "warehouse_load_pct": 0,
+    "carrier_on_time_rate": 0,
+    "late_delivery": 0
+  },
+  "invalid_ranges": {
+    "order_hour": 0,
+    "distance_km": 81,
+    "items_count": 98,
+    "package_weight_kg": 0,
+    "order_value_egp": 55,
+    "promised_delivery_days": 0,
+    "warehouse_load_pct": 0,
+    "carrier_on_time_rate": 0,
+    "late_delivery": 0
+  },
+  "categories": {
+    "customer_region": {
+      "Cairo": 2885,
+      "Giza": 1991,
+      "Delta": 1919,
+      "Alexandria": 1690,
+      "Upper_Egypt": 1016,
+      "Canal": 718
+    },
+    "warehouse_id": {
+      "WH-04": 2632,
+      "WH-03": 2546,
+      "WH-01": 2545,
+      "WH-02": 2496
+    },
+    "shipping_method": {
+      "Standard": 5907,
+      "Express": 2974,
+      "Same_Day": 976,
+      " standard ": 185,
+      "EXPRESS": 80,
+      "nan": 74,
+      "same_day": 23
+    },
+    "weather_risk_level": {
+      "Low": 5165,
+      "Medium": 3436,
+      "High": 1524,
+      "nan": 94
+    }
+  },
+  "label_counts": {
+    "0": 7800,
+    "1": 2419
+  },
+  "wrong_batch_dates": 0,
+  "numeric_summary": {
+    "order_hour": {
+      "count": 10219.0,
+      "mean": 11.57667090713377,
+      "std": 6.908077757198238,
+      "min": 0.0,
+      "25%": 6.0,
+      "50%": 12.0,
+      "75%": 18.0,
+      "max": 23.0
+    },
+    "distance_km": {
+      "count": 10077.0,
+      "mean": 81.46007740398927,
+      "std": 59.01695261217065,
+      "min": -8.0,
+      "25%": 42.3,
+      "50%": 65.9,
+      "75%": 102.0,
+      "max": 420.0
+    },
+    "items_count": {
+      "count": 10219.0,
+      "mean": 2.1925824444661903,
+      "std": 1.6043649402026925,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 3.0,
+      "max": 10.0
+    },
+    "package_weight_kg": {
+      "count": 10219.0,
+      "mean": 4.583501321068598,
+      "std": 2.649770729892591,
+      "min": 0.39,
+      "25%": 2.64,
+      "50%": 4.06,
+      "75%": 5.95,
+      "max": 23.5
+    },
+    "order_value_egp": {
+      "count": 10219.0,
+      "mean": 1147.1635619923672,
+      "std": 930.1696968099055,
+      "min": -110.0,
+      "25%": 546.725,
+      "50%": 887.82,
+      "75%": 1456.72,
+      "max": 16220.55
+    },
+    "promised_delivery_days": {
+      "count": 10219.0,
+      "mean": 3.109795479009688,
+      "std": 1.3807674810107837,
+      "min": 1.0,
+      "25%": 2.0,
+      "50%": 3.0,
+      "75%": 4.0,
+      "max": 5.0
+    },
+    "warehouse_load_pct": {
+      "count": 10070.0,
+      "mean": 69.33123138033764,
+      "std": 12.161992915575418,
+      "min": 30.0,
+      "25%": 61.1,
+      "50%": 69.3,
+      "75%": 77.6,
+      "max": 99.0
+    },
+    "carrier_on_time_rate": {
+      "count": 10132.0,
+      "mean": 0.8292363797868141,
+      "std": 0.06955753732669631,
+      "min": 0.6,
+      "25%": 0.783,
+      "50%": 0.83,
+      "75%": 0.877,
+      "max": 0.99
+    },
+    "late_delivery": {
+      "count": 10219.0,
+      "mean": 0.23671592132302574,
+      "std": 0.4250872576100846,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 1.0
+    }
+  }
+}
