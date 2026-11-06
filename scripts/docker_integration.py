@@ -194,7 +194,8 @@ def collect():
                         '{{json .State}}', cid.strip()], check=False)
         # Copy only text task logs, redacting secrets and JWTs before persistence.
         for path in (ROOT / 'logs').rglob('*.log'):
-            relative = path.relative_to(ROOT / 'logs')
+            from urllib.parse import quote
+            relative = Path(*(quote(part, safe='=-_.') for part in path.relative_to(ROOT / 'logs').parts))
             target = EVIDENCE / 'task-logs' / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(redact(path.read_text(errors='replace')))
