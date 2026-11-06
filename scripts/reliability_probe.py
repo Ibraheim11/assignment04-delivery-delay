@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 from airflow.models.dagrun import DagRun
+from airflow.models.backfill import Backfill
 from airflow.models.taskinstance import TaskInstance
 from airflow.models.taskinstancehistory import TaskInstanceHistory
 from airflow.utils.session import create_session
@@ -40,5 +41,12 @@ def files():
     return result
 
 
+def backfills():
+    with create_session() as session:
+        return [{key: str(getattr(b, key)) if getattr(b, key) is not None else None
+                 for key in ['id', 'dag_id', 'from_date', 'to_date', 'completed_at']}
+                for b in session.query(Backfill).filter_by(dag_id='data_pipeline').all()]
+
+
 if __name__ == '__main__':
-    print('RUNTIME_JSON=' + json.dumps({'runs': metadata(), 'files': files()}, sort_keys=True))
+    print('RUNTIME_JSON=' + json.dumps({'runs': metadata(), 'files': files(), 'backfills': backfills()}, sort_keys=True))

@@ -45,6 +45,17 @@ def wait(select, expected=1, failed=False, timeout=900):
 
 
 def backfill(start, end, name):
+    # DagRuns can finish before the scheduler's 30-second backfill completion
+    # sweep. Wait for the actual parent record; never mutate Airflow state.
+    deadline = time.monotonic() + 120
+    while True:
+        observed = probe()['backfills']
+        save('backfill-completion.json', observed)
+        if all(b['completed_at'] is not None for b in observed):
+            break
+        if time.monotonic() > deadline:
+            raise TimeoutError('Scheduler did not mark prior backfill completed')
+        time.sleep(5)
     args = ['airflow', 'backfill', 'create', '--dag-id', 'data_pipeline',
             '--from-date', start, '--to-date', end, '--max-active-runs', '1',
             '--reprocess-behavior', 'completed']
