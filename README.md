@@ -1,6 +1,6 @@
 # Delivery delay prediction — Assignment 04
 
-Phases 1, 2 and 3 are complete. Phase 1: the supplied daily delivery orders are extracted unchanged,
+Phases 1–4 are complete. Phase 1: the supplied daily delivery orders are extracted unchanged,
 verified, and explored with Pandas. The target is `late_delivery` (0 on time, 1 late).
 All three pages of the assignment PDF and the complete data dictionary were read
 before implementation. The PDF is present in fetched `origin/main` at `71cffac`.
@@ -236,4 +236,155 @@ Manual triggering and native backfill require healthy scheduler/API services;
 
 Actual Phase 3 validation and limitations are recorded in
 [reports/phase3_validation.md](reports/phase3_validation.md). Phase 1 and Phase 2
-reports remain historical evidence. No ML training or Docker Compose is implemented.
+reports remain historical evidence. The following Phase 4 section adds ML training. Docker Compose remains deferred.
+
+## Phase 4 — reproducible ML training
+
+`src/train.py` loads and validates each selected Gold CSV using the existing
+`validate_gold_frame`, rejects repeated order IDs across dates, and splits whole
+dates before any learned preprocessing. By default **all 46 supplied dates are
+required**; missing files/columns, invalid labels/features, empty selections and
+fewer than two dates fail clearly. Training must contain both target classes.
+The four tracked Phase 2 examples remain unchanged; regenerate the other dates
+locally rather than committing 42 more CSVs.
+
+### Regenerate Gold and train
+
+From the repository root, use Python 3.12 and the Airflow 3.1 environment described
+above. Install the pinned requirements (the saved artifact uses scikit-learn 1.7.2
+and Joblib 1.5.2):
+
+```sh
+source /workspace/.delivery-delay/env.sh  # workspace-specific; otherwise activate your venv
+python -m pip install -r requirements-dev.txt
+export AIRFLOW__CORE__DAGS_FOLDER="$PWD/dags"
+python -m scripts.generate_gold
+python -m src.train
+# Optional explicit subset; each listed partition must exist:
+python -m scripts.generate_gold --dates 2026-10-01 2026-10-18
+python -m src.train --dates 2026-10-01 2026-10-18
+```
+
+Generation invokes the existing extraction, Silver, Gold and validation functions
+under the same per-date advisory lock as the data DAG. It never edits raw files.
+It produces regenerable Bronze/Silver/Gold partitions and quality reports; these
+additional generated outputs are ignored by Git. Existing tracked examples stay
+tracked. Training reads only Gold; it never generates or repairs data itself.
+
+### Model design and leakage prevention
+
+The baseline is `LogisticRegression(solver="lbfgs", max_iter=2000,
+random_state=42)` with default class weighting and threshold 0.5. Its saved
+Scikit-learn `Pipeline` contains a `ColumnTransformer` and fitted classifier:
+
+- Numeric: order_hour, items_count, promised_delivery_days, distance_km,
+  package_weight_kg, order_value_egp, warehouse_load_pct, carrier_on_time_rate,
+  **is_weekend**, **distance_per_promised_day**. Training-only median imputation
+  followed by training-only StandardScaler; entirely missing training columns are
+  retained with zero imputation.
+- Categorical: customer_region, shipping_method, weather_risk_level. Training-only
+  most-frequent imputation and OneHotEncoder with unknown categories ignored.
+- Excluded: order_id, warehouse_id (identifier fields), raw order_date, and target
+  late_delivery. The raw date selects the holdout; its deterministic weekend flag
+  is available at order placement. No post-delivery or target-derived input is used.
+
+Silver/Gold only perform fixed data-quality and arithmetic/calendar rules. No
+population statistic is learned there. The Pipeline is fitted on the training
+partition only. Evaluation reloads the candidate Joblib model and calls `predict`,
+without fitting any component. Tests check training medians/scaler means, category
+vocabulary isolation, and prohibit `Pipeline.fit` during evaluation.
+
+### Actual chronological holdout and performance
+
+All 46 dates produce **10,053** validated unique orders. Use the earliest
+`floor(0.8 * 46) = 36` dates for training and latest 10 dates for testing. Entire
+dates stay together and order IDs cannot overlap. Exact test cutoff: **2026-11-06**.
+These are supplied assignment dates, including dates later than the execution day;
+this is a retrospective exercise, not a claim that future outcomes were observed live.
+
+| Split | Date range (inclusive) | Rows | On time (0) | Late (1) |
+|---|---|---:|---:|---:|
+| Train | 2026-10-01–2026-11-05 | 7,680 | 5,999 | 1,681 |
+| Test | 2026-11-06–2026-11-15 | 2,373 | 1,675 | 698 |
+
+| Metric | Actual test value |
+|---|---:|
+| Accuracy | 0.733249 |
+| Precision (late=1) | 0.619048 |
+| Recall (late=1) | 0.242120 |
+| F1 (late=1) | 0.348095 |
+
+Confusion matrix, rows actual and columns predicted, label order `[0, 1]`:
+`[[1571, 104], [529, 169]]`. This modest baseline misses 529 late deliveries;
+accuracy alone overstates usefulness on imbalanced data (always predicting on time
+would score 70.59%). No tuning was performed on the test set.
+
+### ML DAG and artifacts
+
+`dags/ml_training_pipeline.py` uses public `airflow.sdk` TaskFlow decorators:
+
+```text
+load_gold_data -> train_model -> evaluate_model -> save_model
+```
+
+It is manually scheduled, with two retries, one-minute retry delays,
+`all_success` dependencies and `max_active_runs=1`. Load validates and writes the
+chronological split to `data/ml/<unique-UUID>/split.joblib`; train fits and writes
+`candidate.joblib`; evaluate reloads it and writes `evaluation.json`; save verifies
+the evaluated candidate SHA-256 and publishes:
+
+- `models/delivery_delay_model.joblib`: fitted preprocessing plus classifier.
+- `metrics/metrics.json`: actual scores, confusion matrix, features/model, random
+  seed, row counts, exact dates/ranges, split policy and per-split target counts.
+
+Only small directory paths pass via XCom. Each load attempt gets an isolated UUID
+folder. A shared POSIX publication lock serializes final writes even across local
+CLI invocations; individual files are atomically replaced. The model hash in metrics
+links the files. Evaluation failure blocks publication and preserves any prior
+final model. There is no minimum score promotion gate in this baseline.
+
+```sh
+airflow dags list --local
+airflow dags list-import-errors --local
+# Real local execution via the in-process Execution API:
+airflow dags test ml_training_pipeline 2026-11-06
+# With running scheduler/API services:
+airflow dags trigger ml_training_pipeline
+# Explicit historical subset (default is all 46):
+airflow dags trigger ml_training_pipeline \
+  --conf '{"dates":["2026-10-01","2026-10-18","2026-10-19","2026-10-20"]}'
+# Predict from a trusted saved model and a validated Gold frame:
+python - <<'PY'
+import joblib
+from src.train import load_gold_partitions, FEATURES
+frame = load_gold_partitions(dates=['2026-11-15'])
+model = joblib.load('models/delivery_delay_model.joblib')
+print(model.predict(frame[FEATURES].head()))
+PY
+```
+
+### Phase 4 testing and limits
+
+Run `python -m pytest -q` for unit tests, and
+`RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q` against the configured development
+Airflow metadata DB for real executions. Serialize both DAGs first when using a
+fresh DB: `airflow dags reserialize`. Actual results: **85 passed, 14 opt-in skips** in the default suite;
+**99 passed** with integration enabled. Both DAGs were discovered with zero import
+errors, and the full-data ML CLI run succeeded. Full execution evidence
+is recorded in `reports/phase4_validation.md` and `reports/phase4_execution.json`.
+Tests cover Gold/feature/label failures, cross-date duplicates, insufficient data,
+chronology, preprocessing isolation, serialization, saved predictions,
+repeatability, DAG discovery/dependencies and real failure propagation.
+
+Workers need shared local storage with POSIX advisory locks; this is not a
+remote-object-store implementation. Direct ETL CLI calls bypass partition locks
+and must not overlap Gold reads/generation. A Gold snapshot is validated in memory
+before staging; raw data must remain immutable. Final model and metrics replacement
+are two separate atomic operations, not a single transaction: a process crash
+between them can leave mismatched files, detectable with candidate_sha256.
+UUID staging directories are intentionally retained for diagnosis; remove obsolete
+ones manually after runs finish. Joblib files must come from a trusted source.
+Reproducibility requires compatible pinned Python/package versions; numerical
+libraries/platform differences can change floating-point results.
+No scheduler-service run, UI screenshots, Graphviz output, Docker Compose,
+production deployment or merge to main is claimed for Phase 4.
