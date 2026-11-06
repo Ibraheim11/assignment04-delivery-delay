@@ -632,3 +632,19 @@ creates a success result. Only the evidence directory is uploaded, excluding
 `.env`, metadata databases and raw credentials. Services and the disposable DB
 volume are removed after evidence collection. Runner-generated model/metrics are
 artifacts; the workflow never commits changes to the checked-in baseline.
+
+Actual Phase 5B runtime verification **passed** on GitHub-hosted Ubuntu:
+[workflow run 42227343176](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176).
+The image built, initialization succeeded, all five services were healthy, and
+both DAGs completed all four tasks through the real scheduler/LocalExecutor.
+All 46 Gold partitions and raw hashes passed validation; Docker model predictions
+and metrics matched Phase 4. The complete container regression suite returned
+exit code 0; the complete host suite passed **107 tests**.
+The slim image now explicitly installs the required `asyncpg==0.30.0` driver.
+The existing API version healthcheck was verified successfully and retained.
+
+[Download actual evidence](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176/artifacts/13506538230)
+(14-day retention), and see [the validation report](reports/phase5b_validation.md)
+for exact commands, provenance, earlier diagnosed failures and remaining limits.
+No runtime blocker remains on this runner. No merge to main or final backfill/UI
+evidence collection was performed.

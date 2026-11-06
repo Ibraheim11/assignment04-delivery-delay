@@ -1,0 +1,55 @@
+{
+  "artifact_sha256": "761ff2526ef5c6f8779dbbb3581442916062c3b6c8ed78a07f4db7a47c19c00d",
+  "base_commit": "e18cbfff9db3a34227b9584d2b25b03032b87609",
+  "build_exit_code": 0,
+  "container_regression_suite_exit_code": 0,
+  "data_dag_execution": "Real scheduler/LocalExecutor manual run with batch_date=2026-10-18; four successful task instances required and verified",
+  "evidence_artifact_id": 13506538230,
+  "evidence_artifact_url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176/artifacts/13506538230",
+  "final_artifact_verification_exit_code": 0,
+  "gold_regeneration_exit_code": 0,
+  "health_verification": "All five service Health.Status values checked equal healthy; original observations in health-summary.json artifact",
+  "host_tests": "107 passed, 7 warnings in 84.14s",
+  "initialization_exit_code": 0,
+  "job_id": 127924077192,
+  "limitations": [
+    "GitHub-hosted transient environment, not a production deployment",
+    "Evidence artifact expires after 14 days",
+    "No final backfill/UI screenshot collection in this phase"
+  ],
+  "ml_dag_execution": "Real scheduler/LocalExecutor manual run after 46-date Gold regeneration; four successful task instances required and verified",
+  "package_versions_verified": {
+    "apache-airflow": "3.1.0",
+    "joblib": "1.5.2",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scikit-learn": "1.7.2"
+  },
+  "phase4_metrics_comparison": "passed; exact confusion matrix/counts/ranges/features; score absolute tolerance 1e-12",
+  "prior_attempts": [
+    {
+      "result": "image built; initialization failed missing asyncpg; fixed by installing asyncpg==0.30.0",
+      "run_id": 42226204716
+    },
+    {
+      "result": "runtime/DAG/artifact checks passed; test container failed due bypassed Airflow entrypoint; corrected launcher",
+      "run_id": 42226733420
+    }
+  ],
+  "raw_hashes_verification": "All 46 matched committed manifest before and after execution",
+  "remaining_runtime_blockers": [],
+  "resource_guard": {
+    "exact_observations": "resource-check.json and resource logs in artifact",
+    "minimum_free_disk_gib": 20,
+    "minimum_ram_gib": 4,
+    "result": "passed"
+  },
+  "runner": "ubuntu-24.04 GitHub hosted",
+  "services_start_exit_code": 0,
+  "successful_job_log_excerpt": "2026-11-06T13:40:10.3486632Z Running docker-version\n2026-11-06T13:40:11.1330478Z docker-version: exit_code=0\n2026-11-06T13:40:11.1331075Z Running docker-info\n2026-11-06T13:40:13.0443719Z docker-info: exit_code=0\n2026-11-06T13:40:13.0444246Z Running memory\n2026-11-06T13:40:13.0472810Z memory: exit_code=0\n2026-11-06T13:40:13.0473532Z Running disk-before\n2026-11-06T13:40:13.0646775Z disk-before: exit_code=0\n2026-11-06T13:40:13.0866059Z Running docker-disk-before\n2026-11-06T13:40:13.0866688Z docker-disk-before: exit_code=0\n2026-11-06T13:40:13.0868408Z Running disk-after-resource-check\n2026-11-06T13:40:13.0895467Z disk-after-resource-check: exit_code=0\n2026-11-06T13:40:13.0968980Z Running compose-config\n2026-11-06T13:40:13.3031109Z compose-config: exit_code=0\n2026-11-06T13:40:13.3031779Z Running docker-build\n2026-11-06T13:40:48.3640998Z docker-build: exit_code=0\n2026-11-06T13:40:48.3641966Z Running postgres-start\n2026-11-06T13:40:59.4771201Z postgres-start: exit_code=0\n2026-11-06T13:40:59.4771984Z Running airflow-init\n2026-11-06T13:41:20.5532604Z airflow-init: exit_code=0\n2026-11-06T13:41:20.5533013Z Running services-start\n2026-11-06T13:42:14.1883088Z services-start: exit_code=0\n2026-11-06T13:42:14.1930276Z Running compose-status\n2026-11-06T13:42:14.3830294Z compose-status: exit_code=0\n2026-11-06T13:42:14.3831168Z Running id-postgres\n2026-11-06T13:42:14.5592885Z id-postgres: exit_code=0\n2026-11-06T13:42:14.5623308Z Running health-postgres\n2026-11-06T13:42:14.5904153Z health-postgres: exit_code=0\n2026-11-06T13:42:14.5904952Z Running id-airflow-apiserver\n2026-11-06T13:42:14.7623175Z id-airflow-apiserver: exit_code=0\n2026-11-06T13:42:14.7624347Z Running health-airflow-apiserver\n2026-11-06T13:42:14.7940268Z health-airflow-apiserver: exit_code=0\n2026-11-06T13:42:14.7953935Z Running id-airflow-scheduler\n2026-11-06T13:42:14.9940203Z id-airflow-scheduler: exit_code=0\n2026-11-06T13:42:14.9941656Z Running health-airflow-scheduler\n2026-11-06T13:42:15.0158597Z health-airflow-scheduler: exit_code=0\n2026-11-06T13:42:15.0159519Z Running id-airflow-dag-processor\n2026-11-06T13:42:15.2016477Z id-airflow-dag-processor: exit_code=0\n2026-11-06T13:42:15.2017036Z Running health-airflow-dag-processor\n2026-11-06T13:42:15.2245553Z health-airflow-dag-processor: exit_code=0\n2026-11-06T13:42:15.2246410Z Running id-airflow-triggerer\n2026-11-06T13:42:15.4113036Z id-airflow-triggerer: exit_code=0\n2026-11-06T13:42:15.4118024Z Running health-airflow-triggerer\n2026-11-06T13:42:15.4329016Z health-airflow-triggerer: exit_code=0\n2026-11-06T13:42:15.4336329Z Running dag-discovery-probe\n2026-11-06T13:42:20.9388403Z dag-discovery-probe: exit_code=0\n2026-11-06T13:42:20.9389308Z Running airflow-version\n2026-11-06T13:42:24.2142161Z airflow-version: exit_code=0\n2026-11-06T13:42:24.2142993Z Running dag-discovery\n2026-11-06T13:42:27.8472065Z dag-discovery: exit_code=0\n2026-11-06T13:42:27.8472528Z Running dag-import-errors\n2026-11-06T13:42:31.3450624Z dag-import-errors: exit_code=0\n2026-11-06T13:42:31.3451161Z Running unpause-data_pipeline\n2026-11-06T13:42:35.9508221Z unpause-data_pipeline: exit_code=0\n2026-11-06T13:42:35.9509242Z Running trigger-data_pipeline\n2026-11-06T13:42:39.7649178Z trigger-data_pipeline: exit_code=0\n2026-11-06T13:42:39.7649911Z Running states-data_pipeline\n2026-11-06T13:42:42.9999268Z states-data_pipeline: exit_code=0\n2026-11-06T13:42:53.0005724Z Running states-data_pipeline\n2026-11-06T13:42:57.1388867Z states-data_pipeline: exit_code=0\n2026-11-06T13:42:57.1646735Z Running pause-data_pipeline\n2026-11-06T13:43:00.9368318Z pause-data_pipeline: exit_code=0\n2026-11-06T13:43:00.9369363Z Running generate-all-gold\n2026-11-06T13:43:07.5918754Z generate-all-gold: exit_code=0\n2026-11-06T13:43:07.5921662Z Running unpause-ml_training_pipeline\n2026-11-06T13:43:11.3259882Z unpause-ml_training_pipeline: exit_code=0\n2026-11-06T13:43:11.3260451Z Running trigger-ml_training_pipeline\n2026-11-06T13:43:15.2063459Z trigger-ml_training_pipeline: exit_code=0\n2026-11-06T13:43:15.2064762Z Running states-ml_training_pipeline\n2026-11-06T13:43:18.4712199Z states-ml_training_pipeline: exit_code=0\n2026-11-06T13:43:28.4715901Z Running states-ml_training_pipeline\n2026-11-06T13:43:31.5963559Z states-ml_training_pipeline: exit_code=0\n2026-11-06T13:43:31.5966072Z Running pause-ml_training_pipeline\n2026-11-06T13:43:35.3836747Z pause-ml_training_pipeline: exit_code=0\n2026-11-06T13:43:35.3837450Z Running final-artifact-verification\n2026-11-06T13:43:41.5578043Z final-artifact-verification: exit_code=0\n2026-11-06T13:43:41.5580372Z Running test-image-build\n2026-11-06T13:43:46.6578965Z test-image-build: exit_code=0\n2026-11-06T13:43:46.6579508Z Running container-tests\n2026-11-06T13:45:34.6523569Z container-tests: exit_code=0\n2026-11-06T13:45:34.7068814Z Running final-compose-status\n2026-11-06T13:45:34.8144960Z final-compose-status: exit_code=0\n2026-11-06T13:45:34.8145299Z Running compose-service-logs\n2026-11-06T13:45:34.9402813Z compose-service-logs: exit_code=0\n2026-11-06T13:45:34.9403390Z Running final-id-postgres\n2026-11-06T13:45:35.0501201Z final-id-postgres: exit_code=0\n2026-11-06T13:45:35.0502235Z Running final-health-postgres\n2026-11-06T13:45:35.0657949Z final-health-postgres: exit_code=0\n2026-11-06T13:45:35.0658332Z Running final-id-airflow-apiserver\n2026-11-06T13:45:35.2040039Z final-id-airflow-apiserver: exit_code=0\n2026-11-06T13:45:35.2040461Z Running final-health-airflow-apiserver\n2026-11-06T13:45:35.2197943Z final-health-airflow-apiserver: exit_code=0\n2026-11-06T13:45:35.2198392Z Running final-id-airflow-scheduler\n2026-11-06T13:45:35.3264325Z final-id-airflow-scheduler: exit_code=0\n2026-11-06T13:45:35.3264840Z Running final-health-airflow-scheduler\n2026-11-06T13:45:35.3420363Z final-health-airflow-scheduler: exit_code=0\n2026-11-06T13:45:35.3420856Z Running final-id-airflow-dag-processor\n2026-11-06T13:45:35.4457314Z final-id-airflow-dag-processor: exit_code=0\n2026-11-06T13:45:35.4458060Z Running final-health-airflow-dag-processor\n2026-11-06T13:45:35.4611927Z final-health-airflow-dag-processor: exit_code=0\n2026-11-06T13:45:35.4612413Z Running final-id-airflow-triggerer\n2026-11-06T13:45:35.5911318Z final-id-airflow-triggerer: exit_code=0\n2026-11-06T13:45:35.5912161Z Running final-health-airflow-triggerer\n2026-11-06T13:45:35.6070855Z final-health-airflow-triggerer: exit_code=0\n2026-11-06T13:45:35.6100934Z Running shutdown\n2026-11-06T13:45:46.1975422Z shutdown: exit_code=0\n2026-11-06T13:45:46.1975734Z Running docker-disk-final\n2026-11-06T13:45:46.2250371Z docker-disk-final: exit_code=0\n2026-11-06T13:45:47.4359040Z Artifact download URL: https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176/artifacts/13506538230",
+  "task_state_source": "Original task-states-data_pipeline.json and task-states-ml_training_pipeline.json in evidence artifact; not reconstructed",
+  "verified_code_commit": "83dcc4e2fb782a83503396bccb7a8f8054d5a3e5",
+  "workflow_conclusion": "success",
+  "workflow_run_id": 42227343176,
+  "workflow_run_url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42227343176"
+}
