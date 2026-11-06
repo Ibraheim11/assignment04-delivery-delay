@@ -26,7 +26,9 @@ jobs:
         run: python3 -m scripts.reliability_screenshots
       - name: Collect sanitized logs and stop services
         if: always()
-        run: python3 scripts/docker_integration.py collect
+        run: |
+          python3 scripts/docker_integration.py collect
+          python3 -m scripts.reliability_archive
       - name: Persist selected genuine evidence on this branch
         if: always()
         run: |

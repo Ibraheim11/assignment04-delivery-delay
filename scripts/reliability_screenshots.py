@@ -27,7 +27,7 @@ def main():
                 page.locator('input[name="password"]').fill(env['AIRFLOW_ADMIN_PASSWORD'])
                 page.locator('input[type="submit"],button[type="submit"]').first.click()
                 page.wait_for_load_state('networkidle')
-            def capture(name, route, required, graph=False):
+            def capture_page(name, route, required, graph=False):
                 page.goto('http://127.0.0.1:8080' + route, wait_until='networkidle')
                 page.wait_for_timeout(2500)
                 if page.locator('input[type="password"]').count():
@@ -46,6 +46,11 @@ def main():
                 page.screenshot(path=str(path), full_page=True)
                 result['screenshots'].append({'path': str(path.relative_to(ROOT)), 'url': page.url,
                     'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+            def capture(name, route, required, graph=False):
+                try:
+                    capture_page(name, route, required, graph)
+                except Exception as exc:
+                    result['limitations'].append(name + ': ' + runtime.redact(str(exc)))
             capture('both-dags', '/dags', ['data_pipeline', 'ml_training_pipeline'])
             capture('data-pipeline-graph', '/dags/data_pipeline', ['extract_to_bronze','validate_gold'], True)
             capture('ml-training-graph', '/dags/ml_training_pipeline', ['load_gold_data','save_model'], True)
