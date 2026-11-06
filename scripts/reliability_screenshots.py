@@ -25,12 +25,23 @@ def main():
             response = context.request.post('http://127.0.0.1:8080/auth/token', data={
                 'username': env.get('AIRFLOW_ADMIN_USER', 'admin'),
                 'password': env['AIRFLOW_ADMIN_PASSWORD']})
-            if not response.ok:
-                raise RuntimeError(f'FAB token login failed with HTTP {response.status}')
-            token = response.json()['access_token']
-            context.add_cookies([{'name': '_token', 'value': token,
-                                 'url': 'http://127.0.0.1:8080/', 'httpOnly': False}])
             page = context.new_page()
+            if response.ok:
+                token = response.json()['access_token']
+                context.add_cookies([{'name': '_token', 'value': token,
+                                     'url': 'http://127.0.0.1:8080/', 'httpOnly': False}])
+                result['authentication'] = 'FAB token endpoint'
+            else:
+                # The pinned FAB provider may fail its FastAPI login route.
+                # Try the genuine Flask login form before declaring a limitation.
+                result['token_login_http_status'] = response.status
+                page.goto('http://127.0.0.1:8080/auth/login/', wait_until='networkidle')
+                page.locator('input[name="username"]').wait_for(timeout=15000)
+                page.locator('input[name="username"]').fill(env.get('AIRFLOW_ADMIN_USER', 'admin'))
+                page.locator('input[name="password"]').fill(env['AIRFLOW_ADMIN_PASSWORD'])
+                page.locator('input[type="submit"],button[type="submit"]').first.click()
+                page.wait_for_load_state('networkidle')
+                result['authentication'] = 'FAB live login form'
             def capture_page(name, route, required, graph=False):
                 page.goto('http://127.0.0.1:8080' + route, wait_until='networkidle')
                 page.wait_for_timeout(2500)
@@ -74,6 +85,10 @@ def main():
             browser.close()
     except Exception as exc:
         result['limitations'].append(runtime.redact(str(exc)))
+        # Keep the real server diagnosis if UI authentication is unavailable.
+        _, output = runtime.execute('ui-auth-diagnostics', runtime.COMPOSE +
+                                    ['logs', '--no-color', '--tail', '150', 'airflow-apiserver'], check=False)
+        (REPORT / 'ui-server-diagnostics.log').write_text(runtime.redact(output))
     (REPORT / 'screenshots.json').write_text(json.dumps(result, indent=2))
     print(json.dumps(result, indent=2))
 
