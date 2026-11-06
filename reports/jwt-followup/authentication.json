@@ -1,0 +1,10 @@
+{
+  "fab_token_login": "passed",
+  "authenticated_dag_api": "passed",
+  "authenticated_ui_html_route": "passed",
+  "required_dags": [
+    "data_pipeline",
+    "ml_training_pipeline"
+  ],
+  "scope": "Live HTTP integration; no browser rendering or new screenshot claimed."
+}

@@ -6,10 +6,12 @@ CSV, produces Bronze/Silver/Gold partitions, then trains and evaluates a saved
 LogisticRegression baseline. The objective is reliable orchestration; minority-class
 recall remains limited.
 
-The submission branch is `feature/phase7-final-submission`, based on Phase 6 commit
-`3f0c9832a1d29490e3d422a5130f51b9db17d435`. The PR targets `main` and is not merged
-by this submission. See the [complete requirement checklist](reports/phase7/requirements-checklist.md)
-and [final audit and actual test results](reports/phase7/validation.md).
+Phase 1–7 submission PR #1 was merged into `main` at
+`fe73d72a8eaf4e03b2e00d27c5445c84f1d74289`. The remaining JWT issuer correction
+is on `fix/final-airflow-jwt-issuer`; its follow-up PR is left unmerged for review.
+See the [original requirement checklist](reports/phase7/requirements-checklist.md),
+[Phase 7 audit](reports/phase7/validation.md) and
+[JWT follow-up results](reports/jwt-followup/validation.md).
 
 ## Architecture and repository
 
@@ -105,7 +107,8 @@ filesystem supporting POSIX `flock`. Docker Desktop must share the repository;
 WSL users should use its Linux filesystem.
 
 ```sh
-git clone --branch feature/phase7-final-submission https://github.com/Ibraheim11/assignment04-delivery-delay.git
+git clone --branch fix/final-airflow-jwt-issuer https://github.com/Ibraheim11/assignment04-delivery-delay.git
+# Use main after the follow-up issuer fix has been reviewed and merged.
 cd assignment04-delivery-delay
 python3 scripts/setup_docker_env.py
 docker compose config --quiet
@@ -131,6 +134,10 @@ admin. DAGs start paused. No credentials or database files are submitted.
 Shared Compose settings include the same nonempty JWT issuer used by the successful
 hosted UI capture; this avoids FAB login failures with the Docker-resolved PyJWT 2.15.1
 ([exact-version compatibility probe](reports/jwt-followup/compatibility.json)).
+For an existing deployment, recreate the Airflow services with `docker compose up -d --wait`
+and log in again so all components and new tokens use the shared issuer.
+With services running, `python3 scripts/verify_airflow_auth.py` checks live FAB login,
+authenticated DAG access and the UI HTML route without persisting tokens.
 
 For a deterministic first execution while DAGs remain paused:
 

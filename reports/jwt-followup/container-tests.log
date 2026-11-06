@@ -1,0 +1,68 @@
+
+/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/fab/auth_manager/fab_auth_manager.py:108 RemovedInAirflow4Warning: The airflow.security.permissions module is deprecated; please see https://airflow.apache.org/docs/apache-airflow/stable/security/deprecated_permissions.html
+[2m2026-11-06T18:21:14.272333Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-11-06T18:21:14.272504Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-11-06T18:21:14.274366Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-11-06T18:21:14.274480Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-11-06T18:21:14.274804Z[0m [[32m[1minfo     [0m] [1mCreating Airflow database tables from the ORM[0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:684[0m
+[2m2026-11-06T18:21:14.274919Z[0m [[32m[1minfo     [0m] [1mCreating context              [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:689[0m
+[2m2026-11-06T18:21:14.275299Z[0m [[32m[1minfo     [0m] [1mBinding engine                [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:691[0m
+[2m2026-11-06T18:21:14.275391Z[0m [[32m[1minfo     [0m] [1mPool status: NullPool         [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:693[0m
+[2m2026-11-06T18:21:14.275473Z[0m [[32m[1minfo     [0m] [1mCreating metadata             [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:695[0m
+[2m2026-11-06T18:21:14.339962Z[0m [[32m[1minfo     [0m] [1mGetting alembic config        [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:698[0m
+[2m2026-11-06T18:21:14.340617Z[0m [[32m[1minfo     [0m] [1mStamping migration head       [0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:705[0m
+[2m2026-11-06T18:21:14.342816Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-11-06T18:21:14.342936Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-11-06T18:21:14.403878Z[0m [[32m[1minfo     [0m] [1mRunning stamp_revision  -> cc92b33c6709[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:622[0m
+[2m2026-11-06T18:21:14.405346Z[0m [[32m[1minfo     [0m] [1mAirflow database tables created[0m [[0m[1m[34mairflow.utils.db[0m][0m [36mloc[0m=[35mdb.py:708[0m
+[2m2026-11-06T18:21:14.405791Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-11-06T18:21:14.405889Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+DB: sqlite:////tmp/airflow-test.db
+Performing upgrade to the metadata database sqlite:////tmp/airflow-test.db
+[2m2026-11-06T18:21:14.406819Z[0m [[32m[1minfo     [0m] [1mCreating FABDBManager tables from the ORM[0m [[0m[1m[34mairflow.providers.fab.auth_manager.models.db.FABDBManager[0m][0m [36mloc[0m=[35mdb_manager.py:92[0m
+[2m2026-11-06T18:21:14.420402Z[0m [[32m[1minfo     [0m] [1mContext impl SQLiteImpl.      [0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:211[0m
+[2m2026-11-06T18:21:14.420520Z[0m [[32m[1minfo     [0m] [1mWill assume non-transactional DDL.[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:214[0m
+[2m2026-11-06T18:21:14.422215Z[0m [[32m[1minfo     [0m] [1mRunning stamp_revision  -> 6709f7a774b9[0m [[0m[1m[34malembic.runtime.migration[0m][0m [36mloc[0m=[35mmigration.py:622[0m
+[2m2026-11-06T18:21:14.423234Z[0m [[32m[1minfo     [0m] [1mFABDBManager tables have been created from the ORM[0m [[0m[1m[34mairflow.providers.fab.auth_manager.models.db.FABDBManager[0m][0m [36mloc[0m=[35mdb_manager.py:97[0m
+Database migrating done!
+/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/fab/auth_manager/fab_auth_manager.py:108 RemovedInAirflow4Warning: The airflow.security.permissions module is deprecated; please see https://airflow.apache.org/docs/apache-airflow/stable/security/deprecated_permissions.html
+/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/dag_command.py:49 UserWarning: Could not import graphviz. Rendering graph to the graphical format will not be possible.
+You might need to install the graphviz package and necessary system packages.
+Run `pip install graphviz` to attempt to install it.
+[2m2026-11-06T18:21:17.026992Z[0m [[32m[1minfo     [0m] [1mDAG bundles loaded: dags-folder[0m [[0m[1m[34mairflow.dag_processing.bundles.manager.DagBundlesManager[0m][0m [36mloc[0m=[35mmanager.py:179[0m
+[2m2026-11-06T18:21:17.109337Z[0m [[32m[1minfo     [0m] [1mAdded new DAG bundle dags-folder to the database[0m [[0m[1m[34mairflow.dag_processing.bundles.manager.DagBundlesManager[0m][0m [36mloc[0m=[35mmanager.py:222[0m
+[2m2026-11-06T18:21:17.112431Z[0m [[32m[1minfo     [0m] [1mFilling up the DagBag from /opt/airflow/dags[0m [[0m[1m[34mairflow.models.dagbag.DagBag[0m][0m [36mloc[0m=[35mdagbag.py:593[0m
+[2m2026-11-06T18:21:17.157216Z[0m [[32m[1minfo     [0m] [1mSync 2 DAGs                   [0m [[0m[1m[34mairflow.serialization.serialized_objects[0m][0m [36mloc[0m=[35mserialized_objects.py:2860[0m
+[2m2026-11-06T18:21:17.164945Z[0m [[32m[1minfo     [0m] [1mCreating ORM DAG for ml_training_pipeline[0m [[0m[1m[34mairflow.dag_processing.collection[0m][0m [36mloc[0m=[35mcollection.py:89[0m
+[2m2026-11-06T18:21:17.165305Z[0m [[32m[1minfo     [0m] [1mCreating ORM DAG for data_pipeline[0m [[0m[1m[34mairflow.dag_processing.collection[0m][0m [36mloc[0m=[35mcollection.py:89[0m
+[2m2026-11-06T18:21:17.172961Z[0m [[32m[1minfo     [0m] [1mSetting next_dagrun for data_pipeline to 2026-11-06 00:00:00+00:00, run_after=2026-11-06 00:00:00+00:00[0m [[0m[1m[34mairflow.models.dag[0m][0m [36mloc[0m=[35mdag.py:688[0m
+[2m2026-11-06T18:21:17.174398Z[0m [[32m[1minfo     [0m] [1mSetting next_dagrun for ml_training_pipeline to None, run_after=None[0m [[0m[1m[34mairflow.models.dag[0m][0m [36mloc[0m=[35mdag.py:688[0m
+[2m2026-11-06T18:21:17.221168Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can read on DAG:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.227141Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can delete on DAG:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.233048Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can edit on DAG:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.239400Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can read on DAG Run:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.245465Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: menu access on DAG Run:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.251176Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can delete on DAG Run:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.257327Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can create on DAG Run:ml_training_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.272498Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can read on DAG:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.276683Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can delete on DAG:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.281122Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can edit on DAG:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.287349Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can read on DAG Run:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.291784Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: menu access on DAG Run:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.296120Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can delete on DAG Run:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+[2m2026-11-06T18:21:17.300387Z[0m [[32m[1minfo     [0m] [1mCreated Permission View: can create on DAG Run:data_pipeline[0m [[0m[1m[34mairflow.providers.fab.auth_manager.security_manager.override[0m][0m [36mloc[0m=[35moverride.py:1668[0m
+........................................................................ [ 66%]
+.....................................                                    [100%]
+=============================== warnings summary ===============================
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+  /home/airflow/.local/lib/python3.12/site-packages/airflow/api_fastapi/execution_api/routes/__init__.py:23: DeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    from airflow.api_fastapi.execution_api.routes import (
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+109 passed, 7 warnings in 77.38s (0:01:17)

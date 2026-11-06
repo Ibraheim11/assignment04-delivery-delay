@@ -46,7 +46,33 @@ an ephemeral key; token/key contents are never saved.
   responses are never persisted. A temporary PR trigger launches the verification;
   final configuration returns the expensive workflow to manual-only.
 
-Hosted follow-up execution is pending; no new authentication/runtime success is
-claimed before its observed job result and artifact are inspected. Local Docker
-storage remains below the established 20 GiB integration preflight, and browser
-workflow dispatch was unavailable, so hosted execution is used.
+## Observed hosted results
+
+[Docker integration run 42269411399](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42269411399)
+completed successfully on `bbc5847fadb1aa1d0243a80fb3a283eec96a5796`, using base
+Compose (no reliability-only issuer override). Both DAGs executed through the real
+scheduler; saved predictions/metrics/raw hashes matched baseline checks. The live
+FAB token endpoint, authenticated DAG API and UI HTML route all passed:
+[original observed authentication result](authentication.json). The container suite
+passed **109 tests / 7 existing warnings in 77.38 seconds**:
+[actual container log](container-tests.log).
+
+[PR regression run 42269411012](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42269411012)
+also passed: **109 tests / 7 warnings in 76.90 seconds**, plus the independent
+artifact audit. [Run/artifact metadata](hosted.json) records the tested source SHA.
+The downloaded Docker evidence ZIP passed CRC and SHA-256 verification:
+`a41690a109815a6f1c51a133de10c46e67fbf32d56e465b87ad5cbe984b7395c`.
+The authentication JSON and test log above were copied from it, not reconstructed.
+
+The temporary PR trigger was removed after success; the final Docker workflow is
+manual-only and retains the authentication check. Final subsequent edits only
+record results, correct README branch/status instructions and remove that trigger;
+runtime configuration and authentication check match the successfully tested source.
+No new browser rendering/screenshot capture or repeat native backfill is claimed.
+Existing screenshots and backfill/retry evidence remain unchanged.
+
+Local Docker storage is below the 20 GiB preflight, so Docker success is from the
+actual hosted runner. Browser workflow dispatch was unavailable; a scoped temporary
+PR trigger supplied the hosted check instead. Actions downloads expire after 14 days;
+selected evidence is committed. Assignment deliverables are preserved and the fix is
+verified on this branch; PR #2 remains open for review, with no automatic merge.
