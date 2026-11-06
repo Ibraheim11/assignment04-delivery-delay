@@ -1,6 +1,6 @@
 # Delivery delay prediction — Assignment 04
 
-Phases 1–4 are complete. Phase 1: the supplied daily delivery orders are extracted unchanged,
+Phases 1–4 are complete; Phase 5 adds Docker deployment configuration. Phase 1: the supplied daily delivery orders are extracted unchanged,
 verified, and explored with Pandas. The target is `late_delivery` (0 on time, 1 late).
 All three pages of the assignment PDF and the complete data dictionary were read
 before implementation. The PDF is present in fetched `origin/main` at `71cffac`.
@@ -236,7 +236,7 @@ Manual triggering and native backfill require healthy scheduler/API services;
 
 Actual Phase 3 validation and limitations are recorded in
 [reports/phase3_validation.md](reports/phase3_validation.md). Phase 1 and Phase 2
-reports remain historical evidence. The following Phase 4 section adds ML training. Docker Compose remains deferred.
+reports remain historical evidence. The following Phase 4 section adds ML training; Phase 5 below adds Docker deployment.
 
 ## Phase 4 — reproducible ML training
 
@@ -388,3 +388,212 @@ Reproducibility requires compatible pinned Python/package versions; numerical
 libraries/platform differences can change floating-point results.
 No scheduler-service run, UI screenshots, Graphviz output, Docker Compose,
 production deployment or merge to main is claimed for Phase 4.
+
+## Phase 5 — Docker Compose deployment
+
+The deployment uses the official `apache/airflow:slim-3.1.0-python3.12` Linux
+image, extended as the `airflow` user with the Phase 4 pinned Pandas, NumPy,
+Scikit-learn and Joblib versions. Airflow remains pinned to **3.1.0** during pip
+installation, and `pip check` checks installed dependency compatibility. FAB
+provider 2.4.3 and psycopg2-binary 2.9.10 follow Airflow 3.1.0's Python 3.12
+constraints. No model training or data generation occurs during image build.
+The optional `test` build target adds development test dependencies.
+
+Architecture adapts the [official Airflow 3.1.0 Compose quickstart](https://github.com/apache/airflow/blob/3.1.0/airflow-core/docs/howto/docker-compose/docker-compose.yaml):
+PostgreSQL 16 stores metadata; `airflow-init` migrates the DB and creates a FAB
+administrator; `airflow-apiserver` serves both API and UI; `airflow-dag-processor`
+parses DAGs; `airflow-scheduler` uses **LocalExecutor**, running task subprocesses
+in its own container; `airflow-triggerer` supports deferred tasks if added later.
+No Celery worker or Redis broker is needed for LocalExecutor. The optional
+`airflow-cli` tools profile uses exactly the same image, environment and mounts.
+Health checks gate DB initialization and API availability before scheduler startup.
+All new DAGs start paused; existing DAG schedules and retry settings are unchanged.
+
+### Prerequisites and first-time setup
+
+Use Docker Engine or Docker Desktop with **Linux containers**, Docker Compose v2
+(2.20+ recommended for `up --wait`), and Python 3 on the host for secret setup.
+Plan for at least 2 CPUs and 4 GB Docker memory (8 GB recommended), with at least
+20 GB free Docker storage; allow more with the `vfs` driver, which copies layers.
+Use a local filesystem with working POSIX advisory locks; network shares with
+unreliable `flock` semantics are unsuitable. Docker Desktop users should share the
+repository directory with Docker; WSL users should prefer the Linux filesystem.
+
+From a fresh clone, run these commands in the repository root:
+
+```sh
+python3 scripts/setup_docker_env.py
+# Creates private .env and output directories; never overwrites an existing .env.
+# Alternatively copy .env.example to .env and fill every secret explicitly.
+docker compose config --quiet
+docker compose build
+docker compose up airflow-init
+# Initialization must exit successfully before startup:
+docker compose up -d --wait
+docker compose ps
+docker compose run --rm airflow-cli airflow version
+docker compose run --rm airflow-cli python -m scripts.container_smoke
+```
+
+The setup script uses the host UID on Linux (default 50000 for platforms without
+`getuid` and for root hosts), group 0 as required by the Airflow image, and generates
+separate random DB, admin, JWT and Fernet secrets using Python's standard library.
+To use `.env.example` manually, set `AIRFLOW_UID` to `id -u` on non-root Linux,
+choose URL-safe DB/password values, generate a 32-byte URL-safe Base64 Fernet key,
+and provide a long random JWT secret. Keep all services on the same configured
+secrets. `.env` is ignored by Git and excluded from the image build context.
+Do not rotate the DB password without updating the existing database, and do not
+rotate Fernet keys without Airflow's key-rotation procedure.
+
+Open **http://localhost:8080**. Log in with `AIRFLOW_ADMIN_USER` and
+`AIRFLOW_ADMIN_PASSWORD` from your local `.env`; no credentials are committed.
+The initialization entrypoint creates the user on first run; changing the .env
+admin password later does not reset an existing FAB user's password. Use
+`docker compose run --rm airflow-cli airflow users reset-password --username admin`
+for an interactive reset. The API uses Airflow 3 authentication; a UI username
+and password are not Basic Auth credentials for every API endpoint.
+
+### Validation and deterministic local container executions
+
+After startup, verify both DAGs and package/file access:
+
+```sh
+docker compose run --rm airflow-cli airflow dags list --local
+docker compose run --rm airflow-cli airflow dags list-import-errors --local
+docker compose run --rm airflow-cli python -m scripts.container_smoke
+# Dated data DAG execution, independent of whether its schedule is paused:
+docker compose run --rm airflow-cli airflow dags test data_pipeline 2026-10-18 \
+  --conf '{"batch_date":"2026-10-18"}'
+# Regenerate and validate ALL 46 Gold dates before the ML DAG:
+docker compose run --rm airflow-cli python -m scripts.generate_gold
+docker compose run --rm airflow-cli airflow dags test ml_training_pipeline 2026-11-06
+# Revalidate raw hashes, all Gold, saved model predictions and actual metrics;
+# compare Docker metrics against the committed Phase 4 baseline:
+docker compose run --rm airflow-cli python -m scripts.container_smoke \
+  --check-gold --baseline reports/phase4_execution.json
+```
+
+The smoke script checks exact Airflow/model-library versions, zero import errors,
+both four-task dependency chains, access to all 46 raw CSVs and their SHA-256
+manifest, the fitted saved model, its hash and 245 sample predictions. With
+`--check-gold`, it validates all Gold, recomputes held-out metrics from the saved
+model without retraining, and checks the persisted evaluation. Baseline comparison
+allows 1e-12 metric tolerance and requires equal confusion matrix, dates/counts
+and selected features; platform differences can still cause this check to fail.
+
+`dags test` executes a real local DagRun through Airflow's in-process Execution API;
+it is useful for deterministic integration checks but does not demonstrate queued
+scheduler/worker execution. To queue manual runs using running services instead:
+
+```sh
+docker compose exec airflow-scheduler airflow dags unpause data_pipeline
+docker compose exec airflow-scheduler airflow dags trigger data_pipeline \
+  --conf '{"batch_date":"2026-10-18"}'
+# Generate all 46 Gold partitions using the command above, then:
+docker compose exec airflow-scheduler airflow dags unpause ml_training_pipeline
+docker compose exec airflow-scheduler airflow dags trigger ml_training_pipeline
+docker compose exec airflow-scheduler airflow dags list-runs --dag-id data_pipeline
+docker compose exec airflow-scheduler airflow dags list-runs --dag-id ml_training_pipeline
+```
+
+Unpausing the daily DAG also enables its normal current-date schedule. Monitor
+runs before triggering another ML job. The UTC midnight run on **2026-11-16**
+processes the final supplied batch, **2026-11-15**. Later scheduled runs fail in
+extraction when their exact raw file is absent, retry twice and block descendants.
+There is no latest-file fallback. If no new sources are available, pause it:
+
+```sh
+docker compose exec airflow-scheduler airflow dags pause data_pipeline
+```
+
+Manual `dags test` remains available while paused. New DAGs default to paused,
+so starting this finite assignment dataset does not immediately schedule missing
+future dates. Final backfill and UI evidence collection remain a later phase.
+
+### Mounts, persistence and shutdown
+
+Every Airflow service shares the same `/opt/airflow` project root and
+`PYTHONPATH=/opt/airflow`, matching the existing modules' relative path resolution.
+Bind mounts preserve `data/`, `models/`, `metrics/`, `reports/` and `logs/` on the
+host. `dags/`, `src/`, `scripts/`, tests and the dictionary are mounted read-only;
+`data/raw/` is additionally mounted read-only inside the writable data mount.
+The `postgres-db` named volume preserves metadata. No original workspace path is
+hardcoded in deployment files. Existing `fcntl.flock` locks remain active on the
+shared data mount; do not delete lock files while runs are active. LocalExecutor
+subprocesses share the scheduler's mounts, and CLI tasks see identical paths.
+
+```sh
+docker compose logs --tail=100 airflow-apiserver airflow-scheduler airflow-dag-processor
+docker compose stop        # retain containers, metadata and host outputs
+docker compose start       # resume stopped containers
+docker compose down        # remove containers/network, retain metadata volume
+# Only for an intentional metadata reset: docker compose down --volumes
+# This deletes Airflow metadata/users, but not host bind-mounted outputs.
+```
+
+### Troubleshooting and tests
+
+- A required-variable error means `.env` is missing or contains empty secrets.
+  Run setup once or edit `.env`; use `docker compose config --quiet` to validate
+  without printing interpolated secrets.
+- Permission errors: confirm `AIRFLOW_UID`, writable output directories and readable
+  code/input files. Rootless Docker maps UIDs differently; follow that engine's
+  bind-mount ownership guidance. Avoid making the whole repository world-writable.
+  Recreate services after changing UID or environment settings.
+- A failed/healthy DB gate: inspect `docker compose logs postgres airflow-init`.
+  An existing DB volume retains its original password. Preserve data rather than
+  resetting the volume blindly.
+- Missing DAGs/import errors: check DAG processor logs and `dags list-import-errors
+  --local`; verify all source mounts and `PYTHONPATH`. All execution components
+  need the same paths. Do not install packages on container startup.
+- Task API authentication failures: all services need the same JWT secret and
+  synchronized clocks; internal service names must bypass external proxies.
+- Build certificate errors in a managed proxy environment: mount the trusted
+  combined CA bundle with BuildKit rather than disabling verification:
+  `docker build --target runtime --secret id=proxy_ca,src=/path/to/ca-bundle.pem
+  -t assignment04-airflow:3.1.0 .`, then use `docker compose up --no-build`.
+  Normal local builds need no secret. Preserve your engine's proxy configuration.
+- `no space left on device`: increase Docker storage/free space. The cloud `vfs`
+  driver can exhaust a small disk while registering intermediate image layers;
+  this failure occurs before project dependencies are installed. Remove only
+  caches you own; do not change a shared daemon's storage driver to work around it.
+- Missing Gold partitions: rerun `python -m scripts.generate_gold` in the CLI
+  container; the ML DAG deliberately fails instead of training on a partial history.
+
+Run the complete suite locally with the Phase 3/4 development Airflow environment:
+`RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q`. To run inside Docker, build the
+optional test image and use an isolated development metadata database rather than
+the running service database:
+
+```sh
+docker build --target test -t assignment04-airflow:test .
+```
+
+For a local override file `work/compose.test.yml`:
+
+```yaml
+services:
+  airflow-cli:
+    image: assignment04-airflow:test
+    build:
+      target: test
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////tmp/airflow-test.db
+```
+
+```sh
+docker compose -f docker-compose.yml -f work/compose.test.yml run --rm \
+  --no-deps --entrypoint bash airflow-cli -c \
+  'airflow db migrate && airflow dags reserialize && RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q'
+```
+
+Actual Phase 5 results and the container runtime blocker are recorded in
+[reports/phase5_validation.md](reports/phase5_validation.md). Host regression and
+static configuration results are distinct from unexecuted container checks.
+
+Actual checks: Compose configuration and Dockerfile static validation passed;
+**90 host tests passed with 14 opt-in skips**, and the full host integration suite
+passed **104 tests**. Docker CLI/daemon were available, but both image builds failed
+while extracting/registering layers because the cloud's 8 GB vfs filesystem ran
+out of space. Initialization, service health and container DAG execution therefore
+remain unverified; no Docker metric comparison is claimed.

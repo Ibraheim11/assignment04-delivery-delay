@@ -1,0 +1,232 @@
+{
+  "base_commit": "b467122f06f56e10ad4f72ad2047ba3e48037e28",
+  "compose_startup": "not_run_image_build_blocked",
+  "compose_validation": {
+    "command": [
+      "docker",
+      "compose",
+      "config",
+      "--quiet"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "compose_version": {
+    "command": [
+      "docker",
+      "compose",
+      "version"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Docker Compose version v2.40.3\n"
+  },
+  "container_dag_discovery": "not_run_image_build_blocked",
+  "container_data_dag_execution": "not_run_image_build_blocked",
+  "container_gold_regeneration": "not_run_image_build_blocked",
+  "container_health": "not_run_image_build_blocked",
+  "container_ml_dag_execution": "not_run_image_build_blocked",
+  "docker_available": true,
+  "docker_driver_cpus_memory": {
+    "command": [
+      "docker",
+      "info",
+      "--format",
+      "{{.Driver}} {{.NCPU}} {{.MemTotal}}"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "vfs 3 10452459520\n"
+  },
+  "docker_metrics_vs_phase4": "not_available_no_container_model_generated",
+  "docker_versions": {
+    "command": [
+      "docker",
+      "version",
+      "--format",
+      "{{.Client.Version}} {{.Server.Version}}"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "29.9.2 29.9.2\n"
+  },
+  "dockerfile_static_check": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.16kB done\n#1 DONE 0.0s\n\n#2 resolve image config for docker-image://docker.io/docker/dockerfile:1\n#2 DONE 0.4s\n\n#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e\n#3 CACHED\n\n#4 [internal] load metadata for docker.io/apache/airflow:slim-3.1.0-python3.12\n#4 DONE 1.1s\n\n#5 [internal] load .dockerignore\n#5 transferring context: 182B done\n#5 DONE 0.0s\nCheck complete, no warnings found.\n",
+  "filesystem": {
+    "command": [
+      "df",
+      "-h",
+      "/workspace"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         7.9G  1.4G  6.1G  19% /workspace\n"
+  },
+  "host_only_dag_discovery": "/workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/cli/commands/dag_command.py:49 UserWarning: Could not import graphviz. Rendering graph to the graphical format will not be possible.\nYou might need to install the graphviz package and necessary system packages.\nRun `pip install graphviz` to attempt to install it.\ndag_id               | fileloc                                                             | owners  | is_paused | bundle_name | bundle_version\n=====================+=====================================================================+=========+===========+=============+===============\ndata_pipeline        | /workspace/assignment04-delivery-delay/dags/data_pipeline.py        | airflow | True      | dags-folder | None          \nml_training_pipeline | /workspace/assignment04-delivery-delay/dags/ml_training_pipeline.py | airflow | True      | dags-folder | None          \n                                                                                                                                               \n",
+  "host_only_dag_import_errors": "/workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/cli/commands/dag_command.py:49 UserWarning: Could not import graphviz. Rendering graph to the graphical format will not be possible.\nYou might need to install the graphviz package and necessary system packages.\nRun `pip install graphviz` to attempt to install it.\nNo data found\n",
+  "host_only_full_tests": "........................................................................ [ 69%]\n................................                                         [100%]\n=============================== warnings summary ===============================\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\ntests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]\n  /workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/api_fastapi/execution_api/routes/__init__.py:23: DeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.\n    from airflow.api_fastapi.execution_api.routes import (\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n104 passed, 7 warnings in 88.61s (0:01:28)\n",
+  "host_only_preflight": {
+    "dags": {
+      "data_pipeline": [
+        "extract_to_bronze",
+        "transform_to_silver",
+        "prepare_gold",
+        "validate_gold"
+      ],
+      "ml_training_pipeline": [
+        "load_gold_data",
+        "train_model",
+        "evaluate_model",
+        "save_model"
+      ]
+    },
+    "gold_partitions_validated": 46,
+    "gold_rows": 10053,
+    "import_errors": {},
+    "metrics": {
+      "accuracy": 0.7332490518331226,
+      "candidate_sha256": "b7a8a2d004be6b8a8310803343d321246d6c2f346dfb280f04c5eec940e82cd5",
+      "confusion_matrix": [
+        [
+          1571,
+          104
+        ],
+        [
+          529,
+          169
+        ]
+      ],
+      "confusion_matrix_labels": [
+        0,
+        1
+      ],
+      "cutoff_date": "2026-11-06",
+      "f1_score": 0.34809474768280124,
+      "model_name": "LogisticRegression",
+      "precision": 0.6190476190476191,
+      "random_state": 42,
+      "recall": 0.24212034383954154,
+      "selected_features": [
+        "order_hour",
+        "items_count",
+        "promised_delivery_days",
+        "distance_km",
+        "package_weight_kg",
+        "order_value_egp",
+        "warehouse_load_pct",
+        "carrier_on_time_rate",
+        "is_weekend",
+        "distance_per_promised_day",
+        "customer_region",
+        "shipping_method",
+        "weather_risk_level"
+      ],
+      "split_strategy": "chronological earliest floor(train_fraction * dates) train; latest dates test",
+      "target_class_distribution": {
+        "test": {
+          "0": 1675,
+          "1": 698
+        },
+        "train": {
+          "0": 5999,
+          "1": 1681
+        }
+      },
+      "test_date_range": [
+        "2026-11-06",
+        "2026-11-15"
+      ],
+      "test_dates": [
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-15"
+      ],
+      "test_rows": 2373,
+      "train_date_range": [
+        "2026-10-01",
+        "2026-11-05"
+      ],
+      "train_dates": [
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-10",
+        "2026-10-11",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05"
+      ],
+      "train_fraction": 0.8,
+      "train_rows": 7680
+    },
+    "phase4_metrics_match": true,
+    "raw_hashes_verified": 46,
+    "saved_model_predictions": 245,
+    "versions": {
+      "apache-airflow": "3.1.0",
+      "joblib": "1.5.2",
+      "numpy": "1.26.4",
+      "pandas": "2.1.4",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "host_only_unit_tests": "..............................sssssssss.............................ssss [ 69%]\ns...............................                                         [100%]\n90 passed, 14 skipped in 9.36s\n",
+  "image_build_attempts": [
+    {
+      "base": "apache/airflow:3.1.0-python3.12",
+      "command": "docker compose build --build-arg BUILDKIT_INLINE_CACHE=1",
+      "log": "#1 [internal] load local bake definitions\n#1 reading from stdin 3.72kB done\n#1 DONE 0.0s\n\n#2 [airflow-triggerer internal] load build definition from Dockerfile\n#2 transferring dockerfile: 1.09kB done\n#2 DONE 0.0s\n\n#3 [airflow-scheduler] resolve image config for docker-image://docker.io/docker/dockerfile:1\n#3 DONE 1.8s\n\n#4 [airflow-dag-processor] docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e\n#4 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.1s done\n#4 sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 9.08kB / 9.08kB done\n#4 sha256:7b32114e84ca21aeb2d6f871a0b62b3a0762193f75d9afd048ee4cbe889f3148 1.13kB / 1.13kB done\n#4 sha256:528c92d70d7e39dbb3dd1c6681f6750c565c7e45b70527cda47c1a61495c1b6a 1.41kB / 1.41kB done\n#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0B / 14.28MB 0.1s\n#4 sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 9.08kB / 9.08kB done\n#4 sha256:7b32114e84ca21aeb2d6f871a0b62b3a0762193f75d9afd048ee4cbe889f3148 1.13kB / 1.13kB done\n#4 sha256:528c92d70d7e39dbb3dd1c6681f6750c565c7e45b70527cda47c1a61495c1b6a 1.41kB / 1.41kB done\n#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 4.19MB / 14.28MB 0.4s\n#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 9.44MB / 14.28MB 0.7s\n#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 14.28MB / 14.28MB 0.8s done\n#4 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62\n#4 sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 14.28MB / 14.28MB 0.8s done\n#4 extracting sha256:9d2b4f57f9e20f33279375ce25c6ff14f30f64270ed5c7b613b2b30256754f62 0.8s done\n#4 DONE 1.8s\n\n#5 [airflow-apiserver internal] load metadata for docker.io/apache/airflow:3.1.0-python3.12\n#5 ERROR: mkdir /home/dockerd/.local/share/docker/buildkit/content/ingest/d9c1433ab65901bd20af90b060b3fa5f6d4886fb946f7e553a13dcfcf6456275: no space left on device\n------\n > [airflow-dag-processor internal] load metadata for docker.io/apache/airflow:3.1.0-python3.12:\n------\nDockerfile:2\n\n--------------------\n\n   1 |     # syntax=docker/dockerfile:1\n\n   2 | >>> FROM apache/airflow:3.1.0-python3.12 AS runtime\n\n   3 |     USER airflow\n\n   4 |     COPY --chown=airflow:root requirements.txt /opt/airflow/requirements.txt\n\n--------------------\n\ntarget airflow-apiserver: failed to solve: ResourceExhausted: mkdir /home/dockerd/.local/share/docker/buildkit/content/ingest/d9c1433ab65901bd20af90b060b3fa5f6d4886fb946f7e553a13dcfcf6456275: no space left on device\n\n",
+      "status": "failed"
+    },
+    {
+      "base": "apache/airflow:slim-3.1.0-python3.12",
+      "command": "docker build --target runtime --secret id=proxy_ca,src=/etc/ssl/certs/ca-certificates.crt -t assignment04-airflow:3.1.0 .",
+      "log": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.16kB done\n#1 DONE 0.0s\n\n#2 resolve image config for docker-image://docker.io/docker/dockerfile:1\n#2 DONE 0.2s\n\n#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e\n#3 CACHED\n\n#4 [internal] load metadata for docker.io/apache/airflow:slim-3.1.0-python3.12\n#4 DONE 1.0s\n\n#5 [internal] load .dockerignore\n#5 transferring context: 182B done\n#5 DONE 0.0s\n\n#6 [internal] load build context\n#6 transferring context: 193B done\n#6 DONE 0.0s\n\n#7 [runtime 1/4] FROM docker.io/apache/airflow:slim-3.1.0-python3.12@sha256:078066da4fb66a9832d93e6b89e0c711d571e2bd2d6abe96e1965bad9d1b931d\n#7 resolve docker.io/apache/airflow:slim-3.1.0-python3.12@sha256:078066da4fb66a9832d93e6b89e0c711d571e2bd2d6abe96e1965bad9d1b931d done\n#7 sha256:63aeeb13057244797a98d7287c6a8d2e865653ec115f3ad015878dcc6125ef63 3.90kB / 3.90kB done\n#7 sha256:6421a45446d6c1ca3b57489494f14500ecc109c31c0f1866cd52fd6eb3bf69c8 0B / 3.72kB 0.1s\n#7 sha256:078066da4fb66a9832d93e6b89e0c711d571e2bd2d6abe96e1965bad9d1b931d 1.61kB / 1.61kB done\n#7 sha256:2f61963058d3ca65b16a0db1c31afa4ec06e5938b0549851bd7121a91b181fd7 19.97kB / 19.97kB done\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 0B / 28.23MB 0.1s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 0B / 16.41MB 0.1s\n#7 sha256:6421a45446d6c1ca3b57489494f14500ecc109c31c0f1866cd52fd6eb3bf69c8 3.72kB / 3.72kB 0.3s done\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 5.24MB / 28.23MB 0.5s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 1.05MB / 16.41MB 0.5s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 0B / 86.67MB 0.5s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 10.49MB / 28.23MB 0.7s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 4.19MB / 16.41MB 0.7s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 12.58MB / 28.23MB 0.8s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 6.29MB / 16.41MB 0.8s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 14.68MB / 28.23MB 0.9s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 7.34MB / 16.41MB 0.9s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 17.83MB / 28.23MB 1.1s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 11.53MB / 16.41MB 1.1s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 5.24MB / 86.67MB 1.1s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 19.92MB / 28.23MB 1.2s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 13.63MB / 16.41MB 1.2s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 23.07MB / 28.23MB 1.4s\n#7 sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 16.41MB / 16.41MB 1.3s done\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 11.53MB / 86.67MB 1.4s\n#7 sha256:66a24e8fbe750e7d9afaf22e4ca5de8f952f8b0e14fe0b68548152e1b599e3a3 0B / 2.66kB 1.4s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 25.17MB / 28.23MB 1.5s\n#7 sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 28.23MB / 28.23MB 1.6s done\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 16.78MB / 86.67MB 1.6s\n#7 sha256:370ca34a68730f5691a0eb56073b0b66e22f079c2657fe8c53f765040698bf78 0B / 2.24kB 1.6s\n#7 extracting sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3\n#7 sha256:66a24e8fbe750e7d9afaf22e4ca5de8f952f8b0e14fe0b68548152e1b599e3a3 2.66kB / 2.66kB 1.6s done\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 0B / 22.41MB 1.7s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 26.21MB / 86.67MB 1.8s\n#7 sha256:370ca34a68730f5691a0eb56073b0b66e22f079c2657fe8c53f765040698bf78 2.24kB / 2.24kB 1.8s done\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 0B / 85.43MB 1.8s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 31.46MB / 86.67MB 1.9s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 37.75MB / 86.67MB 2.1s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 3.15MB / 22.41MB 2.1s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 5.24MB / 22.41MB 2.2s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 7.34MB / 22.41MB 2.3s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 44.04MB / 86.67MB 2.4s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 9.44MB / 22.41MB 2.4s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 12.58MB / 22.41MB 2.6s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 14.68MB / 22.41MB 2.7s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 5.24MB / 85.43MB 2.7s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 50.33MB / 86.67MB 2.8s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 16.78MB / 22.41MB 2.8s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 55.57MB / 86.67MB 3.1s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 20.97MB / 22.41MB 3.1s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 12.58MB / 85.43MB 3.1s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 60.82MB / 86.67MB 3.3s\n#7 sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 22.41MB / 22.41MB 3.2s done\n#7 sha256:4d1179978c9a559de9adbe09fdb2019ab13c26db3deef9996e138c4eae3459a4 0B / 6.80kB 3.3s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 66.06MB / 86.67MB 3.5s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 20.97MB / 85.43MB 3.5s\n#7 sha256:4d1179978c9a559de9adbe09fdb2019ab13c26db3deef9996e138c4eae3459a4 6.80kB / 6.80kB 3.5s done\n#7 sha256:957813ba36719baa60ca44bccd9bc17cf2867edf382531dbcc35db85a99be021 0B / 21.55kB 3.6s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 74.45MB / 86.67MB 3.8s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 28.31MB / 85.43MB 3.8s\n#7 extracting sha256:d107e437f7299a0db6425d4e37f44fa779f7917ecc8daf1e87128ee91b9ed3d3 2.3s done\n#7 sha256:957813ba36719baa60ca44bccd9bc17cf2867edf382531dbcc35db85a99be021 21.55kB / 21.55kB 3.9s done\n#7 sha256:4e254a2d26162018c4150dc07c151c8729545f521b1d3ee7ca2d200b454b15ac 0B / 4.00kB 3.9s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 81.79MB / 86.67MB 4.1s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 35.65MB / 85.43MB 4.1s\n#7 sha256:d6cde7d48442e6f89b04e927b1cff5d1a836590a40f6fa6f3fbd43931fa6b8f9 0B / 521B 4.1s\n#7 sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 86.67MB / 86.67MB 4.3s done\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 40.89MB / 85.43MB 4.3s\n#7 sha256:567c139ba82bf6e1266b7477313867ae45090cfeb2ee48d9e521bc59ff07264d 0B / 290B 4.3s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 51.38MB / 85.43MB 4.5s\n#7 sha256:d6cde7d48442e6f89b04e927b1cff5d1a836590a40f6fa6f3fbd43931fa6b8f9 521B / 521B 4.3s done\n#7 sha256:567c139ba82bf6e1266b7477313867ae45090cfeb2ee48d9e521bc59ff07264d 290B / 290B 4.5s done\n#7 sha256:3d36245b9ac94f4ac783aca4778bd2ebe1453e66f6bbe80a1d62958ee31c743e 0B / 5.37kB 4.5s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 59.77MB / 85.43MB 4.7s\n#7 sha256:3d36245b9ac94f4ac783aca4778bd2ebe1453e66f6bbe80a1d62958ee31c743e 5.37kB / 5.37kB 4.7s done\n#7 sha256:3ca9d9f3fde935cffac37028044f2869a2b9491442cecff74e93952f5ec041dd 0B / 1.06kB 4.7s\n#7 sha256:700df6c3b4dfb2ac0232a9942734ec19f62ebc51807be71c5747a06196fb43a8 0B / 115B 4.7s\n#7 sha256:3ca9d9f3fde935cffac37028044f2869a2b9491442cecff74e93952f5ec041dd 1.06kB / 1.06kB 4.8s done\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 68.16MB / 85.43MB 4.9s\n#7 extracting sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 0.1s\n#7 sha256:bac8d9a9e116589fc7682c58e7b71fa52a5e0a96194923c1ee787b6f7fc8daee 0B / 431B 4.9s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 81.79MB / 85.43MB 5.2s\n#7 sha256:700df6c3b4dfb2ac0232a9942734ec19f62ebc51807be71c5747a06196fb43a8 115B / 115B 5.1s done\n#7 sha256:2a971453021bb904aeea7a33602564675bd61accd9cebb704b8ee497947d89c0 0B / 430B 5.2s\n#7 sha256:bac8d9a9e116589fc7682c58e7b71fa52a5e0a96194923c1ee787b6f7fc8daee 431B / 431B 5.2s done\n#7 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0B / 32B 5.3s\n#7 sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 85.43MB / 85.43MB 5.3s done\n#7 sha256:2a971453021bb904aeea7a33602564675bd61accd9cebb704b8ee497947d89c0 430B / 430B 5.5s done\n#7 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 5.5s done\n#7 extracting sha256:ecbab89afa7af5a747eecdeb99e2f6bda25be8ad0c8289307ff6913137413749 1.4s done\n#7 extracting sha256:6421a45446d6c1ca3b57489494f14500ecc109c31c0f1866cd52fd6eb3bf69c8 done\n#7 extracting sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db\n#7 extracting sha256:ff6ad54e57589fd44b924134ee39e12fc62ed3b0d0c2eb948bfcbc0b210cf5db 3.2s done\n#7 extracting sha256:66a24e8fbe750e7d9afaf22e4ca5de8f952f8b0e14fe0b68548152e1b599e3a3 done\n#7 extracting sha256:370ca34a68730f5691a0eb56073b0b66e22f079c2657fe8c53f765040698bf78\n#7 extracting sha256:370ca34a68730f5691a0eb56073b0b66e22f079c2657fe8c53f765040698bf78 done\n#7 extracting sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416\n#7 extracting sha256:1011dac84990ad24a810d51f9a69897fe19d46f7194f5d2ee2797ae8a0224416 0.9s done\n#7 extracting sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d\n#7 extracting sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 5.0s\n#7 extracting sha256:712c7623a529bb14d2cd94ae20f903433b1528be8b0579a0ac2eeec2d2def92d 5.3s done\n#7 extracting sha256:4d1179978c9a559de9adbe09fdb2019ab13c26db3deef9996e138c4eae3459a4 done\n#7 extracting sha256:957813ba36719baa60ca44bccd9bc17cf2867edf382531dbcc35db85a99be021\n#7 extracting sha256:957813ba36719baa60ca44bccd9bc17cf2867edf382531dbcc35db85a99be021 done\n#7 extracting sha256:4e254a2d26162018c4150dc07c151c8729545f521b1d3ee7ca2d200b454b15ac\n#7 extracting sha256:4e254a2d26162018c4150dc07c151c8729545f521b1d3ee7ca2d200b454b15ac done\n#7 extracting sha256:d6cde7d48442e6f89b04e927b1cff5d1a836590a40f6fa6f3fbd43931fa6b8f9\n#7 extracting sha256:d6cde7d48442e6f89b04e927b1cff5d1a836590a40f6fa6f3fbd43931fa6b8f9 done\n#7 extracting sha256:567c139ba82bf6e1266b7477313867ae45090cfeb2ee48d9e521bc59ff07264d\n#7 extracting sha256:567c139ba82bf6e1266b7477313867ae45090cfeb2ee48d9e521bc59ff07264d done\n#7 extracting sha256:3d36245b9ac94f4ac783aca4778bd2ebe1453e66f6bbe80a1d62958ee31c743e\n#7 extracting sha256:3d36245b9ac94f4ac783aca4778bd2ebe1453e66f6bbe80a1d62958ee31c743e done\n#7 ERROR: failed to register layer: mkdir /home/dockerd/.local/share/docker/vfs/dir/90f7bdadd5d466bf203fa650476e420bc61452bbc6dd1332f71466e7aaaf0dbc/home/airflow/.local/lib/python3.12/site-packages/cryptography/hazmat/bindings/openssl: no space left on device\n------\n > [runtime 1/4] FROM docker.io/apache/airflow:slim-3.1.0-python3.12@sha256:078066da4fb66a9832d93e6b89e0c711d571e2bd2d6abe96e1965bad9d1b931d:\n------\nDockerfile:2\n--------------------\n   1 |     # syntax=docker/dockerfile:1\n   2 | >>> FROM apache/airflow:slim-3.1.0-python3.12 AS runtime\n   3 |     USER airflow\n   4 |     COPY --chown=airflow:root requirements.txt /opt/airflow/requirements.txt\n--------------------\nERROR: failed to build: failed to solve: failed to register layer: mkdir /home/dockerd/.local/share/docker/vfs/dir/90f7bdadd5d466bf203fa650476e420bc61452bbc6dd1332f71466e7aaaf0dbc/home/airflow/.local/lib/python3.12/site-packages/cryptography/hazmat/bindings/openssl: no space left on device\n",
+      "status": "failed"
+    }
+  ],
+  "image_build_status": "failed_storage_exhaustion_before_project_dependency_installation",
+  "initialization": "not_run_image_build_blocked",
+  "previous_code_data_and_artifacts_unchanged": true,
+  "remaining_limitations": [
+    "8 GB cloud filesystem exhausted by vfs base-image layer registration",
+    "Image installation and all container executions unverified; rerun on adequate Docker storage"
+  ],
+  "saved_model_sha256": "b7a8a2d004be6b8a8310803343d321246d6c2f346dfb280f04c5eec940e82cd5",
+  "screenshots_created": false
+}
