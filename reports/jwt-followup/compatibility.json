@@ -1,0 +1,7 @@
+{
+  "pyjwt_version": "2.15.1",
+  "null_issuer_error": "Issuer (iss) must be a string.",
+  "shared_issuer_roundtrip": "passed",
+  "all_airflow_services_share_issuer": true,
+  "issuer": "assignment04-phase6-ci"
+}

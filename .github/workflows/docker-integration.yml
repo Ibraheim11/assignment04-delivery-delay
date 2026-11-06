@@ -16,6 +16,8 @@ jobs:
           persist-credentials: false
       - name: Build, start and execute both DAGs
         run: python3 scripts/docker_integration.py run
+      - name: Verify live FAB authentication and UI route
+        run: python3 scripts/verify_airflow_auth.py
       - name: Collect sanitized diagnostics and stop services
         if: always()
         run: python3 scripts/docker_integration.py collect

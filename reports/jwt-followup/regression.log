@@ -1,0 +1,15 @@
+........................................................................ [ 66%]
+.....................................                                    [100%]
+=============================== warnings summary ===============================
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+tests/test_data_pipeline_execution.py::test_real_run_and_rerun[2026-10-01-180]
+  /workspace/.delivery-delay-venv/lib/python3.12/site-packages/airflow/api_fastapi/execution_api/routes/__init__.py:23: DeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    from airflow.api_fastapi.execution_api.routes import (
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+109 passed, 7 warnings in 83.12s (0:01:23)

@@ -1,0 +1,34 @@
+{
+  "docker": {
+    "run_id": 42269411399,
+    "url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42269411399",
+    "source_commit": "bbc5847fadb1aa1d0243a80fb3a283eec96a5796",
+    "conclusion": "success",
+    "artifact": {
+      "id": 13528717685,
+      "name": "docker-runtime-42269411399-1",
+      "size_in_bytes": 93038,
+      "url": "https://api.github.com/repos/Ibraheim11/assignment04-delivery-delay/actions/artifacts/13528717685",
+      "archive_download_url": "https://api.github.com/repos/Ibraheim11/assignment04-delivery-delay/actions/artifacts/13528717685/zip",
+      "expired": false,
+      "created_at": "2026-11-06T18:22:42Z",
+      "expires_at": "2026-11-20T18:22:41Z",
+      "updated_at": "2026-11-06T18:22:42Z",
+      "digest": "sha256:a41690a109815a6f1c51a133de10c46e67fbf32d56e465b87ad5cbe984b7395c",
+      "workflow_run": {
+        "id": 42269411399,
+        "repository_id": 1448219771,
+        "head_repository_id": 1448219771,
+        "head_branch": "fix/final-airflow-jwt-issuer",
+        "head_sha": "bbc5847fadb1aa1d0243a80fb3a283eec96a5796"
+      }
+    }
+  },
+  "regression": {
+    "run_id": 42269411012,
+    "url": "https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42269411012",
+    "source_commit": "bbc5847fadb1aa1d0243a80fb3a283eec96a5796",
+    "conclusion": "success",
+    "observed_pytest": "109 passed, 7 warnings in 76.90s"
+  }
+}
