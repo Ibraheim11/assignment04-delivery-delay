@@ -1,0 +1,98 @@
+[
+  {
+    "run_id": "manual__2026-11-06T12:50:31.796003+00:00",
+    "logical_date": "2026-10-18 00:00:00+00:00",
+    "batch_date": "2026-10-18",
+    "state": "success",
+    "tasks": {
+      "extract_to_bronze": {
+        "state": "success",
+        "try_number": 1
+      },
+      "transform_to_silver": {
+        "state": "success",
+        "try_number": 1
+      },
+      "prepare_gold": {
+        "state": "success",
+        "try_number": 1
+      },
+      "validate_gold": {
+        "state": "success",
+        "try_number": 1
+      }
+    }
+  },
+  {
+    "run_id": "manual__2026-11-06T12:50:40.500365+00:00",
+    "logical_date": "2026-10-19 00:00:00+00:00",
+    "batch_date": "2026-10-19",
+    "state": "success",
+    "tasks": {
+      "extract_to_bronze": {
+        "state": "success",
+        "try_number": 1
+      },
+      "transform_to_silver": {
+        "state": "success",
+        "try_number": 1
+      },
+      "prepare_gold": {
+        "state": "success",
+        "try_number": 1
+      },
+      "validate_gold": {
+        "state": "success",
+        "try_number": 1
+      }
+    }
+  },
+  {
+    "run_id": "manual__2026-11-06T12:50:49.436721+00:00",
+    "logical_date": "2026-10-20 00:00:00+00:00",
+    "batch_date": "2026-10-20",
+    "state": "success",
+    "tasks": {
+      "extract_to_bronze": {
+        "state": "success",
+        "try_number": 1
+      },
+      "transform_to_silver": {
+        "state": "success",
+        "try_number": 1
+      },
+      "prepare_gold": {
+        "state": "success",
+        "try_number": 1
+      },
+      "validate_gold": {
+        "state": "success",
+        "try_number": 1
+      }
+    }
+  },
+  {
+    "run_id": "manual__2026-11-06T12:51:08.633827+00:00",
+    "logical_date": "2026-10-01 00:00:00+00:00",
+    "batch_date": "2026-10-01",
+    "state": "success",
+    "tasks": {
+      "extract_to_bronze": {
+        "state": "success",
+        "try_number": 2
+      },
+      "transform_to_silver": {
+        "state": "success",
+        "try_number": 1
+      },
+      "prepare_gold": {
+        "state": "success",
+        "try_number": 1
+      },
+      "validate_gold": {
+        "state": "success",
+        "try_number": 1
+      }
+    }
+  }
+]

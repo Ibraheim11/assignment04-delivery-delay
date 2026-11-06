@@ -7,3 +7,5 @@ __pycache__/
 .env
 work/
 logs/
+# Persistent per-date advisory lock inodes (not data artifacts)
+data/.locks/

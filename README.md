@@ -1,6 +1,6 @@
 # Delivery delay prediction — Assignment 04
 
-Phases 1 and 2 are complete. Phase 1: the supplied daily delivery orders are extracted unchanged,
+Phases 1, 2 and 3 are complete. Phase 1: the supplied daily delivery orders are extracted unchanged,
 verified, and explored with Pandas. The target is `late_delivery` (0 on time, 1 late).
 All three pages of the assignment PDF and the complete data dictionary were read
 before implementation. The PDF is present in fetched `origin/main` at `71cffac`.
@@ -118,11 +118,122 @@ sum is **546**, replacing the README typo of 646.
 Only four example partitions are generated; the remaining source batches are
 preserved for later runs. Unknown feature values remain missing for future
 training-only preprocessing. Atomic replacement protects individual files, not an
-entire multi-stage run; downstream steps must stop on failure. Concurrent writes
-to the same date are not coordinated. Quality reports describe successful Silver
+entire multi-stage run; downstream steps must stop on failure. Direct ETL CLI writes to the same date are not coordinated; the Phase 3 DAG
+adds concurrency protection as documented below. Quality reports describe successful Silver
 runs, not an orchestration audit history. Extra input columns are ignored after
 required-column validation. Empty future directories remain placeholders.
 
-No Airflow DAGs, ML training, Docker execution or screenshots were added. Nothing
+At the end of Phase 2, no Airflow DAGs, ML training, Docker execution or screenshots had been added. Nothing
 was merged into main. The Phase 1 exploration report describes that earlier phase;
 Phase 2 evidence is in the ETL reports. No model or evaluation metrics exist yet.
+
+## Phase 3 — Airflow data DAG
+
+`dags/data_pipeline.py` uses the public Apache Airflow 3.1 `airflow.sdk`
+TaskFlow API. No cleaning logic is duplicated:
+
+```text
+extract_to_bronze -> transform_to_silver -> prepare_gold -> validate_gold
+```
+
+Each task calls its tested counterpart in `src/etl.py`. Only the validated date
+string passes through XCom; DataFrames stay local. The last task returns no data.
+Every task uses `all_success`, two retries and a five-minute retry delay. An
+exception is logged and raised; dependent tasks cannot run after an exhausted
+upstream failure, even if an older partition already exists. Logs include processing
+date, source file, output path, row count, quality report path and validation result.
+
+### Scheduling and date handling
+
+- `schedule="@daily"`, UTC, fixed start date October 1, 2026, and `catchup=False`.
+  Enabling the DAG does not automatically replay all historical dates.
+- For daily interval timetables, `[2026-10-18, 2026-10-19)` processes October 18.
+- Airflow 3.1 defaults `scheduler.create_cron_data_intervals=False`: `@daily` uses
+  a midnight trigger with a zero-length interval. The October 19 midnight trigger
+  processes October 18, the day just closed. With that default, an explicit
+  historical trigger point of October 1 corresponds to September 30 and will fail
+  because that source is absent. Use manual batch dates to process October 1,
+  or enable daily data intervals for historical backfills as shown below.
+- Both timetable configurations are supported and tested. Non-midnight or
+  non-daily automated intervals fail clearly. Automated runs reject a conf date
+  override; they always follow their interval. No wall-clock date selects a file.
+- Manual runs **require** `dag_run.conf.batch_date` as a strict `YYYY-MM-DD`
+  string, independently of their logical date or inferred interval. Missing,
+  malformed or impossible dates fail in extraction. One run selects exactly
+  `data/raw/orders_YYYY-MM-DD.csv`; there is no glob, latest-file or date fallback.
+- The supplied final batch, November 15, is processed by the November 16 midnight
+  scheduled run. Later scheduled dates have no supplied file: extraction raises
+  `FileNotFoundError`, retries twice, then fails and blocks downstream tasks. The
+  operator must supply the exact missing batch or pause the DAG; it never reuses
+  November 15 silently. Missing dates within the supplied range fail identically.
+
+### Idempotence and concurrency
+
+The existing ETL replaces date-specific outputs atomically and deterministically.
+`max_active_runs=1` serializes ordinary DAG runs. Each task also holds a Linux
+`fcntl.flock` lock at `data/.locks/DATE.lock` while reading/writing that partition,
+including its quality report. This prevents conflicting simultaneous writes even
+from overlapping Airflow backfill jobs. Lock release is automatic on failure or
+process exit; persistent lock files must not be deleted while executions run.
+All workers must share the repository/data filesystem with working POSIX locks;
+raw batches must remain immutable. Direct `python -m src.etl` executions do not
+participate in these DAG locks and must not run concurrently with the DAG.
+A multi-stage run is not one filesystem transaction; completed upstream outputs
+remain after failure, and a rerun safely replaces them. No output is appended.
+
+### Environment and execution commands
+
+Use the already configured Python 3.12 / Airflow 3.1 environment, or install Airflow
+into a dedicated virtual environment using its official Python 3.12 constraints:
+
+```sh
+python -m pip install 'apache-airflow==3.1.0' \
+  --constraint https://raw.githubusercontent.com/apache/airflow/constraints-3.1.0/constraints-3.12.txt
+python -m pip install -r requirements-dev.txt
+export AIRFLOW_HOME="$PWD/work/airflow"
+export AIRFLOW__CORE__DAGS_FOLDER="$PWD/dags"
+export AIRFLOW__CORE__LOAD_EXAMPLES=False
+airflow db migrate
+airflow dags list --local
+airflow dags list-import-errors --local
+python -m pytest -q
+# Opt-in tests create real runs in the development metadata DB, isolated data outputs:
+RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q
+# One real local DagRun; no scheduler is required:
+airflow dags test data_pipeline 2026-10-01 -c '{"batch_date":"2026-10-01"}'
+```
+
+For this workspace, first `source /workspace/.delivery-delay/env.sh` to use the
+preinstalled environment and existing development metadata DB, then export
+`AIRFLOW__CORE__DAGS_FOLDER="$PWD/dags"` from the repository root. Do not commit
+metadata DBs, environments, authentication files or scratch logs.
+
+To queue a manual run with running Airflow services (for example `airflow standalone`
+in a development environment):
+
+```sh
+airflow dags trigger data_pipeline --conf '{"batch_date":"2026-10-18"}'
+```
+
+Historical processing remains explicit despite `catchup=False`. The least ambiguous
+option is three manual triggers with batch dates October 18, 19 and 20. For Airflow
+3.1 native backfill, configure **all** Airflow services to use data intervals before
+parsing/serializing the DAG, then run:
+
+```sh
+export AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS=True
+# Restart services with this configuration and wait for DAG reserialization.
+airflow backfill create --dag-id data_pipeline \
+  --from-date 2026-10-18 --to-date 2026-10-20 \
+  --max-active-runs 1 --reprocess-behavior completed
+```
+
+Those logical intervals select October 18, 19 and 20 respectively. With the default
+trigger timetable instead, the corresponding historical trigger dates are October
+19–21. Backfills have their own concurrency limit; use `--max-active-runs 1`.
+Manual triggering and native backfill require healthy scheduler/API services;
+`dags test` executes locally through Airflow's in-process Execution API.
+
+Actual Phase 3 validation and limitations are recorded in
+[reports/phase3_validation.md](reports/phase3_validation.md). Phase 1 and Phase 2
+reports remain historical evidence. No ML training or Docker Compose is implemented.
