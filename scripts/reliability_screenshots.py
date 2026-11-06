@@ -20,13 +20,17 @@ def main():
         with sync_playwright() as p:
             browser = p.chromium.launch()
             context = browser.new_context(viewport={'width': 1600, 'height': 1100})
+            # Authenticate against the real FAB endpoint, then let the Airflow UI
+            # consume its supported JWT cookie. Never persist the response/storage.
+            response = context.request.post('http://127.0.0.1:8080/auth/token', data={
+                'username': env.get('AIRFLOW_ADMIN_USER', 'admin'),
+                'password': env['AIRFLOW_ADMIN_PASSWORD']})
+            if not response.ok:
+                raise RuntimeError(f'FAB token login failed with HTTP {response.status}')
+            token = response.json()['access_token']
+            context.add_cookies([{'name': '_token', 'value': token,
+                                 'url': 'http://127.0.0.1:8080/', 'httpOnly': False}])
             page = context.new_page()
-            page.goto('http://127.0.0.1:8080/', wait_until='networkidle')
-            if page.locator('input[name="username"]').count():
-                page.locator('input[name="username"]').fill(env.get('AIRFLOW_ADMIN_USER', 'admin'))
-                page.locator('input[name="password"]').fill(env['AIRFLOW_ADMIN_PASSWORD'])
-                page.locator('input[type="submit"],button[type="submit"]').first.click()
-                page.wait_for_load_state('networkidle')
             def capture_page(name, route, required, graph=False):
                 page.goto('http://127.0.0.1:8080' + route, wait_until='networkidle')
                 page.wait_for_timeout(2500)
