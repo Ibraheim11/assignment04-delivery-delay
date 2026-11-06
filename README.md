@@ -730,3 +730,9 @@ Extended sanitized command exit codes, service logs and task logs are uploaded a
 An expected isolated failed DagRun is evidence of failure propagation; the workflow
 succeeds only if every reliability assertion passes. Results are reported only after
 actual execution; failed attempts remain visible in Actions.
+
+### Phase 6 recorded results
+
+Observed runner: [42237926425](https://github.com/Ibraheim11/assignment04-delivery-delay/actions/runs/42237926425). All three historical dates completed all four tasks. October 18 rerun counts and hashes matched; the controlled retry succeeded on try 2; the exhausted failure blocked all downstream tasks.
+
+See [the complete observed results, hashes, screenshot references and limitations](reports/phase6/validation.md).
