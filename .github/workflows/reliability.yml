@@ -1,0 +1,49 @@
+name: Phase 6 reliability evidence
+on:
+  push:
+    branches: [feature/phase6-reliability-evidence]
+    paths-ignore: ['reports/**', 'screenshots/**', 'README.md']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: phase6-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  reliability:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host dependencies
+        run: |
+          python3 -m pip install PyYAML==6.0.2 playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Real backfill, idempotency, retry and exhausted failure
+        run: python3 -m scripts.reliability_integration
+      - name: Capture live Airflow UI
+        if: always()
+        run: python3 -m scripts.reliability_screenshots
+      - name: Collect sanitized logs and stop services
+        if: always()
+        run: python3 scripts/docker_integration.py collect
+      - name: Persist selected genuine evidence on this branch
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/phase6 screenshots/phase6
+          if ! git diff --cached --quiet; then
+            git commit -m 'Persist actual Phase 6 runner evidence [skip ci]'
+            git push origin HEAD:feature/phase6-reliability-evidence
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase6-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            work/docker-integration/
+            reports/phase6/
+            screenshots/phase6/
+          if-no-files-found: error
+          retention-days: 14

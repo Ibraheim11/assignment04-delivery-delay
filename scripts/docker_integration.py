@@ -127,6 +127,15 @@ def run():
     environment:
       AIRFLOW__SCHEDULER__USE_JOB_SCHEDULE: 'false'
 ''')
+    if os.environ.get('ASSIGNMENT04_RELIABILITY_CI') == 'true':
+        import yaml
+        override = {'services': {name: {'environment': {
+            'AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS': 'true',
+            'ASSIGNMENT04_RELIABILITY_CI': 'true',
+        }} for name in ['airflow-init', 'airflow-apiserver', 'airflow-scheduler',
+                        'airflow-dag-processor', 'airflow-triggerer', 'airflow-cli']}}
+        override['services']['airflow-scheduler']['environment']['AIRFLOW__SCHEDULER__USE_JOB_SCHEDULE'] = 'false'
+        (ROOT / 'work/compose.ci.yml').write_text(yaml.safe_dump(override))
     # Disables automatic daily runs only in CI; externally triggered runs still use
     # the real scheduler, LocalExecutor and Execution API. Production DAG is unchanged.
     execute('compose-config', COMPOSE + ['config', '--quiet'])

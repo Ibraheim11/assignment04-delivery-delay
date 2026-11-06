@@ -3,6 +3,7 @@ from contextlib import contextmanager
 from datetime import timedelta
 import fcntl
 import logging
+import os
 from pathlib import Path
 import sys
 
@@ -63,6 +64,10 @@ def batch_lock(batch_date):
 
 
 def run_stage(stage, batch_date):
+    # Explicit CI opt-in; ordinary production/manual runs do not enter this hook.
+    if os.environ.get('ASSIGNMENT04_RELIABILITY_CI') == 'true':
+        from scripts.reliability_fault import inject
+        inject(stage, get_current_context())
     with batch_lock(batch_date):
         return _run_stage(stage, batch_date)
 
@@ -97,7 +102,7 @@ def _run_stage(stage, batch_date):
 @dag(dag_id='data_pipeline', schedule='@daily',
      start_date=pendulum.datetime(2026, 10, 1, tz='UTC'), catchup=False,
      max_active_runs=1,
-     default_args={'retries': 2, 'retry_delay': timedelta(minutes=5)},
+     default_args={'retries': 2, 'retry_delay': timedelta(seconds=30) if os.environ.get('ASSIGNMENT04_RELIABILITY_CI') == 'true' else timedelta(minutes=5)},
      tags=['assignment04', 'data', 'medallion'])
 def build_data_pipeline():
     @task
