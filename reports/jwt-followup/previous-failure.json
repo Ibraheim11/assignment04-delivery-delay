@@ -1,0 +1,27 @@
+{
+  "run_id": 42237540824,
+  "artifact_sha256": "5a2fad4445cee0fa95592e90e1e65c5d825b32248f08a9adfb8f7fa0be109d02",
+  "excerpts": [
+    {
+      "source_artifact_path": "work/docker-integration/compose-service-logs.log",
+      "lines": [
+        "airflow-apiserver-1      |              ^^^^^^^^^^^^^^^^^^^^^^^^",
+        "airflow-apiserver-1      |   File \"/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/fab/auth_manager/api_fastapi/routes/login.py\", line 38, in create_token",
+        "airflow-apiserver-1      |     return FABAuthManagerLogin.create_token(body=body)",
+        "airflow-apiserver-1      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "airflow-apiserver-1      |   File \"/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/fab/auth_manager/api_fastapi/services/login.py\", line 63, in create_token",
+        "airflow-apiserver-1      |     access_token=auth_manager.generate_jwt(",
+        "airflow-apiserver-1      |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "airflow-apiserver-1      |   File \"/home/airflow/.local/lib/python3.12/site-packages/airflow/api_fastapi/auth/managers/base_auth_manager.py\", line 120, in generate_jwt",
+        "airflow-apiserver-1      |     return self._get_token_signer(expiration_time_in_seconds=expiration_time_in_seconds).generate(",
+        "airflow-apiserver-1      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "airflow-apiserver-1      |   File \"/home/airflow/.local/lib/python3.12/site-packages/airflow/api_fastapi/auth/tokens.py\", line 459, in generate",
+        "airflow-apiserver-1      |     return jwt.encode(claims, self.signing_arg, algorithm=self.algorithm, headers=headers)",
+        "airflow-apiserver-1      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "airflow-apiserver-1      |   File \"/home/airflow/.local/lib/python3.12/site-packages/jwt/api_jwt.py\", line 141, in encode",
+        "airflow-apiserver-1      |     raise TypeError(\"Issuer (iss) must be a string.\")"
+      ]
+    }
+  ],
+  "matching_trace_lines": 12
+}

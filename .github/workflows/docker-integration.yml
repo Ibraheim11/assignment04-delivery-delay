@@ -1,5 +1,9 @@
 name: Docker Airflow integration
 on:
+  # Temporary follow-up verification trigger; removed after the observed run.
+  pull_request:
+    branches: [main]
+    paths: ['docker-compose.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -16,6 +20,8 @@ jobs:
           persist-credentials: false
       - name: Build, start and execute both DAGs
         run: python3 scripts/docker_integration.py run
+      - name: Verify live FAB authentication and UI route
+        run: python3 scripts/verify_airflow_auth.py
       - name: Collect sanitized diagnostics and stop services
         if: always()
         run: python3 scripts/docker_integration.py collect

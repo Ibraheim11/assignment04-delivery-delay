@@ -128,6 +128,9 @@ Open **http://localhost:8080**, log in with `AIRFLOW_ADMIN_USER` and
 the API/UI, scheduler with LocalExecutor, DAG processor and triggerer use shared
 code/data/artifact/log mounts. Initialization migrates metadata and creates the FAB
 admin. DAGs start paused. No credentials or database files are submitted.
+Shared Compose settings include the same nonempty JWT issuer used by the successful
+hosted UI capture; this avoids FAB login failures with the Docker-resolved PyJWT 2.15.1
+([exact-version compatibility probe](reports/jwt-followup/compatibility.json)).
 
 For a deterministic first execution while DAGs remain paused:
 
