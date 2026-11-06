@@ -167,7 +167,7 @@ def run():
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////tmp/airflow-test.db
 ''')
     execute('container-tests', COMPOSE + ['-f', 'work/compose.tests.yml', 'run', '--rm', '--no-deps',
-            '--entrypoint', 'bash', 'airflow-cli', '-c',
+            'airflow-cli', 'bash', '-c',
             'airflow db migrate && airflow dags reserialize && RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q -o cache_dir=/tmp/pytest-cache'], timeout=360)
     write('result.json', {'status': 'success', 'execution': 'real scheduler + LocalExecutor + Execution API',
                           'commit': os.environ.get('GITHUB_SHA'), 'run_id': os.environ.get('GITHUB_RUN_ID')})
@@ -177,6 +177,11 @@ def collect():
     if (ROOT / 'work/compose.ci.yml').exists() and (ROOT / '.env').exists():
         execute('final-compose-status', COMPOSE + ['ps', '--all', '--format', 'json'], check=False)
         execute('compose-service-logs', COMPOSE + ['logs', '--no-color'], check=False)
+        for service in SERVICES:
+            code, cid = execute('final-id-' + service, COMPOSE + ['ps', '-aq', service], check=False)
+            if not code and cid.strip():
+                execute('final-health-' + service, ['docker', 'inspect', '--format',
+                        '{{json .State}}', cid.strip()], check=False)
         # Copy only text task logs, redacting secrets and JWTs before persistence.
         for path in (ROOT / 'logs').rglob('*.log'):
             relative = path.relative_to(ROOT / 'logs')

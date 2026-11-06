@@ -583,7 +583,7 @@ services:
 
 ```sh
 docker compose -f docker-compose.yml -f work/compose.test.yml run --rm \
-  --no-deps --entrypoint bash airflow-cli -c \
+  --no-deps airflow-cli bash -c \
   'airflow db migrate && airflow dags reserialize && RUN_AIRFLOW_INTEGRATION=1 python -m pytest -q'
 ```
 
