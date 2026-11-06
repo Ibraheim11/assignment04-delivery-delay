@@ -6,9 +6,9 @@ CSV, produces Bronze/Silver/Gold partitions, then trains and evaluates a saved
 LogisticRegression baseline. The objective is reliable orchestration; minority-class
 recall remains limited.
 
-Phase 1–7 submission PR #1 was merged into `main` at
-`fe73d72a8eaf4e03b2e00d27c5445c84f1d74289`. The remaining JWT issuer correction
-is on `fix/final-airflow-jwt-issuer`; its follow-up PR is left unmerged for review.
+The Phase 1–7 submission (PR #1) and final JWT issuer correction (PR #2) are
+both merged into `main`. The validated release is available from the default
+branch, including the tested Airflow authentication configuration.
 See the [original requirement checklist](reports/phase7/requirements-checklist.md),
 [Phase 7 audit](reports/phase7/validation.md) and
 [JWT follow-up results](reports/jwt-followup/validation.md).
@@ -107,8 +107,7 @@ filesystem supporting POSIX `flock`. Docker Desktop must share the repository;
 WSL users should use its Linux filesystem.
 
 ```sh
-git clone --branch fix/final-airflow-jwt-issuer https://github.com/Ibraheim11/assignment04-delivery-delay.git
-# Use main after the follow-up issuer fix has been reviewed and merged.
+git clone --branch main https://github.com/Ibraheim11/assignment04-delivery-delay.git
 cd assignment04-delivery-delay
 python3 scripts/setup_docker_env.py
 docker compose config --quiet
