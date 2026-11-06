@@ -1,0 +1,97 @@
+{
+  "all_46_raw_hashes_verified": true,
+  "runs": [
+    {
+      "batch_date": "2026-10-01",
+      "layers": {
+        "bronze": {
+          "rows": 183,
+          "sha256": "3373d3343fcdc0391728ec22d74b96325e5064ec4e8db86922af301df4b2d88a"
+        },
+        "silver": {
+          "rows": 180,
+          "sha256": "b64ef18e1c1fa2bbdf8cf2c4c5393af9cc1c2830e0d6599b8d87be2ae8583652"
+        },
+        "gold": {
+          "rows": 180,
+          "sha256": "3b158fe8d86b9b87adb226da2c2228225ee22e949f2fa7a30e1fff66efe48c4f"
+        }
+      },
+      "identical_rerun": true,
+      "validation": {
+        "batch_date": "2026-10-01",
+        "rows": 180,
+        "duplicate_ids": 0
+      }
+    },
+    {
+      "batch_date": "2026-10-18",
+      "layers": {
+        "bronze": {
+          "rows": 248,
+          "sha256": "a9cad37c2bbcab454785717bb3b164d1697cb33e199e3f759354d57ecd23c361"
+        },
+        "silver": {
+          "rows": 245,
+          "sha256": "9c356701a96dec6695c1b415561023416b2e62c6674c462b86015bd1f19df66d"
+        },
+        "gold": {
+          "rows": 245,
+          "sha256": "dd505ef61d2145f227a8ce4ea5a5d817d286d98ecbd4790bc6c3bbf89d4c2177"
+        }
+      },
+      "identical_rerun": true,
+      "validation": {
+        "batch_date": "2026-10-18",
+        "rows": 245,
+        "duplicate_ids": 0
+      }
+    },
+    {
+      "batch_date": "2026-10-19",
+      "layers": {
+        "bronze": {
+          "rows": 183,
+          "sha256": "607165abc9a724f0b4394ccaca47c6444c14a92812059244d26bbb442af905ac"
+        },
+        "silver": {
+          "rows": 180,
+          "sha256": "d4a79c869a90f59f56e3b502d8a6551ea0962aebcf8c2a8e2ad16fa34ba6a517"
+        },
+        "gold": {
+          "rows": 180,
+          "sha256": "3cb0a8e3278786dbbeb8ff67a974107b845be322cba6a8203c5b266e15615773"
+        }
+      },
+      "identical_rerun": true,
+      "validation": {
+        "batch_date": "2026-10-19",
+        "rows": 180,
+        "duplicate_ids": 0
+      }
+    },
+    {
+      "batch_date": "2026-10-20",
+      "layers": {
+        "bronze": {
+          "rows": 196,
+          "sha256": "22cbdc2e2164dd3ee2747200cd7e85fd7cb90e14f07d046aad0a7c1741d7e720"
+        },
+        "silver": {
+          "rows": 193,
+          "sha256": "522f8bc4e6dc92e1f295a3418483a99d94e2b9223ffce7efb79a705a244d425f"
+        },
+        "gold": {
+          "rows": 193,
+          "sha256": "93f6b24b3c7c20a048362f2bfeba286de19c3c4904bb8286b3a83dc7d630525d"
+        }
+      },
+      "identical_rerun": true,
+      "validation": {
+        "batch_date": "2026-10-20",
+        "rows": 193,
+        "duplicate_ids": 0
+      }
+    }
+  ]
+}

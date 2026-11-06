@@ -1,0 +1,62 @@
+{
+  "batch_date": "2026-10-20",
+  "exact_duplicates_removed": 3,
+  "input_missing": {
+    "carrier_on_time_rate": 3,
+    "customer_region": 0,
+    "distance_km": 4,
+    "items_count": 0,
+    "late_delivery": 0,
+    "order_date": 0,
+    "order_hour": 0,
+    "order_id": 0,
+    "order_value_egp": 0,
+    "package_weight_kg": 0,
+    "promised_delivery_days": 0,
+    "shipping_method": 4,
+    "warehouse_id": 0,
+    "warehouse_load_pct": 9,
+    "weather_risk_level": 6
+  },
+  "input_rows": 196,
+  "invalid_numeric_to_missing": {
+    "carrier_on_time_rate": 0,
+    "distance_km": 2,
+    "items_count": 0,
+    "order_hour": 0,
+    "order_value_egp": 2,
+    "package_weight_kg": 0,
+    "promised_delivery_days": 0,
+    "warehouse_load_pct": 0
+  },
+  "normalized_categories": {
+    "customer_region": 0,
+    "shipping_method": 3,
+    "warehouse_id": 0,
+    "weather_risk_level": 0
+  },
+  "output_missing": {
+    "carrier_on_time_rate": 3,
+    "customer_region": 0,
+    "distance_km": 6,
+    "items_count": 0,
+    "late_delivery": 0,
+    "order_date": 0,
+    "order_hour": 0,
+    "order_id": 0,
+    "order_value_egp": 2,
+    "package_weight_kg": 0,
+    "promised_delivery_days": 0,
+    "shipping_method": 4,
+    "warehouse_id": 0,
+    "warehouse_load_pct": 9,
+    "weather_risk_level": 6
+  },
+  "output_rows": 193,
+  "unknown_categories_to_missing": {
+    "customer_region": 0,
+    "shipping_method": 0,
+    "warehouse_id": 0,
+    "weather_risk_level": 0
+  }
+}
