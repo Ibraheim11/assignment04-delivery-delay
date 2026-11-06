@@ -174,6 +174,7 @@ def run():
     image: assignment04-airflow:test
     environment:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////tmp/airflow-test.db
+      ASSIGNMENT04_RELIABILITY_CI: 'false'
 ''')
     execute('container-tests', COMPOSE + ['-f', 'work/compose.tests.yml', 'run', '--rm', '--no-deps',
             'airflow-cli', 'bash', '-c',

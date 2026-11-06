@@ -648,3 +648,75 @@ The existing API version healthcheck was verified successfully and retained.
 for exact commands, provenance, earlier diagnosed failures and remaining limits.
 No runtime blocker remains on this runner. No merge to main or final backfill/UI
 evidence collection was performed.
+
+## Phase 6 — real reliability evidence
+
+The `feature/phase6-reliability-evidence` branch starts at Phase 5B commit
+`93513d917fa389b1428762376d8346c6c4b2b8bc`. It does not merge into main.
+The [reliability workflow](.github/workflows/reliability.yml) runs on a disposable
+GitHub-hosted Ubuntu 24.04 runner with a 45 minute job timeout. It first runs the
+Phase 5B integration (both real DAGs, model comparison and regression suite), then
+performs historical backfills and controlled failures through the real scheduler,
+LocalExecutor and PostgreSQL metadata database. No Phase 6 reliability result uses
+`DAG.test()`; the existing regression suite still includes its separate development tests.
+
+Reproduce by pushing code changes to this branch or dispatching **Phase 6 reliability
+evidence** in Actions. The entry point is `python3 -m scripts.reliability_integration`;
+it deliberately requires a disposable GitHub-hosted runner. Runtime secrets are
+freshly generated, masked and excluded from Git. Automatic schedules are disabled
+in CI, but the scheduler still processes externally requested runs. Both DAGs are
+paused again after verification. Production schedules and the ML model/evaluation
+strategy are unchanged.
+
+The generated `work/compose.ci.yml` sets
+`AIRFLOW__SCHEDULER__CREATE_CRON_DATA_INTERVALS=true` on **all** Airflow services
+before the first DAG parse. Production Compose retains its Phase 5B default.
+With this timetable, logical date `2026-10-18T00:00:00Z` has interval
+`[2026-10-18T00:00:00Z, 2026-10-19T00:00:00Z)` and selects only
+`data/raw/orders_2026-10-18.csv`. The same mapping is asserted for October 19 and 20.
+Exact backfill commands (using the generated Compose override):
+
+```bash
+docker compose -f docker-compose.yml -f work/compose.ci.yml exec -T airflow-scheduler \
+  airflow backfill create --dag-id data_pipeline \
+  --from-date 2026-10-18 --to-date 2026-10-20 \
+  --max-active-runs 1 --reprocess-behavior completed --dry-run
+# Execute the identical command without --dry-run.
+docker compose -f docker-compose.yml -f work/compose.ci.yml exec -T airflow-scheduler \
+  airflow backfill create --dag-id data_pipeline \
+  --from-date 2026-10-18 --to-date 2026-10-20 \
+  --max-active-runs 1 --reprocess-behavior completed
+# Idempotency: a second scheduler execution of the same October 18 partition.
+docker compose -f docker-compose.yml -f work/compose.ci.yml exec -T airflow-scheduler \
+  airflow backfill create --dag-id data_pipeline \
+  --from-date 2026-10-18 --to-date 2026-10-18 \
+  --max-active-runs 1 --reprocess-behavior completed
+```
+
+The runner removes only the three selected Bronze/Silver/Gold outputs before the
+first backfill, so checked-in examples cannot satisfy the execution check. Date
+partitions retain the existing `orders_YYYY-MM-DD.csv` layout. Verification requires
+four successful tasks per date, matching logical dates and intervals, recreated
+partitions, identical row counts and SHA-256 on rerun, no duplicate Silver/Gold order
+IDs, unchanged raw hashes, and unchanged other date partitions.
+
+The fault hook requires `ASSIGNMENT04_RELIABILITY_CI=true`, a `phase6-` run ID and
+explicit `phase6_fault` configuration. It raises **before** `extract_to_bronze`
+writes any artifact. `once` fails only try 1; `exhaust` fails all three attempts.
+`retries=2` remains unchanged. CI uses a 30 second retry delay to bound execution;
+production retains the five minute delay. The regression container disables this
+CI hook and verifies the production defaults. Read-only metadata polling preserves
+`up_for_retry`, attempt history and final success; exhausted failures must leave
+all downstream tasks `upstream_failed` with no start time and zero tries.
+
+Real reports are persisted under [reports/phase6](reports/phase6), including
+`historical-backfill.json`, `idempotency.json` (full hashes and counts), `retry.json`,
+`failure-propagation.json`, `metadata-timeline.json` and `execution.json` (source
+commit and run URL). [screenshots/phase6](screenshots/phase6) contains live UI captures;
+`screenshots.json` records screenshot hashes, URLs and any capture limitations.
+Playwright saves no login screens, cookies, browser storage, tokens or traces.
+Extended sanitized command exit codes, service logs and task logs are uploaded as
+14-day Actions artifacts. Evidence commits use `[skip ci]` and cannot create a loop.
+An expected isolated failed DagRun is evidence of failure propagation; the workflow
+succeeds only if every reliability assertion passes. Results are reported only after
+actual execution; failed attempts remain visible in Actions.
